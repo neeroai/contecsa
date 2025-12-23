@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contecsa | Plataforma de Gestión Inteligente 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .chart-container { 
+            position: relative; 
+            width: 100%; 
+            max-width: 100%; 
+            height: 300px; 
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .nav-item.active {
+            background-color: #1e3a8a; /* Blue-900 */
+            color: white;
+            border-left: 4px solid #f59e0b; /* Amber-500 */
+        }
+        /* Architecture Diagram Styles */
+        .arch-box {
+            transition: all 0.3s ease;
+        }
+        .arch-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        /* Hide scrollbar for clean UI */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+    <!-- Chosen Palette: Infrastructure Blue & Safety Amber. Deep blues for trust/corporate, Amber for focus/action, clean grays for background. -->
+    <!-- Application Structure Plan: Dashboard layout with a fixed sidebar navigation for deep hierarchical content. The content is split into 3 phases: 'Diagnóstico' (Context), 'Solución' (The core tech/product proposal), and 'Ejecución' (Roadmap). The 'AI Simulator' is a custom interactive component to explain the black box of AI to stakeholders. -->
+    <!-- Visualization & Content Choices: 
+         1. As-Is/To-Be Comparison: Text & Icon lists for clarity.
+         2. Modules: Card Grid for overview, Modal/Expand for details.
+         3. AI Design: Interactive Step-by-Step simulator to demonstrate 'Guardrails' and 'Confidence Scores' (Key requirements).
+         4. Architecture: CSS Grid block diagram to show layers without Mermaid/SVG.
+         5. Roadmap: Kanban-style columns for MVPs.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="text-slate-800">
+
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar Navigation -->
+        <aside class="w-64 bg-slate-900 text-slate-300 flex-shrink-0 hidden md:flex flex-col h-full shadow-xl z-20">
+            <div class="p-6 border-b border-slate-700">
+                <h1 class="text-2xl font-bold text-white tracking-tight"><i class="fas fa-hard-hat text-amber-500 mr-2"></i>Contecsa<span class="text-xs block font-normal text-slate-400 mt-1">Plataforma 2025</span></h1>
+            </div>
+            <nav class="flex-1 overflow-y-auto py-4 space-y-1 custom-scrollbar">
+                <div class="px-4 py-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">Estrategia</div>
+                <button onclick="navigate('dashboard')" class="nav-item w-full text-left px-6 py-3 hover:bg-slate-800 transition-colors flex items-center active" id="nav-dashboard">
+                    <i class="fas fa-compass w-6"></i> Diagnóstico & North Star
+                </button>
+                
+                <div class="px-4 py-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mt-4">Solución</div>
+                <button onclick="navigate('modules')" class="nav-item w-full text-left px-6 py-3 hover:bg-slate-800 transition-colors flex items-center" id="nav-modules">
+                    <i class="fas fa-cubes w-6"></i> Módulos de Producto
+                </button>
+                <button onclick="navigate('ai-engine')" class="nav-item w-full text-left px-6 py-3 hover:bg-slate-800 transition-colors flex items-center" id="nav-ai-engine">
+                    <i class="fas fa-brain w-6"></i> Diseño IA & Reglas
+                </button>
+                <button onclick="navigate('architecture')" class="nav-item w-full text-left px-6 py-3 hover:bg-slate-800 transition-colors flex items-center" id="nav-architecture">
+                    <i class="fas fa-server w-6"></i> Arquitectura & Datos
+                </button>
+
+                <div class="px-4 py-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mt-4">Ejecución</div>
+                <button onclick="navigate('roadmap')" class="nav-item w-full text-left px-6 py-3 hover:bg-slate-800 transition-colors flex items-center" id="nav-roadmap">
+                    <i class="fas fa-road w-6"></i> Roadmap & Adopción
+                </button>
+                <button onclick="navigate('risks')" class="nav-item w-full text-left px-6 py-3 hover:bg-slate-800 transition-colors flex items-center" id="nav-risks">
+                    <i class="fas fa-shield-alt w-6"></i> Riesgos & KPIs
+                </button>
+            </nav>
+            <div class="p-4 border-t border-slate-700 bg-slate-900">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-slate-900 font-bold">IA</div>
+                    <div class="ml-3">
+                        <p class="text-sm font-medium text-white">Reporte Técnico</p>
+                        <p class="text-xs text-slate-400">Ver. 1.0 (Diciembre 2025)</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto bg-slate-50 relative" id="main-scroll">
+            <!-- Mobile Header -->
+            <div class="md:hidden bg-slate-900 text-white p-4 flex justify-between items-center sticky top-0 z-30 shadow-md">
+                <h1 class="font-bold flex items-center"><i class="fas fa-hard-hat text-amber-500 mr-2"></i> Contecsa 2025</h1>
+                <button id="mobile-menu-btn" class="text-slate-300 hover:text-white"><i class="fas fa-bars text-xl"></i></button>
+            </div>
+            
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden bg-slate-800 text-white shadow-lg absolute w-full z-40">
+                <button onclick="navigate('dashboard'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 border-b border-slate-700">Diagnóstico</button>
+                <button onclick="navigate('modules'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 border-b border-slate-700">Módulos</button>
+                <button onclick="navigate('ai-engine'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 border-b border-slate-700">Diseño IA</button>
+                <button onclick="navigate('architecture'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 border-b border-slate-700">Arquitectura</button>
+                <button onclick="navigate('roadmap'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 border-b border-slate-700">Roadmap</button>
+                <button onclick="navigate('risks'); toggleMobileMenu()" class="block w-full text-left px-4 py-3 border-b border-slate-700">Riesgos & KPIs</button>
+            </div>
+
+            <div class="max-w-7xl mx-auto p-4 md:p-8 space-y-8 pb-20">
+
+                <!-- SECTION 1: DASHBOARD / DIAGNOSIS -->
+                <section id="dashboard" class="content-section fade-in">
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 mb-8">
+                        <span class="inline-block px-3 py-1 rounded-full bg-amber-100 text-amber-800 text-xs font-bold mb-4">Investigación Estratégica</span>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-2">Visión 2025: Transformación Digital Contecsa</h2>
+                        <p class="text-lg text-slate-600 max-w-4xl">
+                            Investigación para una plataforma centralizada que elimine la dependencia de Excel/Correo, asegure el gobierno del dato y automatice la carga operativa mediante IA pragmática y verificable.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <!-- As-Is -->
+                        <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-2 h-full bg-red-400"></div>
+                            <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center"><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i> Estado Actual (As-Is)</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start"><i class="fas fa-times text-red-400 mt-1 mr-3"></i> <span class="text-slate-600 text-sm"><strong>Sin ERP:</strong> Operación fragmentada en silos de Excel y correos personales.</span></li>
+                                <li class="flex items-start"><i class="fas fa-times text-red-400 mt-1 mr-3"></i> <span class="text-slate-600 text-sm"><strong>Ceguera de Datos:</strong> Costos reales visibles solo post-cierre mensual.</span></li>
+                                <li class="flex items-start"><i class="fas fa-times text-red-400 mt-1 mr-3"></i> <span class="text-slate-600 text-sm"><strong>Riesgo Auditoría:</strong> Trazabilidad manual de aprobaciones y soportes.</span></li>
+                                <li class="flex items-start"><i class="fas fa-times text-red-400 mt-1 mr-3"></i> <span class="text-slate-600 text-sm"><strong>Alta Carga Manual:</strong> Digitación de facturas PDF y cotejo visual.</span></li>
+                            </ul>
+                        </div>
+
+                        <!-- North Star -->
+                        <div class="bg-slate-900 text-white rounded-xl shadow-sm border border-slate-700 p-6 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-2 h-full bg-emerald-400"></div>
+                            <h3 class="text-xl font-bold text-white mb-4 flex items-center"><i class="fas fa-star text-emerald-400 mr-2"></i> North Star (To-Be)</h3>
+                            <ul class="space-y-3">
+                                <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-3"></i> <span class="text-slate-300 text-sm"><strong>Verdad Única:</strong> Plataforma centralizada (Single Source of Truth) para compras y costos.</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-3"></i> <span class="text-slate-300 text-sm"><strong>IA Pragmática:</strong> Automatización de "Digitación Cero" en facturas.</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-3"></i> <span class="text-slate-300 text-sm"><strong>Gobierno Activo:</strong> Bloqueos automáticos sin soportes y alertas proactivas.</span></li>
+                                <li class="flex items-start"><i class="fas fa-check text-emerald-400 mt-1 mr-3"></i> <span class="text-slate-300 text-sm"><strong>Independencia:</strong> Arquitectura moderna desacoplada de ERPs monolíticos.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Metrics/Chart -->
+                    <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+                        <h3 class="text-lg font-bold text-slate-800 mb-4">Proyección de Impacto Operativo</h3>
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                            <div class="col-span-2">
+                                <div class="chart-container">
+                                    <canvas id="impactChart"></canvas>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center space-y-4">
+                                <div class="p-4 bg-blue-50 rounded-lg border border-blue-100">
+                                    <div class="text-3xl font-bold text-blue-900">85%</div>
+                                    <div class="text-sm text-blue-700">Reducción en tiempo de digitación</div>
+                                </div>
+                                <div class="p-4 bg-amber-50 rounded-lg border border-amber-100">
+                                    <div class="text-3xl font-bold text-amber-900">100%</div>
+                                    <div class="text-sm text-amber-700">Trazabilidad de aprobaciones</div>
+                                </div>
+                                <div class="p-4 bg-emerald-50 rounded-lg border border-emerald-100">
+                                    <div class="text-3xl font-bold text-emerald-900">TBD</div>
+                                    <div class="text-sm text-emerald-700">Ahorro por control de sobreprecios</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 2: MODULES -->
+                <section id="modules" class="content-section hidden fade-in">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-slate-900">Mapa de Módulos (Producto)</h2>
+                        <p class="text-slate-600">Definición funcional estructurada para reemplazar la fragmentación actual.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="modules-grid">
+                        <!-- Content populated by JS -->
+                    </div>
+
+                    <!-- Prioritized Use Cases Table -->
+                    <div class="mt-10 bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+                        <div class="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                            <h3 class="font-bold text-slate-800">Casos de Uso Priorizados (MoSCoW)</h3>
+                            <select id="priorityFilter" class="bg-white border border-slate-300 text-sm rounded-lg p-2 focus:ring-blue-500 focus:border-blue-500">
+                                <option value="all">Todos</option>
+                                <option value="MUST">MUST (Crítico)</option>
+                                <option value="SHOULD">SHOULD (Importante)</option>
+                                <option value="COULD">COULD (Deseable)</option>
+                            </select>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm text-left text-slate-500">
+                                <thead class="text-xs text-slate-700 uppercase bg-slate-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">Prioridad</th>
+                                        <th scope="col" class="px-6 py-3">Módulo</th>
+                                        <th scope="col" class="px-6 py-3">Caso de Uso</th>
+                                        <th scope="col" class="px-6 py-3">Criterio de Éxito</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="usecases-table-body" class="bg-white divide-y divide-slate-100">
+                                    <!-- Populated by JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 3: AI DESIGN -->
+                <section id="ai-engine" class="content-section hidden fade-in">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-slate-900">Motor de IA & Reglas (2025)</h2>
+                        <p class="text-slate-600">Diseño de componentes inteligentes determinísticos y probabilísticos. <span class="text-amber-600 font-semibold">Nada de "cajas negras": todo es auditable.</span></p>
+                    </div>
+
+                    <!-- AI Concept Simulator -->
+                    <div class="bg-slate-900 rounded-xl p-8 mb-8 text-white shadow-2xl relative overflow-hidden">
+                        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-amber-500 to-emerald-500"></div>
+                        
+                        <div class="flex flex-col md:flex-row gap-8">
+                            <!-- Input Panel -->
+                            <div class="w-full md:w-1/3 bg-slate-800 rounded-lg p-6 border border-slate-700">
+                                <h4 class="text-amber-400 font-bold mb-4 uppercase text-xs tracking-wider">1. Entrada (Input)</h4>
+                                <label class="block text-sm text-slate-400 mb-2">Seleccionar documento de prueba:</label>
+                                <select id="ai-sim-input" class="w-full bg-slate-900 border border-slate-600 rounded p-2 text-sm text-white mb-4">
+                                    <option value="invoice">Factura Proveedor (PDF)</option>
+                                    <option value="quote">Cotización (Email Body)</option>
+                                    <option value="anomaly">Alerta de Precio (Datos)</option>
+                                </select>
+                                <button onclick="runAiSimulation()" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-medium py-2 px-4 rounded transition-colors flex justify-center items-center">
+                                    <i class="fas fa-play mr-2"></i> Procesar con IA
+                                </button>
+                                <div id="input-preview" class="mt-4 p-3 bg-slate-900 rounded border border-slate-700 text-xs font-mono text-slate-400 h-32 overflow-hidden">
+                                    <!-- Preview text -->
+                                    [PDF BINARY DATA]...
+                                </div>
+                            </div>
+
+                            <!-- Process Visualization -->
+                            <div class="w-full md:w-2/3 space-y-4">
+                                <h4 class="text-blue-400 font-bold mb-2 uppercase text-xs tracking-wider">2. Pipeline de Procesamiento</h4>
+                                
+                                <!-- Step 1: Extraction -->
+                                <div class="flex items-center space-x-4 ai-step opacity-50 transition-all duration-500" id="step-extract">
+                                    <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center border border-slate-600">
+                                        <i class="fas fa-eye text-white"></i>
+                                    </div>
+                                    <div class="flex-1 bg-slate-800 p-3 rounded border border-slate-700">
+                                        <div class="flex justify-between">
+                                            <span class="font-semibold text-sm">Extracción (OCR/LLM)</span>
+                                            <span class="text-xs text-amber-400" id="step-extract-status">Pendiente</span>
+                                        </div>
+                                        <div class="text-xs text-slate-400 mt-1" id="step-extract-detail">Identificación de entidades (NIT, Total, Items).</div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 2: Verification (Guardrails) -->
+                                <div class="flex items-center space-x-4 ai-step opacity-50 transition-all duration-500" id="step-verify">
+                                    <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center border border-slate-600">
+                                        <i class="fas fa-shield-alt text-white"></i>
+                                    </div>
+                                    <div class="flex-1 bg-slate-800 p-3 rounded border border-slate-700">
+                                        <div class="flex justify-between">
+                                            <span class="font-semibold text-sm">Validación & Guardrails</span>
+                                            <span class="text-xs text-amber-400" id="step-verify-status">Pendiente</span>
+                                        </div>
+                                        <div class="text-xs text-slate-400 mt-1" id="step-verify-detail">Cotejo contra OC, Vigencia RUT, Duplicados.</div>
+                                    </div>
+                                </div>
+
+                                <!-- Step 3: Output -->
+                                <div class="flex items-center space-x-4 ai-step opacity-50 transition-all duration-500" id="step-output">
+                                    <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center border border-slate-600">
+                                        <i class="fas fa-check-circle text-white"></i>
+                                    </div>
+                                    <div class="flex-1 bg-slate-800 p-3 rounded border border-slate-700">
+                                        <div class="flex justify-between">
+                                            <span class="font-semibold text-sm">Resultado & Confianza</span>
+                                            <span class="text-xs text-amber-400" id="step-output-status">Pendiente</span>
+                                        </div>
+                                        <div class="mt-2 bg-slate-900 p-2 rounded text-xs font-mono text-green-400 border border-green-900/50" id="step-output-json">
+                                            Waiting for input...
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI Components Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="font-bold text-slate-800 mb-3">Componentes Clave</h3>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3">
+                                    <div class="mt-1"><i class="fas fa-robot text-blue-600"></i></div>
+                                    <div>
+                                        <strong class="block text-sm text-slate-900">Clasificador de Documentos</strong>
+                                        <p class="text-xs text-slate-500">Router inicial que distingue facturas, certificados, y basura. Entrada: Correo/Upload.</p>
+                                    </div>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div class="mt-1"><i class="fas fa-file-invoice-dollar text-blue-600"></i></div>
+                                    <div>
+                                        <strong class="block text-sm text-slate-900">Extracción Estructurada</strong>
+                                        <p class="text-xs text-slate-500">Modelo multimodal para sacar ítems de tablas complejas en PDFs de proveedores variados.</p>
+                                    </div>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div class="mt-1"><i class="fas fa-exchange-alt text-blue-600"></i></div>
+                                    <div>
+                                        <strong class="block text-sm text-slate-900">Matching Inteligente (N:N)</strong>
+                                        <p class="text-xs text-slate-500">Cruza 1 factura con N recepciones. Usa fuzzy logic para descripciones de materiales.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                            <h3 class="font-bold text-slate-800 mb-3">Guardrails & Seguridad</h3>
+                            <ul class="space-y-4">
+                                <li class="flex gap-3">
+                                    <div class="mt-1"><i class="fas fa-lock text-amber-600"></i></div>
+                                    <div>
+                                        <strong class="block text-sm text-slate-900">Fallback Humano Obligatorio</strong>
+                                        <p class="text-xs text-slate-500">Si Confianza < 85%, se asigna tarea manual de revisión. La IA nunca aprueba pagos sola si hay duda.</p>
+                                    </div>
+                                </li>
+                                <li class="flex gap-3">
+                                    <div class="mt-1"><i class="fas fa-search-dollar text-amber-600"></i></div>
+                                    <div>
+                                        <strong class="block text-sm text-slate-900">Control de Alucinaciones</strong>
+                                        <p class="text-xs text-slate-500">Validación aritmética (Cantidad x Unitario = Total) post-extracción para asegurar integridad.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 4: ARCHITECTURE -->
+                <section id="architecture" class="content-section hidden fade-in">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-slate-900">Arquitectura Moderna & Datos</h2>
+                        <p class="text-slate-600">Diseño cloud-native desacoplado para escalabilidad y seguridad. Sin dependencia de ERP.</p>
+                    </div>
+
+                    <!-- Architecture Diagram (HTML/CSS) -->
+                    <div class="bg-slate-100 p-6 rounded-xl border border-slate-200 overflow-x-auto">
+                        <div class="min-w-[800px] flex flex-col space-y-4 text-center text-sm">
+                            
+                            <!-- Client Layer -->
+                            <div class="grid grid-cols-3 gap-4">
+                                <div class="col-span-3 bg-white p-3 rounded shadow-sm border border-slate-300 font-bold text-slate-700">
+                                    Capa de Presentación (Web SPA / PWA Mobile)
+                                    <div class="text-xs font-normal text-slate-500 mt-1">React / Tailwind / Auth0 (RBAC)</div>
+                                </div>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="flex justify-center"><i class="fas fa-arrow-down text-slate-400"></i></div>
+
+                            <!-- API Layer -->
+                            <div class="bg-blue-900 text-white p-3 rounded shadow-sm arch-box">
+                                API Gateway (REST + GraphQL)
+                                <div class="text-xs text-blue-200 mt-1">Rate Limiting | Validation | Routing</div>
+                            </div>
+
+                            <!-- Arrow -->
+                            <div class="flex justify-center"><i class="fas fa-arrow-down text-slate-400"></i></div>
+
+                            <!-- Core Services -->
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="bg-white p-4 rounded shadow-sm border border-slate-300 arch-box border-t-4 border-t-blue-500">
+                                    <strong>Compras Service</strong>
+                                    <p class="text-xs mt-1 text-slate-500">Workflow, OC, Estados</p>
+                                </div>
+                                <div class="bg-white p-4 rounded shadow-sm border border-slate-300 arch-box border-t-4 border-t-blue-500">
+                                    <strong>Facturas Service</strong>
+                                    <p class="text-xs mt-1 text-slate-500">Inbox, Validación, Pagos</p>
+                                </div>
+                                <div class="bg-white p-4 rounded shadow-sm border border-slate-300 arch-box border-t-4 border-t-amber-500">
+                                    <strong>AI & OCR Worker</strong>
+                                    <p class="text-xs mt-1 text-slate-500">Colas asíncronas (Python)</p>
+                                </div>
+                                <div class="bg-white p-4 rounded shadow-sm border border-slate-300 arch-box border-t-4 border-t-emerald-500">
+                                    <strong>Notifications</strong>
+                                    <p class="text-xs mt-1 text-slate-500">Email, Push, Resúmenes</p>
+                                </div>
+                            </div>
+
+                            <!-- Data Layer -->
+                            <div class="grid grid-cols-2 gap-4 mt-4">
+                                <div class="bg-slate-200 p-4 rounded border border-slate-300 arch-box flex flex-col justify-center">
+                                    <strong>Base Transaccional</strong>
+                                    <div class="text-xs text-slate-600 mt-1">PostgreSQL (Relacional)</div>
+                                    <div class="text-[10px] text-slate-500">Users, OCs, Metadata Facturas</div>
+                                </div>
+                                <div class="bg-slate-200 p-4 rounded border border-slate-300 arch-box flex flex-col justify-center">
+                                    <strong>Document Store</strong>
+                                    <div class="text-xs text-slate-600 mt-1">S3 Bucket / Blob Storage</div>
+                                    <div class="text-[10px] text-slate-500">PDFs encriptados en reposo</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200">
+                            <h3 class="font-bold text-slate-800 mb-2">Modelo de Datos (Entidades Core)</h3>
+                            <ul class="list-disc list-inside text-sm text-slate-600 space-y-2">
+                                <li><strong>Project:</strong> Centro de costos, presupuesto, ubicación.</li>
+                                <li><strong>PurchaseOrder (OC):</strong> Header (Prov, Fecha) + Lines (Material, Cant, Precio).</li>
+                                <li><strong>Reception (Entrada):</strong> Evidencia de recepción en obra (Foto/Acta).</li>
+                                <li><strong>Invoice:</strong> Metadata extraída, Link a PDF, Estado (Borrador, Validada, Pagada).</li>
+                                <li><strong>AuditLog:</strong> Quién, Qué, Cuándo (Inmutable).</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-slate-200">
+                            <h3 class="font-bold text-slate-800 mb-2">Privacidad y Gobierno</h3>
+                            <ul class="text-sm text-slate-600 space-y-3">
+                                <li class="flex items-start"><i class="fas fa-lock text-slate-400 mt-1 mr-2"></i> <span><strong>Cifrado:</strong> Datos sensibles en reposo (AES-256).</span></li>
+                                <li class="flex items-start"><i class="fas fa-user-shield text-slate-400 mt-1 mr-2"></i> <span><strong>RBAC:</strong> Roles estrictos (Residente, Compras, Contabilidad, Gerencia).</span></li>
+                                <li class="flex items-start"><i class="fas fa-history text-slate-400 mt-1 mr-2"></i> <span><strong>Cierres:</strong> "Soft lock" mensual para reportes, bloqueo duro para auditoría.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 5: ROADMAP -->
+                <section id="roadmap" class="content-section hidden fade-in">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-slate-900">Roadmap Acelerado (90 Días)</h2>
+                        <p class="text-slate-600">Estrategia de implementación agresiva para migrar desde Excel en 3 meses.</p>
+                    </div>
+
+                    <!-- Roadmap Kanban -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                        <!-- MVP 1 -->
+                        <div class="bg-white rounded-xl shadow-sm border-t-4 border-t-blue-500 p-5">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="font-bold text-slate-800">Mes 1: Control & Datos</h3>
+                                <span class="text-xs bg-blue-100 text-blue-800 font-bold px-2 py-1 rounded">Semanas 1-4</span>
+                            </div>
+                            <ul class="text-sm text-slate-600 space-y-2 mb-4">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Workflow Solicitud (RQ) -> OC</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Repositorio Central (Drive/S3)</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Formulario móvil de recepción</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-blue-500 mr-2"></i> Carga masiva de maestros (Excel)</li>
+                            </ul>
+                            <div class="text-xs text-slate-400 mt-4 border-t pt-2"><strong>Hito:</strong> 100% compras centralizadas. Fin de OCs por WhatsApp.</div>
+                        </div>
+
+                        <!-- MVP 2 -->
+                        <div class="bg-white rounded-xl shadow-sm border-t-4 border-t-amber-500 p-5">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="font-bold text-slate-800">Mes 2: Flujo Facturas</h3>
+                                <span class="text-xs bg-amber-100 text-amber-800 font-bold px-2 py-1 rounded">Semanas 5-8</span>
+                            </div>
+                            <ul class="text-sm text-slate-600 space-y-2 mb-4">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-2"></i> Inbox Único (recepcion@contecsa...)</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-2"></i> Extracción OCR (Datos Cabecera)</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-2"></i> Validación Auto (RUT, Aritmética)</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-amber-500 mr-2"></i> Dashboard de Cuentas x Pagar</li>
+                            </ul>
+                            <div class="text-xs text-slate-400 mt-4 border-t pt-2"><strong>Hito:</strong> Digitación reducida al 50%. Visibilidad de pasivos.</div>
+                        </div>
+
+                        <!-- MVP 3 -->
+                        <div class="bg-white rounded-xl shadow-sm border-t-4 border-t-emerald-500 p-5">
+                            <div class="flex justify-between items-center mb-4">
+                                <h3 class="font-bold text-slate-800">Mes 3: Inteligencia</h3>
+                                <span class="text-xs bg-emerald-100 text-emerald-800 font-bold px-2 py-1 rounded">Semanas 9-12</span>
+                            </div>
+                            <ul class="text-sm text-slate-600 space-y-2 mb-4">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-emerald-500 mr-2"></i> Matching Automático (Factura vs OC)</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-emerald-500 mr-2"></i> Control de Sobreprecios (Alertas)</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-emerald-500 mr-2"></i> Cierre Contable Automatizado</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-emerald-500 mr-2"></i> Asistente de consultas (Chat)</li>
+                            </ul>
+                            <div class="text-xs text-slate-400 mt-4 border-t pt-2"><strong>Hito:</strong> Auditoría en tiempo real. Sistema autónomo.</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- SECTION 6: RISKS & KPIs (SEPARATED) -->
+                <section id="risks" class="content-section hidden fade-in">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-slate-900">Riesgos, Mitigación y Métricas de Éxito</h2>
+                        <p class="text-slate-600">Análisis crítico para asegurar la adopción y el retorno de inversión.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl border border-slate-200">
+                            <h3 class="font-bold text-slate-800 mb-4 text-red-600">Matriz de Riesgos & Mitigación</h3>
+                            <div class="space-y-4">
+                                <div class="p-3 bg-red-50 rounded border-l-4 border-red-400">
+                                    <h5 class="text-sm font-bold text-red-900">Resistencia al cambio (Personal de Obra)</h5>
+                                    <p class="text-xs text-red-700 mt-1">Mitigación: UX extremadamente simple en móvil (estilo WhatsApp). Mantener recepción por foto. No exigir PC en obra.</p>
+                                </div>
+                                <div class="p-3 bg-orange-50 rounded border-l-4 border-orange-400">
+                                    <h5 class="text-sm font-bold text-orange-900">Calidad de Facturas (Fotos borrosas)</h5>
+                                    <p class="text-xs text-orange-700 mt-1">Mitigación: Filtros de pre-carga que rechazan imágenes ilegibles antes de llegar al humano. Campaña con proveedores.</p>
+                                </div>
+                                <div class="p-3 bg-yellow-50 rounded border-l-4 border-yellow-400">
+                                    <h5 class="text-sm font-bold text-yellow-900">Validación de Datos Incierta</h5>
+                                    <p class="text-xs text-yellow-700 mt-1">Mitigación (A Confirmar): ¿Existe base de datos histórica de precios confiable? Si no, MVP-3 baja prioridad.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-xl border border-slate-200">
+                            <h3 class="font-bold text-slate-800 mb-4">Plan de Evaluación (KPIs)</h3>
+                            <ul class="space-y-3">
+                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
+                                    <span class="text-sm text-slate-600">Tiempo Ciclo (Factura -> Pago)</span>
+                                    <span class="text-sm font-bold text-blue-600">-40%</span>
+                                </li>
+                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
+                                    <span class="text-sm text-slate-600">Errores de Digitación</span>
+                                    <span class="text-sm font-bold text-blue-600">< 1%</span>
+                                </li>
+                                <li class="flex justify-between items-center border-b border-slate-100 pb-2">
+                                    <span class="text-sm text-slate-600">Cobertura de Soportes</span>
+                                    <span class="text-sm font-bold text-blue-600">100% (Bloqueante)</span>
+                                </li>
+                                <li class="flex justify-between items-center pb-2">
+                                    <span class="text-sm text-slate-600">Adopción de Usuarios</span>
+                                    <span class="text-sm font-bold text-blue-600">90% mes 3</span>
+                                </li>
+                            </ul>
+                            <div class="mt-6 p-4 bg-slate-50 rounded text-xs text-slate-500">
+                                <strong>Discovery Questions Pendientes:</strong>
+                                <ul class="list-disc ml-4 mt-1">
+                                    <li>¿Volumen mensual exacto de facturas?</li>
+                                    <li>¿Formato actual de los "catálogos" de materiales?</li>
+                                    <li>¿Restricciones de firewall para nube pública?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="mt-12 border-t border-slate-200 pt-6 text-center text-slate-400 text-sm">
+                    <p>&copy; 2025 Soluciones Tecnológicas para Infraestructura. Confidencial.</p>
+                </footer>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- DATA STATE ---
+        const modulesData = [
+            {
+                title: "Compras E2E",
+                icon: "fa-shopping-cart",
+                color: "blue",
+                desc: "Desde la Requisición (RQ) hasta la Orden de Compra (OC).",
+                features: ["Workflow de Aprobación", "Bitácora de Cambios", "Generación PDF OC"]
+            },
+            {
+                title: "Facturas Inteligentes",
+                icon: "fa-file-invoice",
+                color: "amber",
+                desc: "Recepción centralizada y procesamiento automático.",
+                features: ["Inbox Email/Upload", "Extracción IA", "Validación DIAN (Simulada)"]
+            },
+            {
+                title: "Recepción & Entradas",
+                icon: "fa-truck-loading",
+                color: "emerald",
+                desc: "Control de lo que llega a obra vs lo comprado.",
+                features: ["Fotos evidencia", "Actas parciales", "Semaforización"]
+            },
+            {
+                title: "Gobierno & Datos",
+                icon: "fa-database",
+                color: "slate",
+                desc: "Maestros, cierres y permisos.",
+                features: ["Catálogo Materiales", "Lock Mensual", "Auditoría Log"]
+            },
+            {
+                title: "Reportes & BI",
+                icon: "fa-chart-pie",
+                color: "purple",
+                desc: "Visibilidad financiera en tiempo real.",
+                features: ["Control Presupuestal", "KPIs Proveedores", "Export Excel"]
+            },
+            {
+                title: "Notificaciones",
+                icon: "fa-bell",
+                color: "red",
+                desc: "Alertas proactivas sin spam.",
+                features: ["Resumen Diario", "Alertas Desviación", "Push Mobile"]
+            }
+        ];
+
+        const useCasesData = [
+            { priority: "MUST", module: "Compras", case: "Crear Requisición", success: "Formulario simple móvil, notificación a aprobador." },
+            { priority: "MUST", module: "Facturas", case: "Recepción Central", success: "Un solo correo recibe todo, asigna ID único." },
+            { priority: "MUST", module: "Gobierno", case: "Cierre Mensual", success: "Bloquear edición de docs de meses anteriores." },
+            { priority: "MUST", module: "Reportes", case: "Exportar Sábanas", success: "Excel idéntico al actual pero generado auto." },
+            { priority: "SHOULD", module: "Facturas", case: "Lectura OCR", success: "Extraer NIT, Fecha, Total con 90% precisión." },
+            { priority: "SHOULD", module: "Compras", case: "Validar Presupuesto", success: "Alerta si OC excede rubro del proyecto." },
+            { priority: "COULD", module: "BI", case: "Comparativo Precios", success: "Ver historial de costo de cemento x proveedor." },
+            { priority: "COULD", module: "IA", case: "Chatbot Interno", success: "'¿Cuánto le debemos a Ferretería X?'" }
+        ];
+
+        // --- NAVIGATION LOGIC ---
+        function navigate(sectionId) {
+            // Update UI
+            document.querySelectorAll('.content-section').forEach(el => el.classList.add('hidden'));
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            } else {
+                console.error("Section not found:", sectionId);
+                return;
+            }
+            
+            // Update Nav State
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active', 'bg-slate-800', 'text-white', 'border-l-4', 'border-amber-500'));
+            
+            // Handle combined nav items (Roadmap & Risks are in same view technically for smoother flow, or separated)
+            // Simplified: If clicking nav, highlight it.
+            const activeNav = document.getElementById('nav-' + sectionId);
+            if(activeNav) {
+                activeNav.classList.add('active');
+            }
+            
+            // Mobile Menu
+            if(window.innerWidth < 768) {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            }
+
+            // Trigger animations
+            if(sectionId === 'dashboard') initCharts();
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        // --- COMPONENT RENDERING ---
+        function renderModules() {
+            const container = document.getElementById('modules-grid');
+            container.innerHTML = modulesData.map(m => `
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 hover:shadow-md transition-shadow">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-full bg-${m.color}-100 flex items-center justify-center mr-3">
+                            <i class="fas ${m.icon} text-${m.color}-600"></i>
+                        </div>
+                        <h3 class="font-bold text-slate-800">${m.title}</h3>
+                    </div>
+                    <p class="text-sm text-slate-600 mb-4 h-10">${m.desc}</p>
+                    <ul class="text-xs text-slate-500 space-y-2">
+                        ${m.features.map(f => `<li class="flex items-center"><i class="fas fa-check text-${m.color}-500 mr-2"></i> ${f}</li>`).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        function renderUseCases(filter = "all") {
+            const tbody = document.getElementById('usecases-table-body');
+            const filtered = filter === "all" ? useCasesData : useCasesData.filter(u => u.priority === filter);
+            
+            tbody.innerHTML = filtered.map(u => {
+                let badgeColor = u.priority === 'MUST' ? 'bg-red-100 text-red-800' : 
+                                 u.priority === 'SHOULD' ? 'bg-amber-100 text-amber-800' : 'bg-blue-100 text-blue-800';
+                return `
+                <tr class="hover:bg-slate-50 transition-colors">
+                    <td class="px-6 py-4"><span class="${badgeColor} text-xs font-medium px-2.5 py-0.5 rounded">${u.priority}</span></td>
+                    <td class="px-6 py-4 font-medium text-slate-900">${u.module}</td>
+                    <td class="px-6 py-4">${u.case}</td>
+                    <td class="px-6 py-4 text-xs text-slate-500">${u.success}</td>
+                </tr>
+            `}).join('');
+        }
+
+        // --- AI SIMULATION LOGIC ---
+        function runAiSimulation() {
+            const type = document.getElementById('ai-sim-input').value;
+            const preview = document.getElementById('input-preview');
+            const jsonOutput = document.getElementById('step-output-json');
+            
+            // Reset UI
+            document.querySelectorAll('.ai-step').forEach(el => {
+                el.classList.add('opacity-50');
+                el.classList.remove('scale-105', 'bg-slate-700');
+            });
+            ['extract', 'verify', 'output'].forEach(step => {
+                document.getElementById(`step-${step}-status`).innerText = 'Pendiente';
+                document.getElementById(`step-${step}-status`).className = 'text-xs text-slate-500';
+            });
+            jsonOutput.innerText = "Processing...";
+
+            // 1. Simulate Input
+            let content = "";
+            if(type === 'invoice') content = "[PDF] FACTURA #FE-992\nProv: Concretos del Norte\nFecha: 20/12/2025\nItems:\n- Concreto 3000PSI (10m3) - $4.500.000\nTotal: $4.500.000 + IVA";
+            else if(type === 'quote') content = "Asunto: Cotización Acero\nHola Ing, adjunto precios para la obra...\nVarilla 1/2: $22.000 un.";
+            else content = "DATA ROW: Precio Cemento $45.000 (Promedio histórico $28.000) -> Deviation +60%";
+            
+            preview.innerText = content;
+
+            // 2. Step: Extraction (Delay 800ms)
+            setTimeout(() => {
+                activateStep('extract');
+                document.getElementById('step-extract-status').innerText = 'Completado (98%)';
+                document.getElementById('step-extract-status').className = 'text-xs text-green-400 font-bold';
+            }, 500);
+
+            // 3. Step: Verify (Delay 1800ms)
+            setTimeout(() => {
+                activateStep('verify');
+                if(type === 'anomaly') {
+                    document.getElementById('step-verify-status').innerText = 'Alerta: Fuera de Rango';
+                    document.getElementById('step-verify-status').className = 'text-xs text-red-400 font-bold';
+                } else {
+                    document.getElementById('step-verify-status').innerText = 'Validado (OC Encontrada)';
+                    document.getElementById('step-verify-status').className = 'text-xs text-green-400 font-bold';
+                }
+            }, 1800);
+
+            // 4. Step: Output (Delay 3000ms)
+            setTimeout(() => {
+                activateStep('output');
+                let result = {};
+                if(type === 'invoice') {
+                    result = { status: "DRAFT_VALIDATED", confidence: 0.98, entities: { id: "FE-992", total: 4500000, supplier_matched: true } };
+                    document.getElementById('step-output-status').innerText = 'Listo para Pago';
+                    document.getElementById('step-output-status').className = 'text-xs text-green-400 font-bold';
+                } else if(type === 'quote') {
+                    result = { status: "PROCESSED", type: "COTIZACION", action: "Guardar en Comparativo" };
+                } else {
+                    result = { status: "FLAGGED", risk: "HIGH_PRICE", action: "Requiere Aprobación Gerencia" };
+                    document.getElementById('step-output-status').innerText = 'Bloqueado';
+                    document.getElementById('step-output-status').className = 'text-xs text-red-400 font-bold';
+                }
+                jsonOutput.innerText = JSON.stringify(result, null, 2);
+            }, 3000);
+        }
+
+        function activateStep(stepId) {
+            const el = document.getElementById(`step-${stepId}`);
+            el.classList.remove('opacity-50');
+            // Brief highlight effect
+            el.style.transform = "scale(1.02)";
+            setTimeout(() => el.style.transform = "scale(1)", 200);
+        }
+
+        // --- CHARTS ---
+        let impactChart = null;
+        function initCharts() {
+            if(impactChart) return; // Prevent re-init
+            
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            impactChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Proceso Manual (Actual)', 'Con Plataforma (Proyección)'],
+                    datasets: [
+                        {
+                            label: 'Minutos por Factura (Recepción -> Pago)',
+                            data: [45, 8], // Dramatic reduction
+                            backgroundColor: ['#ef4444', '#10b981'],
+                            borderRadius: 6
+                        },
+                        {
+                            label: 'Errores de Digitación (%)',
+                            data: [12, 1],
+                            backgroundColor: ['#f59e0b', '#3b82f6'],
+                            borderRadius: 6,
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { mode: 'index', intersect: false }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: 'Minutos' } },
+                        y1: { beginAtZero: true, position: 'right', grid: { drawOnChartArea: false }, title: { display: true, text: '% Error' } }
+                    }
+                }
+            });
+        }
+
+        // --- INIT ---
+        document.addEventListener('DOMContentLoaded', () => {
+            renderModules();
+            renderUseCases();
+            initCharts();
+
+            // Filter Listener
+            document.getElementById('priorityFilter').addEventListener('change', (e) => {
+                renderUseCases(e.target.value);
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 # CLAUDE.md - Contecsa
 
-Version: 1.0 | Date: 2025-12-22 19:20
+Version: 1.1 | Date: 2025-12-22 21:45
 
 ## 4-Level Hierarchy
 
@@ -38,9 +38,10 @@ Version: 1.0 | Date: 2025-12-22 19:20
 **Legacy:** SICOM (años 70-80, read-only, NO modificar)
 
 ### AI/LLM
-**Model:** Claude 3.5 Sonnet o GPT-4
+**Model:** Gemini 2.0 Flash (primary) → DeepSeek (fallback)
 **Framework:** LangChain (orchestration)
-**SDK:** Vercel AI SDK 5.0
+**SDK:** Vercel AI SDK 6.0 + @ai-sdk/react 3.0
+**Gateway:** Vercel AI Gateway (provider proxy, API key management)
 
 ### Integrations
 **Google Workspace:** Gmail API (notificaciones), Sheets API (exportación familiar)
@@ -54,7 +55,7 @@ Version: 1.0 | Date: 2025-12-22 19:20
 **CRITICAL:** Software se entrega (NO SaaS), cliente monta en su nube
 
 ### Dev Tools
-**Package Manager:** pnpm 10+
+**Package Manager:** bun 1.3+
 **Linter/Formatter:** Biome 2+
 **Testing:** Playwright (E2E)
 
@@ -142,9 +143,9 @@ Ver `prd.md` para lista completa (13 features).
 
 ```bash
 # Frontend
-pnpm dev                 # http://localhost:3000
-pnpm build
-pnpm lint
+bun run dev              # http://localhost:3000
+bun run build
+bun run lint
 
 # Backend (Python)
 cd api

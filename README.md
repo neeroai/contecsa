@@ -1,6 +1,6 @@
 # Contecsa - Sistema de Inteligencia de Datos
 
-Version: 1.0 | Date: 2025-12-22 19:35 | Owner: Neero SAS | Status: Setup
+Version: 1.1 | Date: 2025-12-22 21:45 | Owner: Neero SAS | Status: Setup
 
 ---
 
@@ -49,12 +49,13 @@ Sistema IA que reemplaza proceso manual de compras en Excel (28 campos, 55 compr
 
 ## Stack Técnico
 
-**Frontend:** Next.js 15 + React 19 + TypeScript 5.6 + Tailwind CSS 4
+**Frontend:** Next.js 15+ + React 19+ + TypeScript 5.6+ + Tailwind CSS 4.0+
 **Backend:** Python 3.11+ + FastAPI (PO requirement)
 **Database:** PostgreSQL (warehouse) + Redis (caché) + SICOM read-only
-**AI:** Claude 3.5 Sonnet o GPT-4 + LangChain
+**AI:** Vercel AI SDK 6.0 + AI Gateway (Gemini 2.0 Flash → DeepSeek fallback) + LangChain
 **Storage:** Google Cloud Storage o AWS S3
 **Deploy:** Frontend Vercel, Backend cliente (GCP/AWS)
+**Package Manager:** bun 1.3.5
 
 **Validación:** Stack validado contra docs-global/stack/, ClaudeCode&OnlyMe filter aplicado (2-person team)
 
@@ -74,27 +75,36 @@ Frontend (Next.js) ←→ API (FastAPI) ←→ PostgreSQL (warehouse)
 
 ---
 
-## Configuración (TODO)
+## Configuración
 
-**Pendiente configuración inicial:**
+**Configuración completada:**
 
 ```bash
-# 1. Install dependencies (después de crear package.json)
-pnpm install
+# 1. Install dependencies
+bun install
 
 # 2. Configure environment variables
-cp .env.example .env
-# Edit .env with: SICOM credentials, Google Workspace API keys, AI API keys
+cp .env.example .env.local
+# Edit .env.local with:
+# - AI_GATEWAY_API_KEY (from Vercel Dashboard → AI Gateway)
+# - SICOM credentials (when ready)
+# - Google Workspace API keys (when ready)
 
 # 3. Run development server
-pnpm dev
+bun run dev              # http://localhost:3000
 
 # 4. Build
-pnpm build
+bun run build
 
 # 5. Lint
-pnpm lint
+bun run lint
+
+# 6. Test AI Gateway (smoke test)
+curl http://localhost:3000/api/ai/test
 ```
+
+**Deploy a Vercel:**
+Ver guía completa en `docs/deploy-checklist.md`
 
 ---
 
@@ -102,8 +112,8 @@ pnpm lint
 
 | Fase | Duración | Features | Status |
 |------|----------|----------|--------|
-| 1. Setup | 1 semana | Baseline config + tracking | In Progress |
-| 2. MVP | 4-6 semanas | Agente IA + Dashboard + ETL + Notificaciones | Pending |
+| 1. Setup | 1 semana | Baseline config + tracking + AI SDK v6 migration | Completed ✅ |
+| 2. MVP | 4-6 semanas | Agente IA + Dashboard + ETL + Notificaciones | Next |
 | 3. Automatización | 4 semanas | Seguimiento compras + Google Workspace + Análisis precios | Pending |
 | 4. OCR + Avanzado | 8 semanas | OCR facturas + Certificados + Proyecciones + Mantenimiento | Pending |
 
@@ -115,6 +125,7 @@ pnpm lint
 - **PRD Condensado:** `/prd.md` (91 lines, resumen ejecutivo)
 - **Plan:** `/plan.md` (arquitectura, stack, fases)
 - **Features:** `/feature_list.json` (13 features, 45 steps, Anthropic format)
+- **Deploy Checklist:** `/docs/deploy-checklist.md` (Vercel + AI Gateway setup)
 - **Meeting PO:** `/docs/meets/contecsa_meet_2025-12-22.txt` (transcripción)
 - **Análisis Excel:** `/docs/analisis-control-compras.md` (28 campos, 55 compras)
 
