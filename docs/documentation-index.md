@@ -6,8 +6,8 @@ Version: 1.0 | Date: 2025-12-23 01:35 | Type: Index | Status: Complete
 
 ## Complete File Listing
 
-**Total Files:** 25 documentation files
-**Categories:** Architecture (2), Business (2), Development (2), Features (13), Integrations (4), Project Tracking (2)
+**Total Files:** 26 documentation files
+**Categories:** Architecture (2), Business (2), Development (2), Features (14), Integrations (4), Project Tracking (2)
 
 ---
 
@@ -185,7 +185,7 @@ Version: 1.0 | Date: 2025-12-23 01:35 | Type: Index | Status: Complete
 - **ROI:** Leverages existing Google Workspace investment
 - **Status:** Planned
 
-### Priority P1 (High Priority) - 3 files
+### Priority P1 (High Priority) - 4 files
 
 #### r04-ocr-facturas.md
 - **Path:** `/docs/features/r04-ocr-facturas.md`
@@ -223,6 +223,25 @@ Version: 1.0 | Date: 2025-12-23 01:35 | Type: Index | Status: Complete
 - **Tech Approach:** GCS/S3 storage, validation workflow, 5-day deadline alerts
 - **ROI:** Enforces compliance, prevents closures without certifications
 - **Status:** Planned
+
+#### r14-seguimiento-evm.md ⭐ NEW
+- **Path:** `/docs/features/r14-seguimiento-evm.md`
+- **Size:** ~520 lines
+- **Priority:** P1 (CRITICAL)
+- **Purpose:** Physical progress tracking (Earned Value Management) - Ejecutado vs Proyectado
+- **User Story:** Track % physical progress vs % budget spent, detect cost overruns early
+- **Business Impact:** Fills critical gap - NO formal system exists for physical progress tracking
+- **Tech Approach (COMPREHENSIVE):**
+  - EVM methodology (CPI, SPI, EAC, VAC KPIs)
+  - Curva S visualization (Planned, Executed, Spent)
+  - APU-based progress measurement (10-20 categories)
+  - Automatic progress inference from material purchases
+  - Weekly updates (Friday PM, ~15 min)
+  - PostgreSQL schema: project_apus, project_physical_progress, v_project_evm
+- **Research:** Based on 630K tokens research (PMI, INVIAS, Universidad de los Andes Colombia)
+- **Pilot:** PAVICONSTRUJC (41.8% of purchases)
+- **ROI:** -20% projects over budget (early detection), 85-95% EAC accuracy
+- **Status:** Research Complete - Awaiting User Approval
 
 ### Priority P2 (Future) - 4 files
 
@@ -361,11 +380,11 @@ Version: 1.0 | Date: 2025-12-23 01:35 | Type: Index | Status: Complete
 | Business Context & Users | 2 | 1,090 | ✅ Complete |
 | Development & API | 2 | 1,055 | ✅ Complete |
 | Features (P0) | 6 | 2,435 | ✅ Complete |
-| Features (P1) | 3 | 1,385 | ✅ Complete |
+| Features (P1) | 4 | 1,905 | 🔄 1 Awaiting Approval |
 | Features (P2) | 4 | 1,260 | ✅ Complete |
 | Integrations | 4 | 1,654 | ✅ Complete |
 | Project Tracking | 2 | ~400 | ✅ Complete |
-| **TOTAL** | **25** | **~10,659** | **✅ Complete** |
+| **TOTAL** | **26** | **~11,179** | **🔄 1 Awaiting Approval** |
 
 ---
 
@@ -408,7 +427,8 @@ All files comply with Neero documentation standards:
 │   ├── r10-proyeccion-financiera.md
 │   ├── r11-google-workspace.md
 │   ├── r12-facturas-email.md
-│   └── r13-mantenimiento-maq.md
+│   ├── r13-mantenimiento-maq.md
+│   └── r14-seguimiento-evm.md           # ⭐ NEW (Research Complete - Awaiting Approval)
 └── integrations/
     ├── sicom-etl.md
     ├── google-workspace.md
@@ -429,11 +449,14 @@ All files comply with Neero documentation standards:
 **Phase 7:** ✅ Add metadata and validate all files
 **Phase 8:** ✅ Create documentation index and README
 
-**Total:** 25 files created/updated
-**Completion:** 100%
+**Total:** 26 files created/updated
+**Completion:** 96% (25 complete, 1 awaiting approval)
+
+**Recent Updates:**
+- **2025-12-23 15:00:** Added R14 (Seguimiento EVM) - Research complete, awaiting user approval
 
 ---
 
-**Last Updated:** 2025-12-23 01:35
+**Last Updated:** 2025-12-23 15:00
 **Documentation Version:** 1.0
 **Plan Execution:** Complete (all 8 phases)

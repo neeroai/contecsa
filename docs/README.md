@@ -6,7 +6,7 @@ Version: 1.0 | Date: 2025-12-23 01:30 | Type: Index | Status: Active
 
 ## Overview
 
-Documentación completa del Sistema de Inteligencia de Datos para Contecsa. Incluye arquitectura, stack técnico, contexto de negocio, especificaciones de features (R1-R13), guías de integración y desarrollo.
+Documentación completa del Sistema de Inteligencia de Datos para Contecsa. Incluye arquitectura, stack técnico, contexto de negocio, especificaciones de features (R1-R14), guías de integración y desarrollo.
 
 **Audiencia:** Desarrolladores, arquitectos, product owners, equipo técnico Neero
 
@@ -56,7 +56,7 @@ Documentación completa del Sistema de Inteligencia de Datos para Contecsa. Incl
 
 ---
 
-## Features Documentation (R1-R13)
+## Features Documentation (R1-R14)
 
 ### Priority P0 (MVP - Must Have)
 
@@ -76,8 +76,11 @@ Documentación completa del Sistema de Inteligencia de Datos para Contecsa. Incl
 | R4 | Invoice OCR | [r04-ocr-facturas.md](features/r04-ocr-facturas.md) | Planned |
 | R7 | Price Anomaly Detection | [r07-analisis-precios.md](features/r07-analisis-precios.md) | Planned |
 | R8 | Quality Certificates | [r08-certificados.md](features/r08-certificados.md) | Planned |
+| R14 | Physical Progress Tracking (EVM) | [r14-seguimiento-evm.md](features/r14-seguimiento-evm.md) | Research Complete - Awaiting Approval |
 
 **R7 Note:** CRITICAL feature to prevent Caso Cartagena (overcharging incident). Deep dive documentation included.
+
+**R14 Note:** NEW - Seguimiento avance físico ejecutado vs proyectado. Fills critical gap (no formal system exists). Based on 630K tokens research (EVM, PMI, INVIAS, Universidad de los Andes Colombia).
 
 ### Priority P2 (Future)
 
@@ -185,6 +188,7 @@ When updating documentation:
 
 ---
 
-**Total Documentation:** 25 files (23 created, 2 updated)
-**Completion:** 100% (all phases complete)
-**Last Updated:** 2025-12-23 01:30
+**Total Documentation:** 26 files (24 created, 2 updated)
+**Completion:** 96% (25 complete, 1 awaiting approval: R14)
+**Last Updated:** 2025-12-23 15:00
+**Recent:** Added R14 (Seguimiento EVM) - Research complete, awaiting user approval
