@@ -1,0 +1,151 @@
+# .vercelignore - Contecsa Next.js Deployment
+# Only deploy essential frontend files to Vercel
+# Backend Python (api/) deploys separately to GCP/AWS
+
+# ============================================
+# DEVELOPMENT & IDE CONFIGS
+# ============================================
+.claude/
+.cursor/
+.github/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ============================================
+# DOCUMENTATION & PLANNING
+# ============================================
+docs/
+propuesta-comercial/
+PRD.md
+CHANGELOG.md
+TODO.md
+CONTRIBUTING.md
+
+# ============================================
+# PYTHON BACKEND (Deploys separately)
+# ============================================
+api/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+requirements.txt
+Pipfile
+Pipfile.lock
+
+# ============================================
+# TESTS & SCRIPTS
+# ============================================
+tests/
+test/
+__tests__/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+scripts/
+*.sh
+
+# ============================================
+# BUILD ARTIFACTS & DEPENDENCIES
+# ============================================
+node_modules/
+.next/
+out/
+dist/
+build/
+artifacts/
+.turbo/
+*.tsbuildinfo
+.cache/
+
+# ============================================
+# ARCHIVES & BACKUPS
+# ============================================
+_archive/
+.archive/
+*.backup
+*.bak
+*.tmp
+
+# ============================================
+# ENVIRONMENT FILES (Use Vercel Dashboard)
+# ============================================
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env*.local
+
+# ============================================
+# GIT & VERSION CONTROL
+# ============================================
+.git/
+.gitignore
+.gitattributes
+
+# ============================================
+# DATABASE & MIGRATIONS (Run separately)
+# ============================================
+drizzle/
+migrations/
+*.db
+*.sqlite
+
+# ============================================
+# LOGS & RUNTIME
+# ============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ============================================
+# OS FILES
+# ============================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ============================================
+# PACKAGE MANAGER FILES (Vercel uses package.json)
+# ============================================
+pnpm-lock.yaml
+yarn.lock
+bun.lockb
+.npmrc
+.yarnrc
+
+# ============================================
+# CONFIG FILES NOT NEEDED FOR BUILD
+# ============================================
+.editorconfig
+.prettierrc*
+.eslintrc*
+biome.json
+biome.jsonc
+playwright.config.ts
+vitest.config.ts
+jest.config.js
+
+# ============================================
+# WHAT GETS DEPLOYED (Vercel includes by default):
+# ============================================
+# ✅ /src/** (app/, components/, lib/, hooks/, styles/)
+# ✅ /public/**
+# ✅ package.json
+# ✅ next.config.ts
+# ✅ tsconfig.json
+# ✅ tailwind.config.ts
+# ✅ middleware.ts (if exists)
+# ✅ instrumentation.ts (if exists)
