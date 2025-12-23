@@ -5,11 +5,11 @@
 # ============================================
 # DEVELOPMENT & IDE CONFIGS
 # ============================================
-.claude/
-.cursor/
-.github/
-.vscode/
-.idea/
+/.claude/
+/.cursor/
+/.github/
+/.vscode/
+/.idea/
 *.swp
 *.swo
 *~
@@ -17,17 +17,22 @@
 # ============================================
 # DOCUMENTATION & PLANNING
 # ============================================
-docs/
-propuesta-comercial/
-PRD.md
-CHANGELOG.md
-TODO.md
-CONTRIBUTING.md
+/docs/
+/docs-global/
+/docs-global
+/propuesta-comercial/
+/PRD.md
+/CHANGELOG.md
+/TODO.md
+/CONTRIBUTING.md
+/CLAUDE.md
+/README.md
+/.env.example
 
 # ============================================
 # PYTHON BACKEND (Deploys separately)
 # ============================================
-api/
+/api/
 __pycache__/
 *.py[cod]
 *$py.class
@@ -43,34 +48,34 @@ Pipfile.lock
 # ============================================
 # TESTS & SCRIPTS
 # ============================================
-tests/
-test/
-__tests__/
+/tests/
+/test/
+/__tests__/
 *.test.ts
 *.test.tsx
 *.spec.ts
 *.spec.tsx
-scripts/
+/scripts/
 *.sh
 
 # ============================================
 # BUILD ARTIFACTS & DEPENDENCIES
 # ============================================
-node_modules/
-.next/
-out/
-dist/
-build/
-artifacts/
-.turbo/
+/node_modules/
+/.next/
+/out/
+/dist/
+/build/
+/artifacts/
+/.turbo/
 *.tsbuildinfo
-.cache/
+/.cache/
 
 # ============================================
 # ARCHIVES & BACKUPS
 # ============================================
-_archive/
-.archive/
+/_archive/
+/.archive/
 *.backup
 *.bak
 *.tmp
@@ -122,6 +127,7 @@ desktop.ini
 # ============================================
 pnpm-lock.yaml
 yarn.lock
+bun.lock
 bun.lockb
 .npmrc
 .yarnrc
