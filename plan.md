@@ -1,6 +1,6 @@
 # Project Plan: Contecsa
 
-Version: 1.0 | Date: 2025-12-23 | Owner: Javier Polo | Status: Active
+Version: 1.1 | Date: 2025-12-24 09:30 | Owner: Javier Polo | Status: Active
 
 ---
 
@@ -24,6 +24,21 @@ Version: 1.0 | Date: 2025-12-23 | Owner: Javier Polo | Status: Active
 ---
 
 ## Phases
+
+### Phase 0: SDD Structure [DONE]
+- [x] Created /specs/ directory (14 subdirectories)
+- [x] Migrated all 14 features to SDD format (70 files)
+- [x] Applied ClaudeCode&OnlyMe 4Q filter to all ADRs (4/4 YES)
+- [x] Cited docs-global/stack/ for all technical decisions (NO INVENTAR)
+- [x] Established quality gates (format, lint, types, test 80%+, build)
+- [x] Updated feature_list.json with SDD metadata
+- [x] Archived original docs to .archive/
+
+**Milestones:**
+- M1 (P0): F001, F002, F003, F006 - 270h
+- M2 (P1): F004, F005, F007, F009, F010, F014 - 370h
+- M3 (P2): F008, F011, F012, F013 - 330h
+- **Total: 14/14 features (100%) - 970h estimated**
 
 ### Phase 1: Setup [CURRENT]
 - [x] Project scaffolding
@@ -69,4 +84,7 @@ Version: 1.0 | Date: 2025-12-23 | Owner: Javier Polo | Status: Active
 
 - Backend Python required by PO for complex data analysis
 - SICOM is ALWAYS read-only (critical constraint)
-- 14 features tracked in feature_list.json (R01-R14)
+- **SDD Migration Complete:** 14/14 features in /specs/ (70 files total)
+- Feature specs available: /specs/f001-f014/ (SPEC, PLAN, ADR, TESTPLAN, TASKS)
+- All decisions validated with ClaudeCode&OnlyMe filter (4/4 YES)
+- Ready to implement: Start with F001 (Agente IA) or F007 (Análisis Precios - CRITICAL)
