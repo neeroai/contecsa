@@ -1,6 +1,6 @@
 # Tasks: Contecsa
 
-Version: 1.0 | Date: 2025-12-23 | Owner: Javier Polo | Status: Active
+Version: 1.1 | Date: 2025-12-23 22:35 | Owner: Javier Polo | Status: Active
 
 ---
 
@@ -8,7 +8,7 @@ Version: 1.0 | Date: 2025-12-23 | Owner: Javier Polo | Status: Active
 
 | ID | Task | DoD | Est |
 |----|------|-----|-----|
-| T001 | Setup quality gates CI/CD | ci.yml running, all gates pass | 1h |
+| - | - | - | - |
 
 ---
 
@@ -37,4 +37,5 @@ Version: 1.0 | Date: 2025-12-23 | Owner: Javier Polo | Status: Active
 | ID | Task | Closed | Commit |
 |----|------|--------|--------|
 | T000 | Project scaffolding | 2025-12-23 | 08a880c |
-| T001 | AI SDK v6 migration | 2025-12-23 | 08a880c |
+| T001-1 | AI SDK v6 migration | 2025-12-23 | 08a880c |
+| T001-2 | Setup quality gates CI/CD | 2025-12-23 | 55dd466 |
