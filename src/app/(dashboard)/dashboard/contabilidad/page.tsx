@@ -1,3 +1,5 @@
+'use client';
+
 import { DashboardShell, KPICard } from '@/components/dashboard/dashboard-shell';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

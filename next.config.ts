@@ -3,6 +3,7 @@ import type { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   output: 'standalone',
+  outputFileTracingRoot: process.cwd(),
   experimental: {
     // reactCompiler disabled - requires babel-plugin-react-compiler
   },

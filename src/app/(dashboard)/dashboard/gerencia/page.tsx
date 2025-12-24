@@ -1,3 +1,5 @@
+'use client';
+
 import { DashboardShell, KPICard } from '@/components/dashboard/dashboard-shell';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertTriangle, DollarSign, FolderKanban, TrendingUp } from 'lucide-react';
