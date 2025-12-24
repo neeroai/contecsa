@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "updated": "YYYY-MM-DD HH:MM",
+  "project": "PROJECT_NAME",
+  "features": [
+    {
+      "id": "F001",
+      "name": "Example Feature",
+      "status": "TODO",
+      "priority": "HIGH",
+      "steps": [
+        {
+          "id": "S001",
+          "description": "First implementation step",
+          "status": "TODO"
+        },
+        {
+          "id": "S002",
+          "description": "Second implementation step",
+          "status": "TODO"
+        }
+      ],
+      "acceptance": [
+        "Acceptance criterion 1",
+        "Acceptance criterion 2",
+        "Acceptance criterion 3"
+      ],
+      "dependencies": [],
+      "notes": "Additional context or technical notes"
+    }
+  ],
+  "_meta": {
+    "status_values": ["TODO", "DOING", "DONE", "BLOCKED"],
+    "priority_values": ["LOW", "MEDIUM", "HIGH", "CRITICAL"],
+    "template_source": "Anthropic Effective Harnesses for Long-Running Agents",
+    "usage": "Copy this file to project root, update project name, define features with IDs (F001, F002, etc.), break features into steps (S001, S002, etc.), list acceptance criteria, update status as work progresses"
+  }
+}
