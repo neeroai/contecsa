@@ -86,8 +86,8 @@ _archive/
 # Documentation
 docs-global/
 docs-global
-docs/
+#docs/
 propuesta-comercial/
 
 # Tracking Files
-PRD.md 
+#PRD.md 

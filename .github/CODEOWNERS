@@ -1,0 +1,19 @@
+# Contecsa Code Owners
+# These owners will be requested for review on PRs
+
+# Default owner for all files
+* @javierpolo
+
+# Frontend (Next.js)
+/src/ @javierpolo
+
+# Backend (Python/FastAPI)
+/api/ @javierpolo
+
+# Documentation
+/docs/ @javierpolo
+
+# Configuration
+*.json @javierpolo
+*.ts @javierpolo
+*.yml @javierpolo

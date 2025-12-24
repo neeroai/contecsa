@@ -155,6 +155,28 @@ pip install -r requirements.txt
 uvicorn main:app --reload  # http://localhost:8000
 ```
 
+## SDD + Quality Gates
+
+**Tracking Files:**
+| File | Purpose |
+|------|---------|
+| plan.md | Architecture + phases |
+| todo.md | Tasks [TODO/DOING/DONE] |
+| feature_list.json | F001-F014 features |
+| claude-progress.md | Session handoff |
+
+**Quality Gates (CI):**
+| Gate | Command |
+|------|---------|
+| Format | `bun run format` |
+| Lint | `bun run lint` |
+| Types | `bun run typecheck` |
+| Tests | `bun run test` |
+| Build | `bun run build` |
+
+**Feature Specs:** docs/features/r01-r14 (already exist)
+**CI:** .github/workflows/ci.yml
+
 ## For Claude Code
 
 **Critical Rules:**
@@ -163,6 +185,7 @@ uvicorn main:app --reload  # http://localhost:8000
 - Seguir proceso Excel actual (28 campos) pero simplificado
 - Certificados bloqueantes para cierre compras
 - Google Workspace integración P0 (ya usan Gmail/Sheets)
+- Quality gates MUST pass before merge
 
 **NO INVENTAR:**
 - Stack validado con PO en meet 2025-12-22

@@ -1,0 +1,124 @@
+{
+  "project": "contecsa",
+  "version": "1.0",
+  "updated": "2025-12-23",
+  "features": [
+    {
+      "id": "F001",
+      "name": "Agente IA Conversacional",
+      "spec": "docs/features/r01-agente-ia.md",
+      "status": "not_started",
+      "priority": "high",
+      "steps": ["S001", "S002", "S003"],
+      "acceptance": ["Chat funcional", "Respuestas contextuales", "Historial persistente"]
+    },
+    {
+      "id": "F002",
+      "name": "Dashboard Ejecutivo",
+      "spec": "docs/features/r02-dashboard.md",
+      "status": "not_started",
+      "priority": "high",
+      "steps": ["S004", "S005", "S006"],
+      "acceptance": ["KPIs visibles", "Graficos interactivos", "Filtros por fecha"]
+    },
+    {
+      "id": "F003",
+      "name": "Seguimiento de Compras",
+      "spec": "docs/features/r03-seguimiento-compras.md",
+      "status": "not_started",
+      "priority": "high",
+      "steps": ["S007", "S008"],
+      "acceptance": ["Lista de ordenes", "Estado actualizado", "Filtros avanzados"]
+    },
+    {
+      "id": "F004",
+      "name": "OCR Facturas",
+      "spec": "docs/features/r04-ocr-facturas.md",
+      "status": "not_started",
+      "priority": "medium",
+      "steps": ["S009", "S010"],
+      "acceptance": ["Upload PDF/imagen", "Extraccion datos", "Validacion automatica"]
+    },
+    {
+      "id": "F005",
+      "name": "Sistema Notificaciones",
+      "spec": "docs/features/r05-notificaciones.md",
+      "status": "not_started",
+      "priority": "medium",
+      "steps": ["S011", "S012"],
+      "acceptance": ["Alertas en tiempo real", "Email/push config", "Reglas personalizables"]
+    },
+    {
+      "id": "F006",
+      "name": "ETL SICOM",
+      "spec": "docs/features/r06-etl-sicom.md",
+      "status": "not_started",
+      "priority": "high",
+      "steps": ["S013", "S014", "S015"],
+      "acceptance": ["Conexion SICOM", "Sync incremental", "Logs de errores"]
+    },
+    {
+      "id": "F007",
+      "name": "Analisis de Precios",
+      "spec": "docs/features/r07-analisis-precios.md",
+      "status": "not_started",
+      "priority": "medium",
+      "steps": ["S016", "S017"],
+      "acceptance": ["Comparativo historico", "Alertas de variacion", "Recomendaciones"]
+    },
+    {
+      "id": "F008",
+      "name": "Gestion Certificados",
+      "spec": "docs/features/r08-certificados.md",
+      "status": "not_started",
+      "priority": "low",
+      "steps": ["S018"],
+      "acceptance": ["CRUD certificados", "Alertas vencimiento", "Reportes"]
+    },
+    {
+      "id": "F009",
+      "name": "Control Inventario",
+      "spec": "docs/features/r09-control-inventario.md",
+      "status": "not_started",
+      "priority": "medium",
+      "steps": ["S019", "S020"],
+      "acceptance": ["Stock actual", "Proyeccion consumo", "Alertas minimos"]
+    },
+    {
+      "id": "F010",
+      "name": "Proyeccion Financiera",
+      "spec": "docs/features/r10-proyeccion-financiera.md",
+      "status": "not_started",
+      "priority": "medium",
+      "steps": ["S021", "S022"],
+      "acceptance": ["Presupuesto vs ejecutado", "Forecasting", "Reportes"]
+    },
+    {
+      "id": "F012",
+      "name": "Facturas por Email",
+      "spec": "docs/features/r12-facturas-email.md",
+      "status": "not_started",
+      "priority": "low",
+      "steps": ["S023"],
+      "acceptance": ["Lectura inbox", "Extraccion adjuntos", "Procesamiento auto"]
+    },
+    {
+      "id": "F013",
+      "name": "Mantenimiento Maquinaria",
+      "spec": "docs/features/r13-mantenimiento-maq.md",
+      "status": "not_started",
+      "priority": "low",
+      "steps": ["S024"],
+      "acceptance": ["Calendario mantenimiento", "Alertas programadas", "Historial"]
+    },
+    {
+      "id": "F014",
+      "name": "Seguimiento EVM",
+      "spec": "docs/features/r14-seguimiento-evm.md",
+      "status": "not_started",
+      "priority": "medium",
+      "steps": ["S025", "S026"],
+      "acceptance": ["CPI/SPI calculados", "Graficos tendencia", "Proyecciones"]
+    }
+  ]
+}
