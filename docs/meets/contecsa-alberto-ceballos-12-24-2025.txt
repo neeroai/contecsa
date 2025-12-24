@@ -1,0 +1,1611 @@
+Hay otra forma, hablando del mismo consorcio, y es que Contensa desarrolle, es como si trabajara como un subcontratista del consorcio.
+
+Ok, entonces en ese caso, que se hace?
+
+El consorcio X, entre comillas, le hace un contrato a Contensa
+
+en donde ya eso ya los directivos acuerdan
+
+y nosotros vamos a desarrollar
+
+vamos a ejecutar obras allá.
+
+Por ende, el que compra, el que hace las compras
+
+es Contensa. Sí.
+
+Ah, pero no.
+
+El que hace la compra es Contensa.
+
+¿Sí? Pero a través de unos centros de costa.
+
+Más o menos así, voy a tratar de explicarlo.
+
+A través de un centro de costa.
+
+Para que medio se entienda.
+
+Ay, se quedó ahí. ¿Y ahora cómo hago eso?
+
+No, mi hijo, está bien.
+
+Ahí sí, ya sé.
+
+Muy difícil, ¿no?
+
+a través de un centro de costo
+
+no importa que
+
+por lo que más
+
+entonces listo
+
+Condexa realiza la compra a través de un centro de costo
+
+y se va al consorcio
+
+pero aquí quien realiza la compra es Condexa
+
+O sea, desde el software de Contexa.
+
+¿En qué afecta al software del consorcio?
+
+Sencillo, cuando ingresa el producto, nosotros hacemos la orden por Contexa,
+
+pero se le hace el ingreso al consorcio, en el software del consorcio,
+
+no se le hace en el de Contexa.
+
+Ok.
+
+Lo que sí logramos conectar aquí con lo tuyo, que estoy seguro, es poder decir,
+
+yo hago una orden de compra por el NIP de Contexa, pero se tiene que cruzar con el ingreso,
+
+el recibido que se va a hacer en el consorcio.
+
+O sea que vas a tener varios almacenes.
+
+Nosotros tenemos almacenes creados en Contexa y tenemos almacenes creados en el software del consorcio.
+
+En el software de consorcio siempre manejamos dos almacenes, el de oficina o el central y el de obra.
+
+Correcto.
+
+¿Listo? Entonces, ¿qué pasa? Que Contexa, a través de Contexa, compre, yo compro y el producto llegó a la almacena ya de obra, pero el consorcio X.
+
+Se tiene que cruzar para que esa información quede lista.
+
+Ahorita no lo podemos hacer. ¿Qué hacemos?
+
+Hacemos la orden por Contexa, hacemos la entrada por el consorcio y me toca entrar a los dos sistemas para poder confirmar las dos cosas.
+
+Ok.
+
+O sea, no hay un cruce entre eso, una trazabilidad, como lo dices tú, de la información a través del sistema.
+
+Correcto.
+
+Porque son sistemas independientes.
+
+Ok.
+
+Listo.
+
+Entonces, si yo compro por el consorcio, pues ingresa al consorcio.
+
+porque eso si va para allá, eso no va a afectar a Contexa en nada.
+
+Así sea que llegue a Contexa, yo lo meto al consorcio.
+
+Si llega a Contexa una cosa que he comprado para el consorcio,
+
+yo creo dentro del consorcio X, creo una bodega que se llame Contexa.
+
+¿Ya?
+
+Pero yo no la incluyo en el software de Contexa.
+
+En Contexa aquí incluyo yo lo que compremos nosotros,
+
+la dotación de nosotros, las cuestiones de nosotros.
+
+Pero lo que es de obra va a obra.
+
+Ok.
+
+¿Listo? Entonces, este es el efecto que yo te digo.
+
+O sea, mira, yo creo Contensa, que es como la base de todo,
+
+y todo lo que nosotros diseñemos en Contensa, es decir,
+
+toda la parametrización, de revisión de factura, de los flujos de trabajo,
+
+de todo lo que nosotros inventemos allí, debe replicarse en los consorcios.
+
+¿Qué debemos cambiar en los consorcios por lo que yo vi en la propuesta que pasaste?
+
+¿A qué correo va a generar las alertas?
+
+Eso sí me lo tienes que dejar libre, porque si yo creo, entre comillas, la copia,
+
+acuérdate que yo decía la copia, ustedes no me entendían,
+
+la copia de la parametrización de Contex en el consorcio X,
+
+yo no le puedo mandar la notificación al mismo correo.
+
+¿Por qué? Porque hay consorcios en donde nosotros no debemos aparecer en nada.
+
+Entonces se crean correos con otro dominio.
+
+Aparte, correcto.
+
+Exacto. Pero si lo administramos nosotros desde Contexta, además hacemos órdenes de compra con Contexta que trabajamos como un centro de corto.
+
+Entonces para que tú veas cómo va siendo la película.
+
+¿Qué pasa? Que si yo genero un consorcio nuevo, que es donde de pronto hay que tirarle cabeza,
+
+¿cómo haría yo desde el usuario, administrador o acá la persona que quede encargada?
+
+para poder decir, hey, va a afectar este almacén, va a afectar esta orden de compra.
+
+O no sé si eso ya lo hace la IA completa, que no entremos en un tema de parametrización.
+
+Es decir, que para nosotros sea fácil un botoncito, crear nuevo consorcio,
+
+un nuevo consorcio, ni no sé qué, toda la información se sube a la documentación y que lo...
+
+Acá yo lo tengo mapeado como proyectos.
+
+Ah bueno, como proyecto pero cángele la palabra consorcio, ¿vale?
+
+Ok.
+
+Consorcio, pone consorcio.
+
+Y, o sea, ponle los dos.
+
+Ponle consorcio y proyectos.
+
+Y ya yo te explico por qué.
+
+Porque hay una que son los consorcios y otra que son los proyectos donde nosotros somos contratistas.
+
+Ok.
+
+Bien.
+
+Entonces.
+
+¿Qué área nosotros vamos a trabajar, por así decirlo, dentro del software?
+
+Y ahora que lo veas, para que tú hagas el mapa de lo que vas a montar allá.
+
+Empezamos por el básico, que es compras.
+
+Y ya tú lo tienes claro que es con todos los flujos de trabajo y todas las cuestiones que ya tú manejas.
+
+Excelente, porque empezaron a dar notificación.
+
+Pero esa compra, como viste en el archivo,
+
+está partido en varios procesos
+
+que afectan a compras, pero que hay uno
+
+que no esté en compras, que es tesorería.
+
+¿Está claro?
+
+Correcto.
+
+se pasó a pago. Ahí empieza a correr otro tiempo, que es del proceso de compra, pero que no es de compra,
+
+cuando vayamos a hacer los indicadores, sino que es de tesorería. Tesorería, tiene que pagar.
+
+Listo, ahí corre un tiempo. Tesorería paga, se reporta el pago, y luego arranca el otro tiempo desde el pago hasta que se recibe el producto.
+
+para poder cerrar el proceso de compra y te dijeron vamos a cerrar hasta aquí la documentación de calidad
+
+como tal los certificados o lo que se pide en su momento
+
+ese ya tocaría decir listo se cerró
+
+ahí se cierra todo el proceso de compra
+
+con su flujo de trabajo o su agua en donde van mandando sus alertas a cada una de las áreas
+
+cierto?
+
+ok
+
+el otro área es almacén
+
+Estamos definiendo qué es un punto ágil de almacén, por ejemplo, en obras.
+
+En obras yo puedo decir qué he mandado ahora, pero nos es muy difícil realmente tanto en operación saber qué inventario teníamos.
+
+¿Por qué? Porque se acaban las varillas, se acaban las varillas, se quedan las varillas.
+
+Y hay una persona en una silla, muy difícil para la persona de acá tenerlo,
+
+por lo menos tener el dato de que ha llegado incompleto y cuando hagamos un parcial allá de...
+
+de algún inventario, pues se sube y a ver qué es el consumo que se haya tenido.
+
+Pero es muy difícil llevarlo al día, o no sé qué poner en una solución.
+
+Ya la tuve en el almacén y me lo traje.
+
+Ok.
+
+¿Qué hacemos ahorita?
+
+Ahorita lo que nosotros hacemos es
+
+que la persona de la obra saca y genera un documento,
+
+le manda una foto a la almacenista acá,
+
+ella sube esa información y se trata de llevarlo a un inventario.
+
+Vale, pero cuando tú vas a la realidad,
+
+Eso no va a cuadrar nunca.
+
+Siempre va a dar su descuadre,
+
+pero hay que hacer como la forma más sencilla
+
+para que funcione.
+
+Si ya lo pueden mandar al charbot,
+
+como tú dijiste en la foto,
+
+el charbot a la alconza y ahí,
+
+ahí el descuento, perfecto.
+
+Perfecto.
+
+Si, si me seguiste ahí, porque si ya me la dio ayer Luis.
+
+Si, si, si.
+
+Yo dije, bueno, pues es bacano, si le damos al champo un whatsapp, el whatsapp le manda el whatsapp,
+
+está seguro, si salió de tal bodega, papá, no sé cómo funciona el champo aquí y él haga el descuento en el sistema.
+
+Y pide autorización acá al almacenista, o sea que el almacenista entra a la...
+
+a esa notificación es lo que yo me estoy imaginando
+
+mira lo que es
+
+y ella le diría
+
+ah mira aquí este man recortó tres salidas
+
+ah si tres, ah si esta, si esta, si esta
+
+y salieron los productos y se escondieron los delincuentes
+
+claro
+
+operar más fácil para todos
+
+ok
+
+listo
+
+entonces vamos a afectar el área de compras
+
+y el área de almacenes
+
+hay un área que se llama técnica
+
+técnica
+
+El área técnico es todo lo que yo te decía de los materiales pérdidos.
+
+Son por ejemplo la arena, triturado, base, sub base, un poco de producto que hay ahí que nos cobran por volúmenes o movimientos.
+
+Nosotros hacemos una orden de compra, sí.
+
+pero al final, es decir, me llega la factura, me llega la relación,
+
+revisamos y hacemos la orden de compra.
+
+¿Para qué hacemos la orden de compra?
+
+En tu caso también va a pecar,
+
+para que lo incluya dentro del indicador de compra,
+
+que hemos comprado, pa, pa, pa, pa.
+
+Pero ahí hay que agregar la orden de pedido.
+
+No, el proceso es al revés, está dentro de nuestro sistema de calidad.
+
+Nosotros hacemos un contrato entre comillas, un orden madre,
+
+pero no ponemos cantidades porque esas cantidades pueden variar.
+
+Depende de la dinámica del abogado.
+
+Sí, entonces legalizamos posterior.
+
+Es decir, dejamos abierto,
+
+ingeniería empieza a pedir, a pedir, a pedir, a pedir, a pedir.
+
+Hay unos documentos soportes que también pueden ir a un chatbot,
+
+ya después de lo muerto.
+
+que lo que estamos haciendo es precisamente, yo estaba hablando con una chica,
+
+una chica que iba así hace 10 años, que era más mal, uno a uno,
+
+ya eso, estamos dando recorreros.
+
+Y se demora mucho en la revisión.
+
+porque hay que digitar uno a uno, o sea, la información una a una en el sistema
+
+y después irse a proteger una a una, que ya te voy a mostrar cómo es.
+
+Entonces, se genera, se hace la revisión y posterior a la revisión,
+
+se hace una limpiación y se hace la orden de compra.
+
+La orden de compra es detallada, es decir, se movieron tantos metros cúbicos de quimio a periodo,
+
+tantos precios, tanto que tanto.
+
+se meten en orden de compra para poder sacar el informe de cuando compre yo y cuando yo he comprado el material
+
+Ok.
+
+Ok.
+
+Entonces, ese proceso, ahorita te voy a decir qué estamos haciendo.
+
+Vamos a revisar en Excel y ya le dimos al man que tiene, mientras está el psicólogo,
+
+que desarrolle, bueno, ya le voy a decir la línea encargada, para que se sube ese Excel en la plantilla
+
+y él meta la información allá, porque eso no es...
+
+¿Qué es eso?
+
+por lo que
+
+el trabajo lo hace el proveedor, lo hace el que cobra, ¿no vas a entender?
+
+Acuérdate de lo que yo decía, ah no, yo eso lo decía el señor Villarreal,
+
+si yo tengo el poder de negociación, yo le puedo decir al proveedor,
+
+hey, ven acá, mándamelo en esta plantilla, póngame en esta forma estos datos.
+
+Esos datos yo los meto en el chat y le digo.
+
+Súbelos, cruzalos, protégelos así y si está duplicado no le des cuenta.
+
+Porque recuerda que el numerito se deduque y nuestro número en algún modo se puede duplicar.
+
+Entonces ya ahí va aprendiendo por ser una IA.
+
+Ah, para que sea más rápido el proceso,
+
+no que sea que nosotros tengamos que andar digital.
+
+En salida.
+
+El otro módulo como tal es el área de
+
+¿Cómo así?
+
+Mantenimiento
+
+Exactamente, equipo
+
+Maquinaria y equipo meto todo porque hay mantenimiento, combustible, no sé qué
+
+Las categorías de combustible se van a tener que quedar igual
+
+Se ha manejado así y me falta entender
+
+Pero maquinaria y equipo lo debo tener claro
+
+Ehh...
+
+Como...
+
+pues como operan ellos, en el sentido de que hay un mantenimiento preventivo, uno correctivo, otro no se que,
+
+y la tipología que ya está en el software, cualquier modelo mismo, eso es fácil, eso es lo más sencillo.
+
+¿Qué interesa del área de mantenimientos?
+
+Me interesa ver cuánto esto le he invertido a cada máquina, entonces ¿qué hacemos nosotros?
+
+Por ejemplo en lo que estamos.
+
+Se compra un recuerdo.
+
+Vamos a hablar de un recuerdo.
+
+No hablemos todavía de un mantenimiento, sino de un recuerdo.
+
+Se compra un recuerdo X.
+
+El recuerdo entra al almacén.
+
+¿El costo en dónde está?
+
+En el almacén.
+
+Entonces ya yo puedo costear al almacén.
+
+¿Cuánto tengo en mi inventario de recuerdo?
+
+Tengo mil millones de pesos.
+
+De esto.
+
+Llega una máquina que se le va a poner ese recuerdo.
+
+La máquina entra y se le hace una orden de mantenimiento.
+
+Se abre la orden de mantenimiento.
+
+se hace la salida del recuesto a la orden de mantenimiento.
+
+¿Qué quiere decir?
+
+Que el costo del producto ya se le fue a la máquina.
+
+Al final del mes, cuando ya se cierran todas las órdenes de mantenimiento,
+
+yo puedo decirle, aquí es muy fácil,
+
+que es lo que más me va a interesar,
+
+porque usted me va a mostrar el reporte que estoy haciendo,
+
+y me va a decir, ¿cuánto me ha gastado por máquina?
+
+Esto son los ingresos por máquina.
+
+Ármame el estado por máquina.
+
+Yo me imagino, ingreso, costo, y qué hago,
+
+¿cuánto me ha gastado por máquina?
+
+Eso en el tema de repuesto, para que vean cómo cruzan, hacen por una orden de mantenimiento.
+
+Pero a la máquina también se le carga servicios.
+
+Por ejemplo, ¿cómo hace un servicio? Un servicio de mantenimiento, ¿no? Un lavado, vamos a inventar un lavado.
+
+el servicio se le hace, se le pone a esta orden y se le carga allá
+
+para que el costo quede en la máquina, pero también quede en órdenes de servicio
+
+¿No hay que entender?
+
+Entonces por el reporte de acá, puede decir, ah, equipo ha gastado en servicio en esto,
+
+acá ha estado en compra esto, y en maquinaria tengo en estas máquinas montado esto
+
+y en almacén tengo esto, entonces todo tiene que cuadrar
+
+Ok
+
+Es un mismo número, listo, si compré, si yo compré mil millones,
+
+ahí debería haber mil millones repartidos entre almacén y maquinaria
+
+Ok.
+
+Sí, sí, la triangulación la comprendiste, eso.
+
+Correcto.
+
+Yo me gasté 1.000 millones entre orden de servicio y reemplazo.
+
+Y yo debo tener los 1.000 millones entre lo que yo le cuesta a la máquina
+
+y entre lo que tengo almacenado.
+
+Correcto.
+
+Eso es clave.
+
+Eso lo debe hacer la inteligencia, esa es la que estamos hablando.
+
+Entonces, eso es.
+
+Y lo otro es...
+
+Se me fue.
+
+Es el combustible.
+
+Pues, hay una persona encargada que también se puede hacer por chatbot, que es mandar, porque él le manda sus fotos y es lo que hace, es digitar uno a uno.
+
+Lo mismo, manda el grupo que se cree y él va digitando y va subiendo dependiendo del consorcio o el combustible.
+
+sea por consorcios, o sea, ahí sí lo trabajamos por centro de corte,
+
+el combustible ahorita lo estamos trabajando todo en contexto,
+
+porque no puedo tenerlo regado por todos lados.
+
+¿Por qué? Porque la máquina se puede mover en diferentes consorcios.
+
+Es decir, la máquina se mueve en diferentes consorcios.
+
+Yo no puedo digitar un suministro en X, un suministro en Y, como está el ejemplo acá, y un suministro en Contexa.
+
+¿Por qué? Porque cuando yo vaya a sacar el informe, como son software apartes, yo no puedo consolidar esa información.
+
+Ok. No van a entender.
+
+Entonces yo lo hago todo en Contexi y ahí sí lo trabajo por centro de costo
+
+y al final hacemos un informe que ahorita también te lo muestro.
+
+Ok.
+
+Es que para saber cuánto se ha gastado en combustible esa máquina
+
+y eso mismo, ese mismo dato del combustible debe ir al reporte
+
+que vamos a hacer de maquinaria y equipo, es decir, esta maquinaria
+
+facturamos tanta plata, tanto en recuerto
+
+tanto el combustible, resultado del ejercicio.
+
+Ya.
+
+Ok.
+
+Eso es.
+
+Listo.
+
+Eso es mantenimiento y todo lo que tuve ahí.
+
+Esos son los cuatro puntos que nosotros vamos a atacar.
+
+Ok.
+
+Lo que estamos usando hoy día.
+
+Compras, almacén, técnico, maquinaria y equipo.
+
+Es lo que yo me estoy enfocando, que es lo que es.
+
+Por así decirlo a mi vida.
+
+Cuando ya se monte eso, vamos más adelante con Luis Gabriel y con Ingeniería
+
+para que ellos puedan pedir todo con desarrollo y con cuestiones, a ver si lo montamos allá y allá.
+
+Que tengan de flujo, ya vainas más financieras, pero que sean un modulito aparte, que se puedan alimentar la caja.
+
+Es lo que yo siempre digo.
+
+Nosotros tenemos que cruzar toda la información.
+
+Es decir, el técnico dice que ellos han comprado mil millones de pesos, pero yo no puedo tener en orden de compra los mil millones de pesos.
+
+Hay algo que no cuadra.
+
+¿Están entendiendo?
+
+Ok.
+
+Tienen que cuadrar.
+
+O sea, si yo tengo mil allá, yo aquí debo tener mil cien, mil doscientos, ochocientos, no es algo.
+
+Bueno, perdón, por encima debo tener.
+
+Porque habrá un producto de orden y que de pronto se tenga en candular.
+
+pero toda esa información debe declarar y de ahí puede ser una base para que se empiece a generar ese flujo, pero eso ya a futuro, eso si sería...
+
+Pero ahora nos centramos por así decirlo, compras, almacén, técnico, maquinaria y equipo, ¿listo?
+
+Que es el grueso del software.
+
+Entonces, el mapa es, con TEXA,
+
+que Contexa nosotros podemos manejarse en recorto cuando trabajamos como contratistas,
+
+cuando Contexa, pero que también generamos consorcios,
+
+y esos consorcios también generan sus propias órdenes de compra,
+
+generan sus propias órdenes de servicio, generan todo.
+
+que deben trabajar igual que Contexa.
+
+El de sexido, creo, sabe.
+
+Y se conectan a través de los centros de corte.
+
+Y al final, cuando el módulo de compra,
+
+o sea, el gerencial que tú montas adelante,
+
+debe estar bien definido.
+
+Hey, ven acá, por consorcio de aquí hemos comprado esto.
+
+Pero se le suma lo que se ha comprado por Contexa
+
+para ese centro de corte.
+
+Más aneh.
+
+¿Me explico? O solamente veo el consorcio.
+
+O crean un tema en el que con el día a día
+
+el que está trabajando son informes y son a veces que están siendo hicieron que era algo diferente
+
+a un análisis como tal pues se le pregunta la vida como lo tienen desarrollado aunque
+
+el software como tal
+
+Perfecto.
+
+Listo, perfecto.
+
+Entonces, por ejemplo, este es...
+
+Ya, tú lo sabes.
+
+Ah, es SICOM con N.
+
+Yo había entendido que era SICOM con M.
+
+¿Qué es lo que más te gusta de eso?
+
+Yo había entendido...
+
+Yo no sé si tú sabes ni pegué cómo debe funcionar.
+
+Yo había entendido que era SICOM con M.
+
+No, no, porque es Sistema de Información Contexta, eso significa SICON.
+
+Ok, listo.
+
+Eso, eso fue lo, yo también, yo no lo entendí hasta que lo entendí, me lo explicaron hace 8 años,
+
+porque no lo entendí, lo llevé 2 años para entender que era SICON.
+
+Ok.
+
+Y SICON significa Sistema de Información Contexta.
+
+Ya, así arrancó.
+
+Y tú al final lo que quieres es que desarrollemos esto de nuevo.
+
+Claro, esto va a desaparecer. Ya esto no sirve por los temas que ya tú sabes.
+
+Primero, estamos en lenguaje muy viejo.
+
+Todos estamos sujetos a un...
+
+Ay, se me fue el nombre del computador ese.
+
+A un servidor que...
+
+Yo digo que este año va a reventar y ya le dije a la jefa y le dije a la chica de compra,
+
+hey, ¿cuánto es pensar un plan B por donde ese servidor se reviente?
+
+¿Cómo vamos a comprarlo?
+
+¿Cómo vamos a comprar?
+
+O sea, yo sabía cómo vamos a hacer la orden de compra.
+
+¿Para comprar un servidor de 15 millones de pesos? No lo creo.
+
+Y entonces que nos monten toda la información hay que pagar como un millón o dos millones más
+
+porque nosotros no pagamos ni el backup, aunque nos hacen el backup.
+
+Ok.
+
+Entonces, hey, hay que pensar, o sea, ya es una necesidad.
+
+Se explota ese chocorón, y bueno, ahí...
+
+Ahí nada hay que hacer.
+
+Listo.
+
+Entonces, bueno,
+
+Es decir, con el sistema de información con TELSA, que tú también lo puedes llamar así si quieres, como quieras, eso no importa.
+
+2026.
+
+Exacto.
+
+Entonces, el módulo de compras, que es este que está acá,
+
+este que estoy señalando ahorita con el mazo,
+
+están los proveedores, pues donde tú creas el proveedor,
+
+y nosotros que necesitamos saber del jugador, si el jugador va a ser controlado o no va a ser controlado, así de sencillo.
+
+Y si tiene los documentos iniciales, que eso ya te lo presentaremos, porque allá en el desarrollo con cada área que tú te sientes,
+
+él te va a decir que necesita, por ejemplo, que necesitamos para poder poner, es más, nosotros no debemos digitar nada.
+
+Te voy a explicar por qué.
+
+Porque, ¿qué necesitamos para crear un proveedor?
+
+Pues lo que tú pides en tu empresa.
+
+RU, Cámara de Comercio, Certificado de Cuenta,
+
+ser una representante legal, ¿verdad?
+
+Y otros documentos que dependen del tipo de empresa.
+
+esos documentos yo los debo subir.
+
+En el sistema estaba desarrollado para subir.
+
+Si tú ves aquí a la derecha hay como un cosito de adjunto
+
+y hay un botoncito que dice transparente cuando no tiene nada,
+
+amarillo porque le falta documento,
+
+y cuando está en verde que está en completo.
+
+Eso se hacía, ya no lo hacemos ahí, lo hacemos en un drive.
+
+Ok.
+
+Entonces allá debemos subir esos documentos.
+
+Entonces créame el proveedor y revisa a la persona que crea,
+
+nada más a lo que veo bien.
+
+Si este no está, hay que cambiar de correo, que ese correo no es.
+
+porque va a capturar de la información.
+
+Así lo veo yo. Tú me la pintaste, yo lo hago así.
+
+Mira, aquí hay un documento.
+
+Va, mételo allá donde tú quieras guardarlo.
+
+Queda el proveedor.
+
+Listo, están todos los documentos.
+
+Check, check, check, check, check.
+
+Ah, pero mira, este documento, este proveedor
+
+necesita una licencia ambiental
+
+ay no te lo puedo crear enseguida que el sistema no me diga no te lo puedo crear
+
+ay que mal
+
+si yo no lo puedo crear me puedo hacer orden de compra
+
+señor pasen la licencia ambiental
+
+es que se le puede poner un portal a los proveedores
+
+que ellos mismos se creen
+
+eso también nosotros lo habíamos pensado
+
+que tienen que hacerlo aquí adentro
+
+y subir todos estos documentos
+
+si claro si ellos son los interesados
+
+el siguiente bueno no está ahí ahí va ve para crear los proveedores lo podemos hacer nosotros
+
+porque hay proveedores que tuve que hacerlo nosotros entre que no podíamos tener un computador
+
+pero otro ahí se le manda el link créate por favor
+
+si correcto
+
+y sube todo estos documentos entonces nosotros tenemos una matriz
+
+que precisamente nos salió una no conformidad, sino una cuestión de mejora,
+
+que no tenemos en cuenta la documentación ambiental.
+
+Entonces, esa documentación ambiental también va en la matriz,
+
+hay que darte la matriz para que tú sepas qué documento se le pide a cada proveedor,
+
+a cada tipo de proveedor.
+
+Ok, listo. Entonces, es tanto, creamos aquí, el proveedor se crea, ya queda creado el proveedor, ya queda habilitado para nosotros poder hacer órdenes de compra, órdenes de servicio.
+
+Nosotros desarrollamos aquí algo que se llama órdenes maestras u órdenes madres.
+
+Esa orden en manera que orden en madre no afecta ni nada a las compras.
+
+Es simplemente como una legalización de lo que pactamos.
+
+Es decir, tú me vas a vender el metro cúbico en 2.000 pesos, te mando una orden madre, 2.000 pesos, listo.
+
+Y me vas a facturar, sabes como las condiciones, me vas a facturar 15 nada y me vas a facturar, listo.
+
+Eso queda ahí como un contrato.
+
+Cuando ya se va facturando, recuerda que el material es al revés,
+
+se va generando y vamos generando las órdenes de compra,
+
+órdenes de servicio, dependiendo de lo que sea.
+
+Los mantenimientos preventivos también.
+
+Por ejemplo, al aire acondicionado.
+
+Alberto, estás haciendo la carta al niño viejo, este.
+
+Nada más te estoy dejando.
+
+Te estoy mostrando todo lo que hay.
+
+Yo te tiro a Luis y yo soy más duro.
+
+Pero no tiene ningún sentido.
+
+O sea, la verdad que no se hace.
+
+Todo, todo, todo.
+
+Todo eso que hace.
+
+Mira lo que maneja el SICOM.
+
+El SICOM maneja tanta cosa que lo que me duele es que está muy desacuerdzado.
+
+De acuerdo.
+
+En la versión.
+
+Porque ya este man me hablaba de guía, de no sé qué.
+
+Pero que él me dice que para poder hacer eso,
+
+tiene que subir o cambiar el servidor o subirlo a la nube para poder hacer la nueva versión.
+
+Si no, no le puede.
+
+bueno ahí vamos la documentación cuando se cree el poder lo cree la persona como queramos hacerlo
+
+ya generamos las ordenes de compra y ordenes de servicio aquí se trabajan las dos
+
+y como te dije una orden en madre que solamente da como un contrato imagínate
+
+que define cuanto me va a arreglar, hey esto me va a arreglarlo cada aire acondicionado a 50 mil pesos
+
+ok perfecto 50 lucas
+
+El día que se va a hacer el mantenimiento, la persona le hace la orden de servicio con ese precio.
+
+Está amarrado la orden de servicio.
+
+Ya no pueden modificar. Si hay una modificación, se pide una autorización a la forma.
+
+¿Listo?
+
+Ok.
+
+Bien.
+
+Entonces, aquí se crearon los proveedores.
+
+Para cada uno de esos, me gustó.
+
+Que quiero que, hey, tengan en cuenta qué documentación necesitan subir, si se les va a dar el acceso y que ellos se creen.
+
+Excelente.
+
+Tenemos dos modos. El primer modo es requisiciones,
+
+que es donde se supone que el usuario que va a ser impedido
+
+debe montar la requisición.
+
+Bueno, ahí te voy a empezar a interrumpir para
+
+para darte los, para aclararte las dudas.
+
+En esta parte de requisiciones y en la parte de seguimiento
+
+en campo es donde activamos el WhatsApp.
+
+El WhatsApp es una herramienta
+
+como un copiloto, que le ayuda a ellos a mandar todo con fotos.
+
+O sea, si tienen que pasar la factura, el recibo, el soporte, completar los datos,
+
+cerrar la orden, pasar las fotos del entregado, de la finalización de la obra,
+
+todo el seguimiento que se le tiene que hacer a los trabajadores en campo.
+
+sea por recibo de almacén
+
+o sea por mantenimiento
+
+o sea por cerrar órdenes
+
+todo se le puede hacer por Whatsapp
+
+esa es la ventaja que yo tengo
+
+tal cual lo que hablamos
+
+así es
+
+Mira, bueno, entonces, otra vez me devuelvo a los proveedores.
+
+Bacana la idea tuya de que se crea un portal y ellos se crean.
+
+Pero importante es lo que te decía de la documentación.
+
+La matriz te la vamos a instalar, la vamos a transformar un poquito.
+
+¿Qué documentación? Para que le aparezca qué debe apuntar cada uno de los proveedores.
+
+El proceso de los proveedores es en escritorio, es un portal que ellos tienen que llenar unos requisitos.
+
+Ellos se registran y se lo traen para acá.
+
+Sí, claro. Pero es responsabilidad del proveedor.
+
+A donde yo voy con el WhatsApp no es al proveedor, sino al técnico.
+
+No, no, no, entiendo. Eso ya por adelante.
+
+Por eso te dije, me devuelvo un poco a la parte de la creación del proveedor.
+
+Por eso te digo, vamos a parar todo.
+
+Yo voy a crear el proveedor nuevo.
+
+Ella y yo no lo voy a crear en el sistema.
+
+Ellos se van a crear.
+
+A no ser que sea un proveedor que llegue a mí o que...
+
+Ajá.
+
+Correcto.
+
+Entonces hay que ser presentes y yo lo hago.
+
+Correcto.
+
+Pero ahí se crea.
+
+Pero yo siempre he dicho, ellos se crean, pero hay una verificación para que pueda pasar de acá.
+
+Sí, siempre hay una verificación, Manuel.
+
+Excelente. Entonces, ahora sí vamos a ver restricciones. Ahí es donde tú hablas de la parte del WhatsApp para el cierre de compra y los pesos.
+
+¿Qué tenemos ahorita nosotros? Entre comillas, o de lo que sea, porque no se está haciendo.
+
+Y el proceso de calidad de nosotros, en el proceso de compra, no está establecido.
+
+¿Cómo te lo voy a mostrar? Y ya te voy a decir qué solución tenemos para mejorar el proceso de compra.
+
+Pero que si entradía lo tuyo, tendríamos que modificar ese proceso de compra ya a través del WhatsApp o de lo que tú estás desarrollando.
+
+ok
+
+se suponía
+
+y pasa todo
+
+como no lo hace porque no tiene tiempo, no tiene no sé qué y todas las excusas que había por haber
+
+cambiamos el proceso y dijimos ok, haremos las requisiciones por correo electrónico
+
+Sí, llegan al correo electrónico y por ahí me dan la aprobación del director.
+
+Entonces, ¿quién hace la revisión?
+
+Cualquiera de la obra que ellos designen, sea el ingeniero residente,
+
+o sea, la persona que ellos designen, pero ellos le dicen en un correo,
+
+dicen que es autorizado.
+
+Cuando está autorizado, de ese momento empieza a contar el tiempo para nosotros
+
+y está autorizada la compra.
+
+Entonces, ¿qué le toca hacer a la persona de compra?
+
+Hacer lo que ellos no hicieron.
+
+montar la requisición
+
+¿sí?
+
+hacer el proceso completo
+
+hacer el proceso completo
+
+si, entra su orden de compra
+
+como tal, empieza a generar
+
+la orden de compra
+
+¿listo?
+
+que también
+
+la misma visual como tú lo puedes ver
+
+hace cualquier orden de compra, monta los productos
+
+y sobre el correo responde
+
+aquí mando la orden para cerrar el proceso de compra.
+
+Cuando ella hace eso, quiere decir que ella mandó esa orden de compra al proveedor
+
+o la pasó a pago, puede ser cualquiera de los dos procesos, o se fue a pago o se fue a proveedor.
+
+Si se fue a proveedor es porque fue a crédito y ahí empiezan a contar el tiempo del almacén,
+
+es decir, cuando me llegue ese producto.
+
+Si se fue a pago, empieza a contar el tiempo que demora el pago,
+
+y después de pago, cuando reportamos el pago, porque empieza a contar el tiempo del recibo del producto.
+
+Entonces a ella le toca hacer la orden de compra o orden de servicio,
+
+desde la medición, orden de compra, orden de servicio, mandar y listo.
+
+Esa fue la forma como pude solucionar el problema acá, porque cuando venía aquí,
+
+le decía, le escribía en WhatsApp, le escribía en no sé qué, telepáticamente,
+
+la habían visto hace seis días, a ella nunca le dieron hasta esto, ¿a quién le crees?
+
+Telepáticamente.
+
+Cuando ella estaba sabidilla.
+
+Telepáticamente.
+
+Exacto, sí, aquí aparecían compras telepáticas, yo te dije hace un mes,
+
+y allá en la reunión se hace un mes y ya le comprara mal.
+
+Usted me va a decir, no.
+
+Ah, ok.
+
+Trabajamos telepatía, vamos a la telepatía escrita.
+
+Correo.
+
+Eso me da trazabilidad.
+
+Ya con el sistema, como tú me decías,
+
+a ver que me digan si es por charlo o por donde sea,
+
+que se haga la solicitud y ya queda la trazabilidad.
+
+Lo que interesa es que quede la trazabilidad después del proceso.
+
+Lo que yo he aprendido es quitarle las excusas,
+
+porque si no empiezan a decir, no, que yo no lo entiendo,
+
+que no tengo tiempo, que...
+
+Es muy complicado, entonces ahí es donde WhatsApp es el protagonista.
+
+¿Todo el mundo maneja WhatsApp?
+
+Sí.
+
+Bien, se acabó el tema.
+
+Se acabó la pelea, sí, correcto.
+
+Sí, se acabó la daño.
+
+Ese es el módulo de compra en sí.
+
+¿A dónde termina el inventario?
+
+¿En un módulo de inventario?
+
+¿Inventario qué hace?
+
+Crea los productos, no sé qué, pero ya toda esa cuestión,
+
+ni menos que la guía nos ayudará a crearlo o creará un manual.
+
+cuando yo haga los pedidos
+
+o aquí hay un producto que es concreto
+
+pero tiene muchas referencias
+
+MR45, MR45 acelerado a 7 días, 20 días, 10 días
+
+mejor ni picado uno de los dos, es una lista de concreto así
+
+que hay que ser muy específico en la compra
+
+porque eso cambia el precio, entre más acelerado sea más caro
+
+ok
+
+¿cierto?
+
+entonces
+
+Aquí creamos los productos, en almacén hacemos las entradas de los productos, las salidas y hay unos reportes que son imperómetros que te van a echar ahí.
+
+¿Conociente?
+
+¿Ya?
+
+Esos reportes no están funcionando porque nadie los usa.
+
+Los que sirven son los que usamos.
+
+Entonces, ¿qué hacemos nosotros?
+
+En compras como tal tenemos el reporte de compras que fue el que mejoré,
+
+que lo único que hice fue detallarlo por un producto para poder sacar el informe que genera la ingeniería.
+
+Para poder decirle voy a mirar los concretos, filtro concreto, hago una tabla dinámica
+
+y me sale el concreto, cómo se movió el concreto durante el tiempo.
+
+Ok.
+
+acá yo te digo que acá yo te digo que tiene que haber un
+
+una tabla de ítems si o sea tiene que haber todos los ítems tienen que estar creados todos
+
+los ítems tienen que tener una variación todos los ítems tienen que estar creados y ellos no pueden
+
+ellos en ese tema de los precios, ellos tienen que ajustarse al precio que dice el sistema
+
+porque es compra quien es el responsable de asignarle el precio al producto
+
+No, no, si toca creerlo, no crean
+
+lo que pasa es que cuando yo no me pinte inteligencia artificial y diversión no me hace todo
+
+No es tan así, ahora te explico por qué.
+
+No es tan así como crees.
+
+Pero sirve, sirve, nos ayuda.
+
+Porque yo supongo que le puedes decir,
+
+hey, revésate si tengo duplicado un índice.
+
+No, sí, sí, claro que sí.
+
+Porque recuerda que tú duplicas en un sistema por,
+
+no sé si decirle código, por letra, vamos a inventar.
+
+Si le dices la E-A, eso tiene un nombre,
+
+vamos a poner el nombre.
+
+Y yo quiero otro A, en vez de decir E, ya está,
+
+si es que tú tienes que tener sí pero tiene que haber un inventario principal
+
+de compras que es de donde parte el servicio ellos no pueden no pueden hacer
+
+una requisición de un producto que no
+
+correcto correcto
+
+Y de aquí ya el compra empieza, ah bueno mira, quiero ver el producto, pipi, pero eso es al inicio, ya después cuando viene el producto, claro, ya se va para abajo.
+
+Ya, eso es rápido.
+
+Y listo, eso es todo proyecto de ahorro.
+
+Mantenimiento es el modelo más grande.
+
+Aquí se crean las fichas de los equipos.
+
+Los equipos, los equipos se crean, o se crean dos tipos de equipos, por así decirlo.
+
+los equipos de Contexa y los equipos de proveedores aparte.
+
+¿Sí? ¿Por qué se crean los dos?
+
+Porque a los dos se les puede suministrar combustible aquí.
+
+Entonces, lo necesitamos creado en el sistema
+
+para poder ehh... para poder echarle el combustible.
+
+Ok.
+
+Esta es la información normal de un equipo, ahí está poniendo todo.
+
+Que el equipo, no se quede, tal, tal, tal, tal, ya listo.
+
+Y se supone que en este módulo hay una parte en donde
+
+en donde él tiene la alerta y si se había hecho, pero ya, ya eso pasó, leo.
+
+¿Qué arreglé yo acá?
+
+La parte del costo de mantenimiento que es lo que te digo,
+
+¿cuánto me gastado por cada equipo?
+
+Me bota un informe consolidado y un informe así.
+
+Ya, con eso yo hago el reporte.
+
+y puedes mirar en el dashboard general
+
+cuanto van los gastos de cada maquinaria, etc.
+
+Y el módulo de combustible que está dividido en línea blanca
+
+que es camioneta, pimpina, kilitica, paracorriente,
+
+línea amarilla que es una maquinaria amarilla
+
+y los volcos que son todo eso en equipo ya grande
+
+como boqueta, burco, listo.
+
+Entonces diferenciamos los tres tipos de combustible
+
+así así
+
+ok
+
+yo creo que tiene buenos
+
+No, no, no, espérate, espérate, espérate, espérate, te muestro qué es lo que...
+
+que es lo que yo tengo mapeado
+
+entonces todo eso que acabas de mostrar
+
+lo que pasa es que yo he hecho software similares a esto porque yo trabajé en Gcolesa
+
+entonces digamos que tengo experiencia en esto
+
+Entonces, te aclaro, la guía lo que va a hacer es un copiloto para los reportes.
+
+Ya lo que es un agente conversacional que te va a ayudar es a generar reportes, gráficas, análisis.
+
+Sí, es más como un analista de datos.
+
+Ya, aquí están 14 características que yo listé de lo que hablamos.
+
+Entonces, hay un dashboard que yo ya te lo muestro.
+
+Hay unos roles.
+
+Está gerente general, jefe de compras, contabilidad, técnico, almacén.
+
+y está todo lo que son las gráficas que tiene el dashboard como tal
+
+está el seguimiento de compras que es lo que me estabas explicando aquí
+
+que yo lo mapie así pero igual hay que hacer el levantamiento correcto
+
+adquisición, aprobación, orden, confirmación, recepción, certificado
+
+que es como la entrada de almacén
+
+y pago y cierre
+
+Entonces, todo esto que te estoy hablando, hasta donde te explique, hasta ahí va el valor.
+
+Entonces, todo esto es, digamos, lo que alcanzamos a levantar.
+
+Lo que se refiere a OCR de facturas es que tengan esta herramienta por WhatsApp
+
+que les permita digitalizar rápidamente las facturas tanto en campo como en oficina,
+
+en consorcios o en oficinas alternas,
+
+porque es una herramienta que lo hace súper bien y evita todo tema de errores.
+
+Y queda como en una parte dependiente
+
+subieron esta factura y es ya la persona de la persona encargada o la analista quien aprueba
+
+porque eso no es automático
+
+esta notificaciones
+
+Entonces, esta notificación es que es todo el sistema de notificaciones, de alertas
+
+que le envían a los usuarios de cada una de sus tareas y pendientes.
+
+Un resumen diario.
+
+compras, contabilidad, técnico, todo esto se dispara a través tanto de email como por WhatsApp.
+
+Yo diría que la parte de la factura es perfecta y hasta allá podemos hacer ese alcance por el tema de revisiones,
+
+pero de modo común. Vamos a coger el coro. Así me explico, el coro de nosotros.
+
+El coro de nosotros es allá lo que se compra, lo que se pone allá y se viene para acá.
+
+Ya después lo vamos a ir poniendo en la...
+
+El fuerte es el fuerte, lo que está moviendo la empresa.
+
+Yo siempre digo, mira, tengo un software ahí
+
+que costó bastante plata en su momento.
+
+Si lo actualizas ya está moviendo los millones que estamos moviendo.
+
+Ey, estamos ya en riesgo.
+
+Ya yo levanté la mano. Estamos en riesgo.
+
+¿Sí?
+
+Mejor que vea ese riesgo cuando toque
+
+y nos volvamos al Excel a hacer orden de compra
+
+porque ustedes van a decir, ah, no sigamos en Excel
+
+porque eso no cuesta nada.
+
+Bueno, y acá le puse sitcom, que es como conectarnos a sitcom para extraer la data que se necesita para alimentar el sistema nuevo.
+
+Está análisis de precios, que eso era lo que yo te decía, que como podemos leer las facturas, podemos extraer los precios de las facturas, podemos hacer un query histórico y podemos crear reglas para detectar anomalías de precios.
+
+Esto sí es IA.
+
+Prehistórico de precios, anomalía de precios.
+
+Esto es...
+
+Lo podemos hacer, pero parte de que la factura no la envíen por foto o por documento.
+
+Sí, pero también no puede sacar el histórico del precio de lo que hemos comprado.
+
+Sí, correcto.
+
+Correcto.
+
+¿Ese es el dato?
+
+El certificado de calidad que es como el cierre de que el material se le hizo recepción,
+
+el sistema crea la tarea, tiene que subir los certificados, el técnico tiene que validar
+
+y hay un bloqueo por parte del área de contabilidad.
+
+El control de inventario es la parte de materiales de construcción y seguimiento de entradas y salidas, stock mínimo, alertas de reorden.
+
+Toda esta parte que está recepción de material.
+
+Por eso te decía que yo lo manejaba como proyectos, porque en Recorsa lo manejaban como proyectos.
+
+Sistemas de alertas y esto no.
+
+Entonces esto de proyección financiera es toda la parte de los gráficos y lo que hace del forecast de lo que tú te imaginas que él debe hacer.
+
+Que es buscar, como tiene toda la data la puede consumir rápidamente. Ahí sí, ahí sí, él ya actúa bastante.
+
+integración con Google Workspace.
+
+Entonces, cuando los usuarios quieran entrar a la plataforma,
+
+ellos no tienen usuario y contraseña,
+
+sino que entran con su usuario de Google.
+
+va a estar, puede estar sincronizado con Google Sheets
+
+para que exporte las tablas de Google Sheets
+
+pero digamos que lo más importante es como la autenticación
+
+para que no tengan que tener otro usuario, otra contraseña
+
+que ahí es donde empieza Cristo a padecer
+
+estas tres que están finales que son facturas por email
+
+estas son las que no
+
+que no puedo incluir en el valor
+
+porque esta es la automatización del buzón de facturas
+
+esto sería la segunda fase
+
+que cada vez que a ustedes les envíen una factura
+
+se pueda conectar con el sistema y pueda rechazar la factura o pueda
+
+enviar una notificación a quien les facturó
+
+si
+
+y que eso lo va a...
+
+el producto es importante ahorita
+
+si de acuerdo
+
+Necesita que la operación de la empresa,
+
+necesita que se necesite que no se vaya a parar.
+
+Correcto.
+
+Tenemos mantenimiento.
+
+Mantenimiento que también lo tengo dentro de lo que yo entiendo.
+
+De lo que yo entiendo, ahí me explicaste más cosas,
+
+pero digamos que esta es la parte de mantenimiento de maquinaria.
+
+Y seguimiento de avance de proyectos.
+
+que ese que es todo
+
+también sería buenísimo ese sí con ingeniería completo
+
+por eso porque es que depende de los datos
+
+o sea esto depende de los datos
+
+de los datos que es lo mismo que hacen ellos
+
+pero ese sí yo no lo manejo o sea no lo tengo
+
+por ejemplo ahí tienes el que paviconstruc jc
+
+ese paviconstruc es un contratista
+
+Entonces, ¿cuál es el presupuesto total?
+
+¿Cuántos días han transcurrido?
+
+¿Cuánto debería hacerse completado?
+
+¿Cuál es el avance físico real?
+
+¿Cuál es el valor completado?
+
+¿Cuál es el gasto real?
+
+Sobre costo, retraso, sobre presupuesto,
+
+sobre costo de proyectado.
+
+Esto es...
+
+Esto en general no es tan complejo.
+
+si tenemos o garantizamos que toda la data está
+
+está
+
+desde el inicio bien normalizada, pero como por ahí partimos que no,
+
+entonces por eso es que yo agrego capas
+
+para o soluciones para para garantizar que el dato siempre me llegue
+
+con la menor cantidad de errores posibles de digitación y
+
+experiencia que tengo.
+
+Y la parte visual, la parte visual de cómo se vería es algo así, algo como esto, que es última tecnología, que es un dashboard, con todos los elementos, con última tecnología.
+
+que tú tienes gráficas que tú tienes puedes verlas las órdenes como quieras
+
+acá
+
+no aquí también aquí también puedes puedes aquí también entran todos los
+
+módulos los módulos entran aquí a la izquierda aquí tienes control de roles
+
+entonces los módulos no le aparecen a todo el mundo
+
+y
+
+y tienes también control de acceso, que es todo lo que te decía que entran por Google.
+
+O sea, pueden entrar otros usuarios que tengan otros correos,
+
+pero la mayoría de la empresa que tenga Google, entra por Google.
+
+Y la parte de la guía, que es donde yo te mostré,
+
+es solamente una sección en donde la guía te ayuda a
+
+a generar mejores reportes o a generar mejores análisis
+
+porque tiene acceso a la data.
+
+pero si este es más o menos un demo de cómo entregaríamos la solución
+
+bueno ya tiene el panorama ya sabe lo que hay
+
+son los cuatro puntos que vamos a atacar
+
+como tal
+
+igual
+
+ya te he decidido también me voy a poner la cabeza
+
+Alberto con esa
+
+Alberto con esa carta al niño Dios
+
+tú de verdad me estás pidiendo que yo le baje
+
+Gracias.

@@ -1,6 +1,6 @@
 # CLAUDE.md - Contecsa
 
-Version: 1.1 | Date: 2025-12-22 21:45
+Version: 1.2 | Date: 2025-12-24 11:30
 
 ## 4-Level Hierarchy
 
@@ -18,6 +18,12 @@ Version: 1.1 | Date: 2025-12-22 21:45
 **Client:** Contecsa (construcción/obras civiles) + 9 consorcios (PAVICONSTRUJC, EDUBAR-KRA50, PTAR, etc.)
 **Phase:** Setup - Configuración baseline
 **Current Sprint:** Archivos configuración + tracking (NO código aplicación todavía)
+
+**CRITICAL DISCOVERY (2025-12-24):** Sistema requiere **arquitectura multi-tenant**:
+- Contecsa = Tenant maestro
+- 9+ Consorcios = Tenants separados (entidades legales distintas)
+- Cross-tenant integration para compras vía centros de costo
+- Pain #1: Entrada dual de datos (PO en Contecsa → entrada bodega en Consorcio)
 
 ## Tech Stack
 
@@ -47,7 +53,7 @@ Version: 1.1 | Date: 2025-12-22 21:45
 **Google Workspace:** Gmail API (notificaciones), Sheets API (exportación familiar)
 **Storage:** Google Cloud Storage o AWS S3 (certificados, facturas OCR)
 **OCR:** Google Vision API o AWS Textract
-**WhatsApp:** Business API (Phase 2)
+**WhatsApp:** Business API (Phase 1 - NO-NEGOCIABLE)
 
 ### Deployment
 **Frontend:** Vercel Serverless
@@ -128,16 +134,24 @@ Version: 1.1 | Date: 2025-12-22 21:45
 - Técnico (1): Consumo materiales por obra
 - Almacén (1): Control inventario
 
-## Critical Features (13)
+## Critical Features (60+ Requirements)
 
+**Multi-Tenant (P0 - NUEVO 2025-12-24):**
 | ID | Feature | Priority | Note |
 |----|---------|----------|------|
-| R1 | Agente IA Conversacional | P0 | "necesito gráfica combustible" → genera automático |
-| R2 | Dashboard Ejecutivo | P0 | KPIs tiempo real, 4 roles |
-| R3 | Seguimiento Compras | P0 | 7 etapas, alertas >30 días |
-| R7 | Análisis Precios/Anomalías | P1 | PREVENIR CASO CARTAGENA |
+| R-MT1 | Consorcio as Tenant | P0 | Usar "Consorcio" no "Proyecto" en UI |
+| R-MT2 | One-Click Consortium Creation | P0 | "Un botoncito" replica config Contecsa |
+| R-MT4 | Cross-Tenant PO Tracking | P0 | Eliminar entrada dual (CRITICAL) |
 
-Ver `prd.md` para lista completa (13 features).
+**Core Features:**
+| ID | Feature | Priority | Note |
+|----|---------|----------|------|
+| R-PROC1 | WhatsApp Requisitions | P0 | NO-NEGOCIABLE para adopción |
+| R-REPORT3 | Price Anomaly Detection | P0 | PREVENIR CASO CARTAGENA |
+| R-QUAL1 | Certificate Blocking | P0 | No cerrar PO sin certificados |
+| R-OCR1 | Invoice OCR via WhatsApp | P0 | Eliminar entrada manual |
+
+Ver `docs/prd.md` para 60+ requerimientos completos (12 módulos).
 
 ## Development Commands
 
@@ -180,16 +194,20 @@ uvicorn main:app --reload  # http://localhost:8000
 ## For Claude Code
 
 **Critical Rules:**
+- **Multi-tenant architecture MANDATORIO** - Contecsa + 9 consorcios
+- **WhatsApp integration P0** - Interfaz principal para campo (NO-NEGOCIABLE)
 - SICOM es read-only - NUNCA modificar datos
 - Python backend es mandatorio (PO requirement)
-- Seguir proceso Excel actual (28 campos) pero simplificado
-- Certificados bloqueantes para cierre compras
-- Google Workspace integración P0 (ya usan Gmail/Sheets)
+- Certificados bloqueantes para cierre compras (R-QUAL1)
+- Cross-tenant PO tracking (R-MT4) - Eliminar entrada dual
+- Simplicity > Features (complejidad → no uso)
 - Quality gates MUST pass before merge
 
 **NO INVENTAR:**
 - Stack validado con PO en meet 2025-12-22
-- Ver `docs/meets/contecsa_meet_2025-12-22.txt` para contexto
+- **Multi-tenant validado en meet 2025-12-24** (Alberto Ceballos)
+- Ver `docs/meets/contecsa-alberto-ceballos-12-24-2025.txt` para contexto multi-tenant
+- Ver `docs/meets/contecsa_meet_2025-12-22.txt` para contexto inicial
 - Ver `docs/analisis-control-compras.md` para flujo actual
 
 **Decision Filter (ClaudeCode&OnlyMe):**
@@ -199,8 +217,10 @@ uvicorn main:app --reload  # http://localhost:8000
 
 ## Important Links
 
-- PRD completo: `docs/prd-full.md`
-- Meet PO: `docs/meets/contecsa_meet_2025-12-22.txt`
+- **PRD completo:** `docs/prd.md` (1900 líneas, 60+ reqs, 12 módulos)
+- **Meet Alberto (2025-12-24):** `docs/meets/contecsa-alberto-ceballos-12-24-2025.txt` (multi-tenant)
+- Meet PO inicial: `docs/meets/contecsa_meet_2025-12-22.txt`
 - Análisis Excel: `docs/analisis-control-compras.md`
+- Business context: `docs/business-context.md`
 - Company: `/neero/CLAUDE.md`
 - Global: `docs-global/README.md`

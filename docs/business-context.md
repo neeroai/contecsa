@@ -1,6 +1,6 @@
 # Business Context - Contecsa Sistema de Inteligencia de Datos
 
-Version: 1.0 | Date: 2025-12-22 22:20
+Version: 1.1 | Date: 2025-12-24 11:35
 
 ---
 
@@ -27,6 +27,74 @@ Version: 1.0 | Date: 2025-12-22 22:20
 - Geotechnical engineering (reinforced earth walls)
 - Hydraulic works (flood control, coastal protection)
 - Urban infrastructure (parks, sidewalks, drainage)
+
+---
+
+## Multi-Tenant Business Model ⚠️ CRITICAL DISCOVERY
+
+**Discovery Date:** December 24, 2025 (Meeting with Alberto Ceballos)
+**Impact:** Fundamentally changes system architecture from single-tenant to multi-tenant platform
+
+### Contecsa's Dual Role
+
+**Role 1: Independent Contractor**
+- Contecsa executes construction projects directly as a contractor
+- Uses own procurement system (SICOM → future system)
+- Manages own warehouses, machinery, inventory
+- Example: CONTECSA-ADMINISTRATIVO consortium (100% internal operations)
+
+**Role 2: Consortium Administrator**
+- Contecsa creates and manages 9+ consortiums (joint ventures with other companies)
+- Each consortium = separate legal entity (e.g., PAVICONSTRUJC, EDUBAR-KRA50)
+- Each consortium needs own software instance (separate tenant)
+- Some consortiums hide Contecsa's participation for confidentiality (different email domains)
+
+### Three Procurement Scenarios
+
+**Scenario A: Consortium Purchases Directly**
+```
+Consortium X → Purchase Order (in Consortium X tenant) → Warehouse Entry (in Consortium X tenant)
+```
+- No impact to Contecsa tenant
+- Fully independent operation
+
+**Scenario B: Contecsa Purchases for Consortium (via Cost Center) ⚠️ CRITICAL PAIN**
+```
+Contecsa → Purchase Order (in Contecsa tenant, cost center = Consortium X) →
+Material arrives → Warehouse Entry (in Consortium X tenant, NOT Contecsa)
+```
+- **CURRENT PAIN POINT:** Requires dual entry (PO in Contecsa system, warehouse entry in Consortium system)
+- **Alberto quote:** "Me toca entrar a los dos sistemas para poder confirmar las dos cosas"
+- **REQUIREMENT:** System must cross-reference/integrate PO from Contecsa with warehouse entry in Consortium
+- **Business Driver:** Eliminate manual dual entry, provide traceability
+
+**Scenario C: Contecsa Purchases for Own Operations**
+```
+Contecsa → Purchase Order (in Contecsa tenant) → Warehouse Entry (in Contecsa tenant)
+```
+- Standard flow, no cross-tenant integration needed
+
+### System Architecture Implications
+
+**Multi-Tenant Requirements:**
+1. **One-Click Consortium Creation:** Admin button "Crear nuevo consorcio" → auto-replicate ALL Contecsa configuration
+   - **Alberto quote:** "Un botoncito, crear nuevo consorcio" (line 159-160)
+2. **Configurable Email Domains:** Each consortium can have different notification addresses (different domains for confidentiality)
+3. **Cross-Tenant PO Tracking:** When Contecsa creates PO for consortium (cost center), warehouse entry in consortium tenant must cross-reference automatically
+4. **Consolidated Reporting:** Dashboard shows Consortium X direct purchases + Contecsa purchases for X (cost center) = Total
+
+**What Gets Replicated (Per Consortium):**
+- Workflow configurations (approval chains, time thresholds)
+- Invoice review processes
+- Notification rules (recipients customizable)
+- Alert thresholds
+- All business logic and validation rules
+
+**What Gets Customized (Per Consortium):**
+- Email notification addresses (different domains)
+- Warehouse definitions
+- Cost centers
+- User access (some consortiums hide Contecsa participation)
 
 ---
 
