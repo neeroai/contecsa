@@ -2,7 +2,7 @@
 // This file runs before each test file
 
 import '@testing-library/jest-dom/vitest';
-import { vi, beforeAll, afterEach, afterAll } from 'vitest';
+import { afterAll, afterEach, beforeAll, vi } from 'vitest';
 
 // Mock Next.js router
 vi.mock('next/navigation', () => ({

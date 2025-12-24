@@ -214,12 +214,7 @@ export interface Attachment {
   readonly fileUrl: string;
   readonly uploadedBy: string;
   readonly uploadedAt: Date;
-  readonly documentType:
-    | 'INVOICE'
-    | 'CERTIFICATE'
-    | 'SPECIFICATION'
-    | 'DELIVERY_NOTE'
-    | 'OTHER';
+  readonly documentType: 'INVOICE' | 'CERTIFICATE' | 'SPECIFICATION' | 'DELIVERY_NOTE' | 'OTHER';
 }
 
 /**
@@ -279,7 +274,7 @@ export const AuditLogEntrySchema = z.object({
   action: z.enum(['STATE_CHANGE', 'FIELD_UPDATE', 'NOTE_ADDED', 'ATTACHMENT_ADDED']),
   previousState: PurchaseStateSchema.optional(),
   newState: PurchaseStateSchema.optional(),
-  changedFields: z.record(z.object({ old: z.unknown(), new: z.unknown() })).optional(),
+  changedFields: z.record(z.string(), z.object({ old: z.unknown(), new: z.unknown() })).optional(),
   userId: z.string().uuid(),
   userName: z.string().min(1),
   userRole: z.string().min(1),

@@ -168,7 +168,7 @@ export const AuthSessionSchema = z.object({
   expiresAt: z.date(),
   createdAt: z.date(),
   userAgent: z.string().optional(),
-  ipAddress: z.string().ip().optional(),
+  ipAddress: z.string().optional(),
 });
 
 /**

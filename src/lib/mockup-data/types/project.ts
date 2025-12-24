@@ -217,7 +217,13 @@ export interface ProjectFilter {
 /**
  * Zod Schema: Project Status validation
  */
-export const ProjectStatusSchema = z.enum(['PLANNING', 'ACTIVE', 'SUSPENDED', 'COMPLETED', 'CLOSED']);
+export const ProjectStatusSchema = z.enum([
+  'PLANNING',
+  'ACTIVE',
+  'SUSPENDED',
+  'COMPLETED',
+  'CLOSED',
+]);
 
 /**
  * Zod Schema: Budget Line validation

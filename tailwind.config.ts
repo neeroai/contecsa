@@ -17,8 +17,8 @@ const config: Config = {
       },
     },
     screens: {
-      sm: '375px',  // Mobile
-      md: '768px',  // Tablet
+      sm: '375px', // Mobile
+      md: '768px', // Tablet
       lg: '1024px', // Desktop
       xl: '1440px', // Wide
     },
@@ -27,21 +27,21 @@ const config: Config = {
       mono: ['Menlo', 'monospace'],
     },
     fontSize: {
-      xs: ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.01em' }],      // 12px
+      xs: ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.01em' }], // 12px
       sm: ['0.875rem', { lineHeight: '1.25rem', letterSpacing: '0.008em' }], // 14px
-      base: ['1rem', { lineHeight: '1.5rem', letterSpacing: '0' }],          // 16px
-      lg: ['1.125rem', { lineHeight: '1.75rem', letterSpacing: '0' }],       // 18px
-      xl: ['1.25rem', { lineHeight: '1.75rem', letterSpacing: '-0.01em' }],  // 20px
-      '2xl': ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.01em' }],   // 24px
+      base: ['1rem', { lineHeight: '1.5rem', letterSpacing: '0' }], // 16px
+      lg: ['1.125rem', { lineHeight: '1.75rem', letterSpacing: '0' }], // 18px
+      xl: ['1.25rem', { lineHeight: '1.75rem', letterSpacing: '-0.01em' }], // 20px
+      '2xl': ['1.5rem', { lineHeight: '2rem', letterSpacing: '-0.01em' }], // 24px
       '3xl': ['1.875rem', { lineHeight: '2.25rem', letterSpacing: '-0.02em' }], // 30px
-      '4xl': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.02em' }],   // 36px
+      '4xl': ['2.25rem', { lineHeight: '2.5rem', letterSpacing: '-0.02em' }], // 36px
     },
     spacing: {
       0: '0',
-      1: 'var(--spacing-xs)',    // 4px
-      2: 'var(--spacing-sm)',    // 8px
+      1: 'var(--spacing-xs)', // 4px
+      2: 'var(--spacing-sm)', // 8px
       3: 'calc(var(--spacing-sm) + var(--spacing-xs))', // 12px
-      4: 'var(--spacing-md)',    // 16px
+      4: 'var(--spacing-md)', // 16px
       5: 'calc(var(--spacing-md) + var(--spacing-xs))', // 20px
       6: 'calc(var(--spacing-md) + var(--spacing-sm))', // 24px
       7: 'calc(var(--spacing-md) + var(--spacing-md) - var(--spacing-sm))', // 28px
@@ -55,10 +55,10 @@ const config: Config = {
     },
     borderRadius: {
       none: '0',
-      xs: 'var(--radius-xs)',    // 4px
-      sm: 'var(--radius-sm)',    // 6px
-      md: 'var(--radius-md)',    // 8px
-      lg: 'var(--radius-lg)',    // 12px
+      xs: 'var(--radius-xs)', // 4px
+      sm: 'var(--radius-sm)', // 6px
+      md: 'var(--radius-md)', // 8px
+      lg: 'var(--radius-lg)', // 12px
       full: '9999px',
     },
     extend: {

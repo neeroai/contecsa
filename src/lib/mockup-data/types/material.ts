@@ -342,7 +342,7 @@ export const MaterialSchema = z.object({
   maxStock: z.number().nonnegative(),
   reorderPoint: z.number().nonnegative(),
   leadTimeDays: z.number().positive(),
-  specifications: z.record(z.string()),
+  specifications: z.record(z.string(), z.string()),
   quality: z.string().min(1),
   certifications: z.array(z.string()),
   priceHistory: z.array(PriceHistoryEntrySchema),

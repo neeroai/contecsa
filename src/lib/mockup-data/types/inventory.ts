@@ -228,7 +228,13 @@ export interface InventorySummary {
 /**
  * Zod Schema: Movement Type validation
  */
-export const MovementTypeSchema = z.enum(['RECEPTION', 'DELIVERY', 'ADJUSTMENT', 'CONSUMPTION', 'RETURN']);
+export const MovementTypeSchema = z.enum([
+  'RECEPTION',
+  'DELIVERY',
+  'ADJUSTMENT',
+  'CONSUMPTION',
+  'RETURN',
+]);
 
 /**
  * Zod Schema: Warehouse Location validation

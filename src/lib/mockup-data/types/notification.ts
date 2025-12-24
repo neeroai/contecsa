@@ -312,7 +312,14 @@ export const AlertPrioritySchema = z.enum(['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'])
 /**
  * Zod Schema: Alert Type validation
  */
-export const AlertTypeSchema = z.enum(['WORKFLOW', 'FINANCIAL', 'INVENTORY', 'COMPLIANCE', 'OPERATIONAL', 'SYSTEM']);
+export const AlertTypeSchema = z.enum([
+  'WORKFLOW',
+  'FINANCIAL',
+  'INVENTORY',
+  'COMPLIANCE',
+  'OPERATIONAL',
+  'SYSTEM',
+]);
 
 /**
  * Zod Schema: Notification Channel validation
@@ -322,7 +329,14 @@ export const NotificationChannelSchema = z.enum(['EMAIL', 'IN_APP', 'SMS', 'PUSH
 /**
  * Zod Schema: Delivery Status validation
  */
-export const DeliveryStatusSchema = z.enum(['QUEUED', 'SENT', 'DELIVERED', 'READ', 'FAILED', 'BOUNCED']);
+export const DeliveryStatusSchema = z.enum([
+  'QUEUED',
+  'SENT',
+  'DELIVERED',
+  'READ',
+  'FAILED',
+  'BOUNCED',
+]);
 
 /**
  * Zod Schema: Notification Metadata validation
@@ -331,7 +345,7 @@ export const NotificationMetadataSchema = z.object({
   entityType: z.string().optional(),
   entityId: z.string().uuid().optional(),
   relatedId: z.string().uuid().optional(),
-  contextData: z.record(z.unknown()).optional(),
+  contextData: z.record(z.string(), z.unknown()).optional(),
   actionUrl: z.string().url().optional(),
   actionLabel: z.string().optional(),
 });

@@ -3,20 +3,14 @@
   "style": "default",
   "rsc": true,
   "tsx": true,
-  "tailcss": {
+  "tailwind": {
     "config": "tailwind.config.ts",
-    "css": "src/styles/globals.css"
+    "css": "src/styles/globals.css",
+    "baseColor": "slate",
+    "cssVariables": true
   },
   "aliases": {
-    "@/*": "./src/*",
-    "@/components": "./src/components",
-    "@/lib": "./src/lib",
-    "@/styles": "./src/styles"
-  },
-  "resolvedPaths": {
-    "@/components/ui": "./src/components/ui",
-    "@/components": "./src/components",
-    "@/lib": "./src/lib",
-    "@/styles": "./src/styles"
+    "components": "@/components",
+    "utils": "@/lib/utils"
   }
 }

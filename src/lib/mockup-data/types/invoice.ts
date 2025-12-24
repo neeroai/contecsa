@@ -395,7 +395,7 @@ export const InvoiceAuditEntrySchema = z.object({
   ]),
   userId: z.string().uuid(),
   userName: z.string().min(1),
-  details: z.record(z.unknown()).optional(),
+  details: z.record(z.string(), z.unknown()).optional(),
   timestamp: z.date(),
 });
 
