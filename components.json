@@ -1,0 +1,22 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
+  "rsc": true,
+  "tsx": true,
+  "tailcss": {
+    "config": "tailwind.config.ts",
+    "css": "src/styles/globals.css"
+  },
+  "aliases": {
+    "@/*": "./src/*",
+    "@/components": "./src/components",
+    "@/lib": "./src/lib",
+    "@/styles": "./src/styles"
+  },
+  "resolvedPaths": {
+    "@/components/ui": "./src/components/ui",
+    "@/components": "./src/components",
+    "@/lib": "./src/lib",
+    "@/styles": "./src/styles"
+  }
+}

@@ -4,6 +4,37 @@
 
 @layer base {
   :root {
+    /* Typography - Font stacks */
+    --font-inter: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+    --font-mono: 'Menlo', 'Monaco', monospace;
+
+    /* Spacing system */
+    --spacing-xs: 0.25rem; /* 4px */
+    --spacing-sm: 0.5rem; /* 8px */
+    --spacing-md: 1rem; /* 16px */
+    --spacing-lg: 1.5rem; /* 24px */
+    --spacing-xl: 2rem; /* 32px */
+    --spacing-2xl: 3rem; /* 48px */
+
+    /* Border radius */
+    --radius-xs: 0.25rem; /* 4px */
+    --radius-sm: 0.375rem; /* 6px */
+    --radius-md: 0.5rem; /* 8px */
+    --radius-lg: 0.75rem; /* 12px */
+
+    /* Shadows - Elevation system */
+    --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+    /* Animation durations */
+    --duration-fast: 150ms;
+    --duration-normal: 300ms;
+    --duration-slow: 500ms;
+
+    /* Base semantic colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -33,9 +64,59 @@
     --ring: 221.2 83.2% 53.3%;
 
     --radius: 0.5rem;
+
+    /* Status colors - Semantic for purchase/data intelligence */
+    /* Success: Green - Purchase <15 days, Budget <90%, Stock >min */
+    --color-success: #10b981;
+    --color-success-light: #d1fae5;
+    --color-success-dark: #047857;
+    --color-success-fg: #ffffff;
+
+    /* Warning: Amber - Purchase 16-30 days, Budget 90-110%, Stock near min, Price anomaly 5-10% */
+    --color-warning: #f59e0b;
+    --color-warning-light: #fef3c7;
+    --color-warning-dark: #d97706;
+    --color-warning-fg: #ffffff;
+
+    /* Danger: Red - Purchase >30 days, Budget >110%, Stock <min, Price anomaly >15% */
+    --color-danger: #ef4444;
+    --color-danger-light: #fee2e2;
+    --color-danger-dark: #dc2626;
+    --color-danger-fg: #ffffff;
+
+    /* Info: Blue - Informational alerts, in-progress status */
+    --color-info: #3b82f6;
+    --color-info-light: #dbeafe;
+    --color-info-dark: #1d4ed8;
+    --color-info-fg: #ffffff;
+
+    /* Neutral grayscale - UI elements */
+    --color-neutral-50: #f9fafb;
+    --color-neutral-100: #f3f4f6;
+    --color-neutral-200: #e5e7eb;
+    --color-neutral-300: #d1d5db;
+    --color-neutral-400: #9ca3af;
+    --color-neutral-500: #6b7280;
+    --color-neutral-600: #4b5563;
+    --color-neutral-700: #374151;
+    --color-neutral-800: #1f2937;
+    --color-neutral-900: #111827;
+
+    /* Chart colors - Data visualization */
+    --chart-1: #3b82f6;
+    --chart-2: #10b981;
+    --chart-3: #f59e0b;
+    --chart-4: #ef4444;
+    --chart-5: #8b5cf6;
+    --chart-6: #ec4899;
+
+    /* Focus/interaction */
+    --focus-outline: 3px solid var(--primary);
+    --focus-outline-offset: 2px;
   }
 
   .dark {
+    /* Base semantic colors - dark mode */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -63,6 +144,64 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
+
+    /* Status colors - dark mode adjustments for contrast */
+    --color-success: #34d399;
+    --color-success-light: #064e3b;
+    --color-success-dark: #d1fae5;
+    --color-success-fg: #ffffff;
+
+    --color-warning: #fbbf24;
+    --color-warning-light: #78350f;
+    --color-warning-dark: #fef3c7;
+    --color-warning-fg: #ffffff;
+
+    --color-danger: #f87171;
+    --color-danger-light: #7f1d1d;
+    --color-danger-dark: #fee2e2;
+    --color-danger-fg: #ffffff;
+
+    --color-info: #60a5fa;
+    --color-info-light: #1e3a8a;
+    --color-info-dark: #dbeafe;
+    --color-info-fg: #ffffff;
+
+    /* Neutral grayscale - dark mode */
+    --color-neutral-50: #f9fafb;
+    --color-neutral-100: #f3f4f6;
+    --color-neutral-200: #e5e7eb;
+    --color-neutral-300: #d1d5db;
+    --color-neutral-400: #9ca3af;
+    --color-neutral-500: #6b7280;
+    --color-neutral-600: #4b5563;
+    --color-neutral-700: #374151;
+    --color-neutral-800: #1f2937;
+    --color-neutral-900: #111827;
+
+    /* Chart colors - dark mode (brighter for contrast) */
+    --chart-1: #60a5fa;
+    --chart-2: #34d399;
+    --chart-3: #fbbf24;
+    --chart-4: #f87171;
+    --chart-5: #a78bfa;
+    --chart-6: #f472b6;
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: more) {
+    :root {
+      --color-success: #008000;
+      --color-warning: #ff8c00;
+      --color-danger: #ff0000;
+      --color-info: #0000ff;
+    }
+
+    .dark {
+      --color-success: #00ff00;
+      --color-warning: #ffdd00;
+      --color-danger: #ff6666;
+      --color-info: #66b3ff;
+    }
   }
 }
 
@@ -70,8 +209,138 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Heading typography */
+  h1 {
+    @apply text-4xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-3xl font-bold tracking-tight;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  h4 {
+    @apply text-xl font-semibold;
+  }
+
+  h5 {
+    @apply text-lg font-semibold;
+  }
+
+  h6 {
+    @apply text-base font-semibold;
+  }
+
+  /* Paragraph typography */
+  p {
+    @apply text-base leading-relaxed;
+  }
+
+  small {
+    @apply text-sm;
+  }
+
+  /* Focus visible states */
+  *:focus-visible {
+    outline: var(--focus-outline);
+    outline-offset: var(--focus-outline-offset);
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Selection colors */
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+/* Component layer - Reusable patterns */
+@layer components {
+  /* Status badge base styles */
+  .badge-success {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full bg-success-light text-success-dark text-xs font-medium;
+  }
+
+  .badge-warning {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full bg-warning-light text-warning-dark text-xs font-medium;
+  }
+
+  .badge-danger {
+    @apply inline-flex items-centers gap-1 px-3 py-1 rounded-full bg-danger-light text-danger-dark text-xs font-medium;
+  }
+
+  .badge-info {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full bg-info-light text-info-dark text-xs font-medium;
+  }
+
+  /* KPI card base */
+  .kpi-card {
+    @apply rounded-lg border border-border bg-card p-6 shadow-sm transition-shadow duration-normal hover:shadow-md;
+  }
+
+  .kpi-value {
+    @apply text-4xl font-bold tracking-tight;
+  }
+
+  .kpi-label {
+    @apply text-sm font-medium text-muted-foreground;
+  }
+
+  .kpi-delta {
+    @apply text-sm font-semibold;
+  }
+
+  /* Table cell bases */
+  .table-header {
+    @apply bg-muted px-6 py-3 text-left text-xs font-semibold text-muted-foreground uppercase tracking-wide;
+  }
+
+  .table-cell {
+    @apply px-6 py-4 text-sm border-b border-border;
+  }
+
+  .table-row-hover {
+    @apply hover:bg-muted transition-colors duration-fast;
+  }
+
+  /* Alert/notification bases */
+  .alert-success {
+    @apply rounded-lg bg-success-light border border-success p-4 text-success-dark;
+  }
+
+  .alert-warning {
+    @apply rounded-lg bg-warning-light border border-warning p-4 text-warning-dark;
+  }
+
+  .alert-danger {
+    @apply rounded-lg bg-danger-light border border-danger p-4 text-danger-dark;
+  }
+
+  .alert-info {
+    @apply rounded-lg bg-info-light border border-info p-4 text-info-dark;
+  }
+
+  /* Button reset for custom buttons */
+  .btn-reset {
+    @apply m-0 inline-flex items-center justify-center border-0 bg-transparent p-0 font-inherit text-inherit cursor-pointer transition-colors duration-fast;
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    @apply animate-pulse rounded-md bg-neutral-200 dark:bg-neutral-700;
   }
 }
