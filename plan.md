@@ -1,6 +1,6 @@
 # Project Plan: Contecsa
 
-Version: 1.1 | Date: 2025-12-24 09:30 | Owner: Javier Polo | Status: Active
+Version: 1.2 | Date: 2025-12-31 12:00 | Owner: Javier Polo | Status: Active
 
 ---
 
@@ -44,7 +44,8 @@ Version: 1.1 | Date: 2025-12-24 09:30 | Owner: Javier Polo | Status: Active
 - [x] Project scaffolding
 - [x] AI SDK v6 integration
 - [x] Documentation structure
-- [ ] Quality gates CI/CD
+- [x] Quality gates CI/CD
+- [x] Codebase indexing (Repomix + CI auto-update)
 - [ ] Database schema
 
 ### Phase 2: ETL + Data Layer
@@ -77,6 +78,8 @@ Version: 1.1 | Date: 2025-12-24 09:30 | Owner: Javier Polo | Status: Active
 | PostgreSQL | Data warehouse | Pending |
 | Gemini 2.0 Flash | Primary LLM | Configured |
 | Vercel | Frontend deploy | Active |
+| Repomix | Codebase indexing | Active |
+| GitHub Actions | CI/CD + Index regen | Active |
 
 ---
 
@@ -85,6 +88,8 @@ Version: 1.1 | Date: 2025-12-24 09:30 | Owner: Javier Polo | Status: Active
 - Backend Python required by PO for complex data analysis
 - SICOM is ALWAYS read-only (critical constraint)
 - **SDD Migration Complete:** 14/14 features in /specs/ (70 files total)
+- **Codebase Indexing:** Universal cross-platform context (.context.md, .index/)
 - Feature specs available: /specs/f001-f014/ (SPEC, PLAN, ADR, TESTPLAN, TASKS)
 - All decisions validated with ClaudeCode&OnlyMe filter (4/4 YES)
-- Ready to implement: Start with F001 (Agente IA) or F007 (Análisis Precios - CRITICAL)
+- Templates available: docs-global/templates/indexing/ (for scaling to other projects)
+- Ready to implement: Start with F001 (Agente IA) or F007 (Analisis Precios - CRITICAL)

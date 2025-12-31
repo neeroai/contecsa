@@ -1,0 +1,32 @@
+{
+  "generated": "2025-12-31T12:40:00Z",
+  "commit": "4351c093e2f770840fcad3d39ab2c83864e4ee27",
+  "summary": {
+    "totalFiles": 66,
+    "totalTokens": 73640,
+    "totalChars": 291857,
+    "avgTokensPerFile": 1115
+  },
+  "byDirectory": {
+    "src/app": {"files": 8, "description": "Next.js App Router pages"},
+    "src/components/ui": {"files": 26, "description": "shadcn/ui components"},
+    "src/components/layout": {"files": 2, "description": "App layout components"},
+    "src/components/dashboard": {"files": 1, "description": "Dashboard-specific"},
+    "src/lib/mockup-data": {"files": 18, "description": "Test data generators"},
+    "src/lib": {"files": 4, "description": "Utility functions"},
+    "src/hooks": {"files": 2, "description": "React hooks"},
+    "src/styles": {"files": 1, "description": "Global CSS"}
+  },
+  "topFiles": [
+    {"file": "src/components/ui/sidebar.tsx", "tokens": 5798},
+    {"file": "src/lib/mockup-data/generators/materials.ts", "tokens": 4401},
+    {"file": "src/lib/mockup-data/generators/invoices.ts", "tokens": 3796},
+    {"file": "src/lib/mockup-data/generators/consorcios.ts", "tokens": 3202},
+    {"file": "src/lib/mockup-data/generators/purchases.ts", "tokens": 2940}
+  ],
+  "phase": "setup",
+  "features": {
+    "implemented": ["auth-layout", "dashboard-shell", "sidebar", "ui-components"],
+    "pending": ["fastapi-backend", "sicom-etl", "whatsapp-integration", "ai-agent"]
+  }
+}

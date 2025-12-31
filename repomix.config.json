@@ -1,0 +1,51 @@
+{
+  "$schema": "https://repomix.com/schema.json",
+  "output": {
+    "filePath": ".context.md",
+    "style": "markdown",
+    "removeComments": true,
+    "removeEmptyLines": true,
+    "showLineNumbers": false,
+    "topFilesLength": 10,
+    "headerText": "# Contecsa Codebase Context\n\nGenerated for AI assistant consumption. Use this for understanding the project structure and key files.",
+    "instructionFilePath": ""
+  },
+  "include": [
+    "src/**/*.{ts,tsx}",
+    "api/**/*.py",
+    "CLAUDE.md",
+    "ARCHITECTURE.md",
+    "package.json",
+    "tsconfig.json"
+  ],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      ".archive/**",
+      "_archive/**",
+      "docs/**",
+      "specs/**",
+      "*.md",
+      "!CLAUDE.md",
+      "!ARCHITECTURE.md",
+      "index.html",
+      "*.lock",
+      "bun.lock",
+      "*.tsbuildinfo",
+      ".next/**",
+      "node_modules/**",
+      "coverage/**",
+      "test-results/**",
+      ".vercel/**",
+      "*.css",
+      "*.json",
+      "!package.json",
+      "!tsconfig.json",
+      "!repomix.config.json"
+    ]
+  },
+  "security": {
+    "enableSecurityCheck": true
+  }
+}

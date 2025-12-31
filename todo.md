@@ -1,6 +1,6 @@
 # Tasks: Contecsa
 
-Version: 1.2 | Date: 2025-12-24 09:30 | Owner: Javier Polo | Status: Active
+Version: 1.3 | Date: 2025-12-31 12:00 | Owner: Javier Polo | Status: Active
 
 ---
 
@@ -48,5 +48,13 @@ Version: 1.2 | Date: 2025-12-24 09:30 | Owner: Javier Polo | Status: Active
 | T-SDD-007 | Run Milestone 2 validation checkpoint | 2025-12-24 | - |
 | T-SDD-008 | Migrate Milestone 3 (P2) features | 2025-12-24 | 5a59fce |
 | T-SDD-009 | Run Milestone 3 validation checkpoint | 2025-12-24 | 5a59fce |
-| T-SDD-010 | Update feature_list.json with SDD metadata | 2025-12-24 | [pending] |
-| T-SDD-011 | Update tracking files (plan.md, todo.md) | 2025-12-24 | [pending] |
+| T-SDD-010 | Update feature_list.json with SDD metadata | 2025-12-24 | 5a59fce |
+| T-SDD-011 | Update tracking files (plan.md, todo.md) | 2025-12-24 | 5a59fce |
+| T-IDX-001 | Create .claudeignore | 2025-12-31 | - |
+| T-IDX-002 | Create ARCHITECTURE.md | 2025-12-31 | - |
+| T-IDX-003 | Install Repomix + generate .context.md | 2025-12-31 | - |
+| T-IDX-004 | Create .index/ structure (skeleton.json, stats.json) | 2025-12-31 | - |
+| T-IDX-005 | Create GitHub Action for index auto-update | 2025-12-31 | - |
+| T-IDX-006 | Create templates in docs-global/templates/indexing/ | 2025-12-31 | - |
+| T-IDX-007 | Create workflow docs (codebase-indexing.md) | 2025-12-31 | - |
+| T-IDX-008 | Create guide (using-context-files.md) | 2025-12-31 | - |

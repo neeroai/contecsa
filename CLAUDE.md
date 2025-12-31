@@ -1,226 +1,164 @@
-# CLAUDE.md - Contecsa
+# CLAUDE.md
 
-Version: 1.2 | Date: 2025-12-24 11:30
+Version: 2.1 | Date: 2025-12-31 12:00
 
-## 4-Level Hierarchy
+**Project**: Contecsa Sistema de Inteligencia de Datos | **Type**: web+api | **Stack**: Next.js 15 + FastAPI + PostgreSQL
 
-1. **USER** (`~/.claude/CLAUDE.md`) - Personal preferences
-2. **COMPANY** (`/neero/CLAUDE.md`) - Neero-wide context (26 projects)
-3. **GLOBAL** (`docs-global/`) - Shared technical docs
-4. **PROJECT** (this file) - Contecsa-specific
+## Overview
 
-**Override order:** USER → COMPANY → GLOBAL → PROJECT
+AI conversational agent + dashboard replacing manual Excel (28 fields). Read-only connection to SICOM legacy. Prevents losses like Cartagena case (undetected overbilling).
 
-## Project Overview
+**Client**: Contecsa (construction) + 9 consortiums (PAVICONSTRUJC, EDUBAR-KRA50, PTAR, etc.)
+**Phase**: Setup - baseline configuration
+**Users**: 8-10 (2-3 management, 3 purchasing, 1 accounting, 1 technical, 1 warehouse)
 
-**Name:** Contecsa - Sistema de Inteligencia de Datos
-**Purpose:** Agente IA conversacional + dashboard que reemplaza proceso manual Excel (28 campos), conecta read-only a SICOM legacy, previene pérdidas como caso Cartagena (sobrecobro no detectado).
-**Client:** Contecsa (construcción/obras civiles) + 9 consorcios (PAVICONSTRUJC, EDUBAR-KRA50, PTAR, etc.)
-**Phase:** Setup - Configuración baseline
-**Current Sprint:** Archivos configuración + tracking (NO código aplicación todavía)
+## Stack
 
-**CRITICAL DISCOVERY (2025-12-24):** Sistema requiere **arquitectura multi-tenant**:
-- Contecsa = Tenant maestro
-- 9+ Consorcios = Tenants separados (entidades legales distintas)
-- Cross-tenant integration para compras vía centros de costo
-- Pain #1: Entrada dual de datos (PO en Contecsa → entrada bodega en Consorcio)
+**Frontend**: Next.js 15 App Router | TypeScript 5.6+ | Tailwind CSS 4 | shadcn/ui
+**Backend**: Python 3.11+ + FastAPI (PO requirement: complex data analysis, SICOM ETL)
+**Database**: PostgreSQL 15 (warehouse) | Redis (cache) | SICOM (read-only legacy)
+**AI**: Gemini 2.0 Flash → DeepSeek (fallback) | LangChain | Vercel AI SDK 6.0
+**Integrations**: WhatsApp Business API (P0) | Gmail API | Sheets API | GCS/S3 | Vision/Textract OCR
+**Deployment**: Frontend Vercel | Backend GCP/AWS (client self-hosted) | **NO SaaS**
+**Dev Tools**: bun 1.3+ | Biome 2+ | Playwright
 
-## Tech Stack
-
-### Frontend
-**Framework:** Next.js 15 App Router
-**Language:** TypeScript 5.6+
-**Styling:** Tailwind CSS 4
-**UI:** shadcn/ui
-
-### Backend (CRÍTICO)
-**Framework:** Python 3.11+ + FastAPI
-**Reason:** PO lo pidió explícitamente - "herramienta más poderosa para análisis datos, matrices tridimensionales"
-**Transformation:** Datos no estructurados (más rápido que SQL para IA)
-
-### Database
-**Warehouse:** PostgreSQL 15 (datos transformados)
-**Caché:** Redis
-**Legacy:** SICOM (años 70-80, read-only, NO modificar)
-
-### AI/LLM
-**Model:** Gemini 2.0 Flash (primary) → DeepSeek (fallback)
-**Framework:** LangChain (orchestration)
-**SDK:** Vercel AI SDK 6.0 + @ai-sdk/react 3.0
-**Gateway:** Vercel AI Gateway (provider proxy, API key management)
-
-### Integrations
-**Google Workspace:** Gmail API (notificaciones), Sheets API (exportación familiar)
-**Storage:** Google Cloud Storage o AWS S3 (certificados, facturas OCR)
-**OCR:** Google Vision API o AWS Textract
-**WhatsApp:** Business API (Phase 1 - NO-NEGOCIABLE)
-
-### Deployment
-**Frontend:** Vercel Serverless
-**Backend:** Google Cloud Run o AWS Lambda (cliente elige)
-**CRITICAL:** Software se entrega (NO SaaS), cliente monta en su nube
-
-### Dev Tools
-**Package Manager:** bun 1.3+
-**Linter/Formatter:** Biome 2+
-**Testing:** Playwright (E2E)
-
-## Stack Deviations
-
-### Python Backend
-**Using:** FastAPI + Python 3.11 (además de Next.js)
-**Reason:** PO requirement - análisis datos complejo, ETL SICOM, transformación a datos no estructurados
-**Impact:** Monorepo con /src (frontend) y /api (backend Python)
-
-### Client-Hosted
-**Using:** Cliente monta en su nube (GCP o AWS)
-**Reason:** "Software se entrega, NO se alquila" - privacidad datos
-**Impact:** Sin Vercel backend, solo frontend. Backend en GCP/AWS del cliente.
-
-## File Structure (Monorepo)
-
-```
-.
-├── src/                  # Frontend Next.js
-│   ├── app/              # App Router
-│   ├── components/       # React components
-│   │   └── ui/           # shadcn/ui
-│   ├── lib/              # Business logic
-│   └── styles/           # Tailwind
-├── api/                  # Backend Python/FastAPI
-│   ├── main.py           # FastAPI app
-│   ├── routers/          # API routes
-│   ├── services/         # Business logic
-│   │   ├── sicom_etl.py  # ETL SICOM read-only
-│   │   ├── ai_agent.py   # Conversational AI
-│   │   └── ocr.py        # Invoice OCR
-│   └── models/           # Pydantic models
-├── docs/
-│   ├── prd-full.md       # PRD completo (26KB)
-│   ├── meets/            # Reuniones PO
-│   └── analisis-control-compras.md
-├── tests/
-└── .claude/
-```
-
-## Project Context
-
-### SICOM Legacy
-- Años 70-80, versión 2 sin upgrade
-- Pantalla negra, "bodega de datos sin consultas ágiles"
-- **CRÍTICO:** Read-only SIEMPRE, NO modificar datos
-
-### Excel Actual (a reemplazar)
-- 55 compras registradas (28 campos seguimiento)
-- Google Sheets manual
-- Cambios no autorizados frecuentes
-- Certificados calidad NO gestionados (campo vacío)
-
-### Caso Cartagena (Critical)
-- 3 facturas sobrecobro concreto pasaron inadvertidas
-- Se pagó de más 2 meses
-- Proveedor mandó nota crédito por error propio
-- **Feature R7** debe prevenir esto: alertas variación precios >10%
-
-### Super Usuario
-- **Liced Vega:** Encargada seguimiento (aparece en mayoría compras Excel)
-- Usuario piloto sugerido para MVP
-
-## Users & Roles (8-10)
-
-- Gerencia (2-3): Dashboards ejecutivos, proyecciones
-- Compras (3): Jefe + 2 auxiliares, Liced Vega = super usuario
-- Contabilidad (1): Validación facturas, cierre
-- Técnico (1): Consumo materiales por obra
-- Almacén (1): Control inventario
-
-## Critical Features (60+ Requirements)
-
-**Multi-Tenant (P0 - NUEVO 2025-12-24):**
-| ID | Feature | Priority | Note |
-|----|---------|----------|------|
-| R-MT1 | Consorcio as Tenant | P0 | Usar "Consorcio" no "Proyecto" en UI |
-| R-MT2 | One-Click Consortium Creation | P0 | "Un botoncito" replica config Contecsa |
-| R-MT4 | Cross-Tenant PO Tracking | P0 | Eliminar entrada dual (CRITICAL) |
-
-**Core Features:**
-| ID | Feature | Priority | Note |
-|----|---------|----------|------|
-| R-PROC1 | WhatsApp Requisitions | P0 | NO-NEGOCIABLE para adopción |
-| R-REPORT3 | Price Anomaly Detection | P0 | PREVENIR CASO CARTAGENA |
-| R-QUAL1 | Certificate Blocking | P0 | No cerrar PO sin certificados |
-| R-OCR1 | Invoice OCR via WhatsApp | P0 | Eliminar entrada manual |
-
-Ver `docs/prd.md` para 60+ requerimientos completos (12 módulos).
-
-## Development Commands
+## Commands
 
 ```bash
 # Frontend
-bun run dev              # http://localhost:3000
+bun run dev              # localhost:3000
 bun run build
 bun run lint
+bun run typecheck
+bun run test
 
-# Backend (Python)
+# Backend
 cd api
-python -m venv venv
-source venv/bin/activate
+python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
-uvicorn main:app --reload  # http://localhost:8000
+uvicorn main:app --reload  # localhost:8000
 ```
 
-## SDD + Quality Gates
+## Structure
 
-**Tracking Files:**
-| File | Purpose |
-|------|---------|
-| plan.md | Architecture + phases |
-| todo.md | Tasks [TODO/DOING/DONE] |
-| feature_list.json | F001-F014 features |
-| claude-progress.md | Session handoff |
+```
+src/                    # Frontend Next.js
+  app/                  # App Router
+  components/ui/        # shadcn/ui
+  lib/                  # Business logic
+api/                    # Backend Python/FastAPI
+  main.py               # FastAPI app
+  routers/              # API routes
+  services/             # sicom_etl.py, ai_agent.py, ocr.py
+  models/               # Pydantic models
+docs/                   # PRD, meets, analysis
+  prd.md                # 60+ requirements, 12 modules
+  meets/                # PO meetings transcripts
+tests/                  # E2E Playwright
+```
 
-**Quality Gates (CI):**
-| Gate | Command |
-|------|---------|
-| Format | `bun run format` |
-| Lint | `bun run lint` |
-| Types | `bun run typecheck` |
-| Tests | `bun run test` |
-| Build | `bun run build` |
+## Critical Architecture
 
-**Feature Specs:** docs/features/r01-r14 (already exist)
-**CI:** .github/workflows/ci.yml
+**Multi-Tenant (P0 - 2025-12-24)**:
+- Contecsa = master tenant
+- 9+ consortiums = separate tenants (distinct legal entities)
+- Cross-tenant PO tracking (eliminate dual entry)
+- Use "Consorcio" not "Proyecto" in UI
 
-## For Claude Code
+**SICOM Legacy**:
+- 1970-80s system, version 2, no upgrades
+- Black screen, "data warehouse without agile queries"
+- **READ-ONLY ALWAYS** - NEVER modify data
 
-**Critical Rules:**
-- **Multi-tenant architecture MANDATORIO** - Contecsa + 9 consorcios
-- **WhatsApp integration P0** - Interfaz principal para campo (NO-NEGOCIABLE)
-- SICOM es read-only - NUNCA modificar datos
-- Python backend es mandatorio (PO requirement)
-- Certificados bloqueantes para cierre compras (R-QUAL1)
-- Cross-tenant PO tracking (R-MT4) - Eliminar entrada dual
-- Simplicity > Features (complejidad → no uso)
-- Quality gates MUST pass before merge
+**Case Cartagena (Business Critical)**:
+- 3 invoices concrete overbilling undetected
+- Overpaid 2 months
+- Feature R-REPORT3 must prevent: price variation alerts >10%
 
-**NO INVENTAR:**
-- Stack validado con PO en meet 2025-12-22
-- **Multi-tenant validado en meet 2025-12-24** (Alberto Ceballos)
-- Ver `docs/meets/contecsa-alberto-ceballos-12-24-2025.txt` para contexto multi-tenant
-- Ver `docs/meets/contecsa_meet_2025-12-22.txt` para contexto inicial
-- Ver `docs/analisis-control-compras.md` para flujo actual
+## P0 Features
 
-**Decision Filter (ClaudeCode&OnlyMe):**
-- 2 personas: Javier + Claude Code
-- Deployment: Cliente self-host (NO SaaS)
-- NO sugerir herramientas para equipos 5+
+| ID | Feature | Why Critical |
+|----|---------|--------------|
+| R-MT4 | Cross-Tenant PO Tracking | Eliminate dual entry (PO in Contecsa → warehouse in Consortium) |
+| R-PROC1 | WhatsApp Requisitions | NO-NEGOTIABLE for field adoption |
+| R-REPORT3 | Price Anomaly Detection | Prevent Cartagena case |
+| R-QUAL1 | Certificate Blocking | No PO close without quality certificates |
+| R-OCR1 | Invoice OCR via WhatsApp | Eliminate manual entry |
+| R-MT2 | One-Click Consortium Creation | "Un botoncito" replicates Contecsa config |
 
-## Important Links
+Full: 60+ requirements in docs/prd.md
 
-- **PRD completo:** `docs/prd.md` (1900 líneas, 60+ reqs, 12 módulos)
-- **Meet Alberto (2025-12-24):** `docs/meets/contecsa-alberto-ceballos-12-24-2025.txt` (multi-tenant)
-- Meet PO inicial: `docs/meets/contecsa_meet_2025-12-22.txt`
-- Análisis Excel: `docs/analisis-control-compras.md`
-- Business context: `docs/business-context.md`
-- Company: `/neero/CLAUDE.md`
-- Global: `docs-global/README.md`
+## Standards
+
+- TypeScript strict mode | Functional > OOP | Early returns
+- 2 spaces | 100 chars | Single quotes | Semicolons
+- Files <600 lines | NO EMOJIS
+- Quality gates MUST pass before merge (format/lint/types/tests/build)
+
+## Tracking
+
+| File | Purpose | Max |
+|------|---------|-----|
+| plan.md | Architecture + phases | 50 lines |
+| todo.md | Tasks [TODO/DOING/DONE] | 50 lines |
+| feature_list.json | F001-F014 features | - |
+| claude-progress.md | Session handoff | Rolling |
+
+## Critical Rules
+
+**MANDATORIO**:
+- Multi-tenant architecture (Contecsa + 9 consortiums)
+- WhatsApp integration P0 (primary field interface)
+- SICOM read-only ALWAYS (NEVER modify)
+- Python backend (PO requirement - data analysis)
+- Quality certificates blocking (R-QUAL1)
+- Cross-tenant PO tracking (R-MT4 - eliminate dual entry)
+- Client self-hosted (software delivered, NOT SaaS)
+
+**NO INVENTAR**:
+- Stack validated meet 2025-12-22
+- Multi-tenant validated meet 2025-12-24 (Alberto Ceballos)
+- See docs/meets/ for full context
+- See docs/analisis-control-compras.md for current flow
+
+**Decision Filter (ClaudeCode&OnlyMe)**:
+- 2 people: Javier + Claude Code
+- NO tools for teams 5+
+- Simplicity > Features (complexity → no usage)
+
+## Super User
+
+**Liced Vega**: Purchasing tracking lead (appears in majority Excel purchases)
+Suggested pilot user for MVP
+
+## Codebase Indexing
+
+**Context Files** (cross-platform AI support):
+- `.context.md` - Repomix generated (73K tokens, auto-updated by CI)
+- `.index/skeleton.json` - Machine-readable structure
+- `.index/stats.json` - Code statistics
+- `ARCHITECTURE.md` - Human + AI readable architecture
+
+**Regenerate Context**:
+```bash
+repomix  # Uses repomix.config.json
+```
+
+**Cross-Platform Usage**:
+- Claude Code: Auto-loads CLAUDE.md + ARCHITECTURE.md
+- GPT/Gemini: `cat .context.md | pbcopy` then paste
+- Cursor: See `.cursor/rules/` (if created)
+
+**CI**: `.github/workflows/index.yml` auto-regenerates on push to main
+
+## Key Docs
+
+- `docs/prd.md` - Full PRD (1900 lines, 60+ reqs, 12 modules)
+- `docs/meets/contecsa-alberto-ceballos-12-24-2025.txt` - Multi-tenant context
+- `docs/meets/contecsa_meet_2025-12-22.txt` - Initial PO context
+- `docs/analisis-control-compras.md` - Current workflow
+- `docs/business-context.md` - Business context
+- `ARCHITECTURE.md` - Architecture overview (token-efficient)
+
+---
+**Tokens**: ~950 | **Optimization**: v2.1 added codebase indexing
