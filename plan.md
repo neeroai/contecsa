@@ -45,7 +45,7 @@ Version: 1.2 | Date: 2025-12-31 12:00 | Owner: Javier Polo | Status: Active
 - [x] AI SDK v6 integration
 - [x] Documentation structure
 - [x] Quality gates CI/CD
-- [x] Codebase indexing (Repomix + CI auto-update)
+- [x] Codebase indexing (Manual tree+rg + CI auto-update)
 - [ ] Database schema
 
 ### Phase 2: ETL + Data Layer
@@ -78,7 +78,6 @@ Version: 1.2 | Date: 2025-12-31 12:00 | Owner: Javier Polo | Status: Active
 | PostgreSQL | Data warehouse | Pending |
 | Gemini 2.0 Flash | Primary LLM | Configured |
 | Vercel | Frontend deploy | Active |
-| Repomix | Codebase indexing | Active |
 | GitHub Actions | CI/CD + Index regen | Active |
 
 ---

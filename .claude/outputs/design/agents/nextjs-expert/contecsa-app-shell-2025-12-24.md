@@ -138,8 +138,8 @@ src/
 - Responsive (collapses on mobile)
 
 **Mock Data:**
-- User: Liced Vega (super user from PRD)
-- Email: liced.vega@contecsa.com
+- User: Alberto Ceballos (super user from PRD)
+- Email: aceballos@contecsa.com
 - 3 notification placeholders
 - Role switching redirects to /dashboard/{role}
 

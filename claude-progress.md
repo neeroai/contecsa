@@ -1,5 +1,55 @@
 # Session Progress: Contecsa
 
+Date: 2026-01-06 23:00
+
+---
+
+## Current Session
+
+**Ultra-Simplificación de Indexación (2026-01-06)**
+
+**Problema detectado:**
+- Duplicación masiva: 5 archivos (REPO_MAP.md, STRUCTURE.md, stats.yaml, skeleton.json, stats.json)
+- Complejidad innecesaria: 2 directorios (.context/, .index/)
+- STRUCTURE.md/stats.yaml eran conversiones redundantes de skeleton.json/stats.json
+
+**Solución implementada:**
+1. **Eliminación total de duplicados:**
+   - ❌ Deleted: `.context.md` (repomix output - 292KB)
+   - ❌ Deleted: `repomix.config.json`
+   - ❌ Deleted: `.context/STRUCTURE.md` (duplicado de skeleton.json)
+   - ❌ Deleted: `.context/stats.yaml` (duplicado de stats.json)
+   - ❌ Deleted: `.index/skeleton.json`
+   - ❌ Deleted: `.index/stats.json`
+   - ❌ Deleted: Directorio `.index/` completo
+   - ✅ Kept: Solo `.context/REPO_MAP.md`
+
+2. **Documentación actualizada:**
+   - `CLAUDE.md` - Tabla de context files simplificada (3 archivos → 3 archivos, sin .index/)
+   - `docs/codebase-indexing.md` - Reescrito para enfoque minimalista
+   - `.context/REPO_MAP.md` - Token budgets actualizados
+   - `.github/workflows/index.yml` - Simplificado (solo genera REPO_MAP.md)
+
+**Resultado final:**
+- **1 solo archivo** (vs 5 anteriores)
+- **1 solo directorio** (vs 2 anteriores)
+- **80% reducción de archivos** (5 → 1 archivo)
+- **Base context: 1.5K tokens** (CLAUDE + ARCHITECTURE)
+- **Max context: 3K tokens** (con REPO_MAP.md)
+- **96% token savings** vs carga completa del codebase
+
+**Filosofía:**
+- Simplicidad extrema: Un archivo es mejor que cinco
+- Herramientas estándar: `tree` + `rg` (sin dependencias)
+- Mantenimiento manual: Git-tracked, parte del repo
+- Escalable: Crece con el proyecto, no necesita rebuild
+
+**Rationale:** Para repos pequeños (<100 archivos), la indexación compleja es overhead innecesario. `rg` directo + 1 archivo de navegación es más simple y rápido.
+
+---
+
+## Previous Session
+
 Date: 2025-12-31 12:00
 
 ---

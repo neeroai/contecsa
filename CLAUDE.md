@@ -126,30 +126,40 @@ Full: 60+ requirements in docs/prd.md
 - NO tools for teams 5+
 - Simplicity > Features (complexity → no usage)
 
-## Super User
+## Operational Constitution (Context Management)
 
-**Liced Vega**: Purchasing tracking lead (appears in majority Excel purchases)
-Suggested pilot user for MVP
+**Principle**: 200K context window ≠ "use it all". Search first, load 2-5 files, iterate.
 
-## Codebase Indexing
+**Context Files** (load in this order):
 
-**Context Files** (cross-platform AI support):
-- `.context.md` - Repomix generated (73K tokens, auto-updated by CI)
-- `.index/skeleton.json` - Machine-readable structure
-- `.index/stats.json` - Code statistics
-- `ARCHITECTURE.md` - Human + AI readable architecture
+| File | Purpose | Tokens | When to Load |
+|------|---------|--------|--------------|
+| `CLAUDE.md` | Project rules + stack | ~1K | Every session start |
+| `ARCHITECTURE.md` | System design | ~500 | Every session start |
+| `.context/REPO_MAP.md` | Symbol index | ~1.5K | Navigation queries |
 
-**Regenerate Context**:
+**Base context**: ~1.5K tokens (CLAUDE.md + ARCHITECTURE.md)
+**With navigation**: +1.5K tokens (REPO_MAP.md) = ~3K total max
+
+**Navigation Protocol** (MANDATORIO):
+1. **Search first**: `rg '<symbol|endpoint|keyword>'` to locate
+2. **Open 2-5 files**: Most probable files based on search results
+3. **Iterate**: Expand search if needed, but stay focused
+4. **NO leas todo**: Never Glob + Read all files upfront
+
+**Noise directories** (ignored in searches):
+- `node_modules/`, `dist/`, `build/`, `.next/`, `coverage/`, `.git/`
+- `.archive/`, `_archive/`
+
+**Regenerate Indices**:
 ```bash
-repomix  # Uses repomix.config.json
+# REPO_MAP.md (pragmatic approach using tree + rg)
+mkdir -p .context
+tree -L 3 -I 'node_modules|dist|build|.next|coverage|.git' > .context/REPO_MAP.md
+rg -n --glob '*.ts' --glob '*.tsx' '^(export |export default )' src/ >> .context/REPO_MAP.md
+
+# CI auto-regenerates: .github/workflows/index.yml (daily + on push to main)
 ```
-
-**Cross-Platform Usage**:
-- Claude Code: Auto-loads CLAUDE.md + ARCHITECTURE.md
-- GPT/Gemini: `cat .context.md | pbcopy` then paste
-- Cursor: See `.cursor/rules/` (if created)
-
-**CI**: `.github/workflows/index.yml` auto-regenerates on push to main
 
 ## Key Docs
 
@@ -161,4 +171,5 @@ repomix  # Uses repomix.config.json
 - `ARCHITECTURE.md` - Architecture overview (token-efficient)
 
 ---
-**Tokens**: ~950 | **Optimization**: v2.1 added codebase indexing
+**Tokens**: ~1.1K | **Version**: 2.2 | **Date**: 2026-01-06 19:30
+**Optimization**: v2.2 added Operational Constitution (REPO_MAP.md + navigation protocol)

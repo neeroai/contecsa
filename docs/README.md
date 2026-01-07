@@ -1,6 +1,6 @@
 # Contecsa Documentation
 
-Version: 1.0 | Date: 2025-12-23 01:30 | Type: Index | Status: Active
+Version: 1.1 | Date: 2026-01-06 19:30 | Type: Index | Status: Active
 
 ---
 
@@ -16,8 +16,9 @@ Documentación completa del Sistema de Inteligencia de Datos para Contecsa. Incl
 
 **For Developers:**
 1. Start here: [Development Guide](development-guide.md)
-2. Understand the system: [Architecture Overview](architecture-overview.md)
-3. Review API: [API Documentation](api-documentation.md)
+2. Learn navigation: [Codebase Indexing](codebase-indexing.md) (token-efficient context)
+3. Understand the system: [Architecture Overview](architecture-overview.md)
+4. Review API: [API Documentation](api-documentation.md)
 
 **For Product/Business:**
 1. Start here: [Business Context](business-context.md)
@@ -52,6 +53,7 @@ Documentación completa del Sistema de Inteligencia de Datos para Contecsa. Incl
 | Document | Description | Audience |
 |----------|-------------|----------|
 | [Development Guide](development-guide.md) | Setup (frontend + Python backend), Git workflow, testing, debugging, code style | All Developers |
+| [Codebase Indexing](codebase-indexing.md) | REPO_MAP system, navigation protocol, token-efficient context loading (95% savings) | AI Tools, Developers |
 | [API Documentation](api-documentation.md) | RESTful API endpoints, request/response schemas, authentication, error handling | Backend Developers, API Consumers |
 
 ---
@@ -151,6 +153,11 @@ All documentation follows Neero standards:
 
 ## Navigation Tips
 
+**For AI Tools (Claude Code, GPT, Gemini):**
+- Load context efficiently: [Codebase Indexing](codebase-indexing.md)
+- Base context: CLAUDE.md → ARCHITECTURE.md → REPO_MAP.md (~4K tokens vs 75K)
+- Navigation protocol: Search first → 2-5 files → iterate
+
 **By Role:**
 - **Developers:** Start with [Development Guide](development-guide.md)
 - **Architects:** Start with [Architecture Overview](architecture-overview.md)
@@ -188,7 +195,7 @@ When updating documentation:
 
 ---
 
-**Total Documentation:** 26 files (24 created, 2 updated)
+**Total Documentation:** 27 files (25 created, 2 updated)
 **Completion:** 96% (25 complete, 1 awaiting approval: R14)
-**Last Updated:** 2025-12-23 15:00
-**Recent:** Added R14 (Seguimiento EVM) - Research complete, awaiting user approval
+**Last Updated:** 2026-01-06 19:30
+**Recent:** Added Codebase Indexing system (REPO_MAP.md, 95% token savings)

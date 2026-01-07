@@ -52,7 +52,7 @@ Version: 1.3 | Date: 2025-12-31 12:00 | Owner: Javier Polo | Status: Active
 | T-SDD-011 | Update tracking files (plan.md, todo.md) | 2025-12-24 | 5a59fce |
 | T-IDX-001 | Create .claudeignore | 2025-12-31 | - |
 | T-IDX-002 | Create ARCHITECTURE.md | 2025-12-31 | - |
-| T-IDX-003 | Install Repomix + generate .context.md | 2025-12-31 | - |
+| T-IDX-003 | Generate .context/REPO_MAP.md (tree + rg) | 2025-12-31 | - |
 | T-IDX-004 | Create .index/ structure (skeleton.json, stats.json) | 2025-12-31 | - |
 | T-IDX-005 | Create GitHub Action for index auto-update | 2025-12-31 | - |
 | T-IDX-006 | Create templates in docs-global/templates/indexing/ | 2025-12-31 | - |
