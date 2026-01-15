@@ -1,3 +1,12 @@
+---
+title: "Contecsa Strategic and Operational Analysis - Research"
+summary: "Comprehensive research including corporate profile, verified project inventory (9 consortiums), supply chain mapping, and compliance risk analysis. Identifies Cartagena case lessons and data integrity requirements for system design."
+description: "Research: Contecsa corporate profile, project inventory, supply chain, compliance risks"
+date: "2025-12-22"
+updated: "2026-01-15 14:30"
+scope: "project"
+---
+
 # **Project Context Pack: Análisis Estratégico y Operativo de Contecsa S.A.S.**
 
 ## **Resumen Ejecutivo**

@@ -1,6 +1,13 @@
-# Architecture Overview - Contecsa
+---
+title: "Contecsa System Architecture and Components"
+summary: "Complete 5-layer system architecture (Presentation, Intelligence, Application, Data, Integration) with multi-tenant model supporting Contecsa + 9 consortiums. For architects and developers designing or extending the platform."
+description: "Architecture design: layers, component relationships, multi-tenant model, cross-tenant PO tracking"
+date: "2025-12-24"
+updated: "2026-01-15 14:30"
+scope: "project"
+---
 
-Version: 1.3 | Date: 2025-12-24 11:40
+# Architecture Overview - Contecsa
 
 ## System Architecture
 

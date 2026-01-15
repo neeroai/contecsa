@@ -1,6 +1,13 @@
-# Contecsa Architecture
+---
+title: "Contecsa System Architecture Overview"
+summary: "High-level architecture overview with structure, data flow, multi-tenant model, and critical rules. Reference guide for understanding system components and deployment topology."
+description: "Architecture overview: structure, data flow, multi-tenant design, SICOM integration"
+date: "2025-12-31"
+updated: "2026-01-15 14:30"
+scope: "project"
+---
 
-Version: 1.0 | Date: 2025-12-31
+# Contecsa Architecture
 
 ## Overview
 

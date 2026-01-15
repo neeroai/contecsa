@@ -1,6 +1,13 @@
-# Tech Stack Detailed - Contecsa
+---
+title: "Contecsa Technology Stack and Justifications"
+summary: "Complete technology stack (Next.js 15, FastAPI, PostgreSQL, Gemini 2.0, WhatsApp API) with decision rationale and cost comparisons. For engineers evaluating stack choices and understanding technology tradeoffs."
+description: "Tech stack justification: frontend, backend, database, AI, integrations, cost analysis"
+date: "2025-12-23"
+updated: "2026-01-15 14:30"
+scope: "project"
+---
 
-Version: 1.1 | Date: 2025-12-23 13:15
+# Tech Stack Detailed - Contecsa
 
 ## Stack Philosophy
 

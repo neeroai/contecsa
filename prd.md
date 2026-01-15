@@ -1,7 +1,11 @@
-# PRD - Sistema de Inteligencia de Datos Contecsa
-
-Version: 3.0 | Date: 2025-12-22 20:30 | Owner: Neero SAS | Status: Active
-
+---
+title: "Contecsa Data Intelligence System - Product Requirements"
+summary: "Complete PRD for AI-powered data intelligence system replacing manual Excel purchasing. 60+ requirements across 12 modules including multi-tenant support, WhatsApp integration, SICOM ETL, and compliance features. For product, engineering, and business stakeholders."
+description: "PRD for Contecsa system: requirements, use cases, modules, acceptance criteria"
+date: "2025-12-22"
+updated: "2026-01-15 14:30"
+scope: "project"
+owner: "Neero SAS"
 ---
 
 ## Resumen Ejecutivo

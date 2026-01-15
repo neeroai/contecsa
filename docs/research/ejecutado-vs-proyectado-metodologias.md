@@ -1,7 +1,15 @@
+---
+title: "Contecsa Methodology Research - Executed vs Projected Tracking"
+summary: "Research comparing EVM, Curva S, and Hybrid methodologies for construction project tracking. Recommends simplified hybrid approach (CPI/SPI + Curva S) with Python implementation. Includes KPI tiers and 3-phase rollout plan for MVP."
+description: "Research: project tracking methodologies, EVM vs Curva S comparison, KPI recommendations"
+date: "2025-12-23"
+updated: "2026-01-15 14:30"
+scope: "project"
+---
+
 # Investigación: Metodologías de Seguimiento Ejecutado vs Proyectado - Construcción
 
 **Research Analyst - Neero SAS**
-Version: 1.0 | Date: 2025-12-23 12:30 | Status: Completed
 **Cliente:** Contecsa (Construcción/Obras Civiles - Colombia)
 **Objetivo:** Metodologías control avance físico-financiero para implementar en sistema Python/Next.js
 
