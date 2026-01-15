@@ -1,12 +1,8 @@
 /**
- * Project and Consortium Types
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 12:00
- *
- * Defines projects, consortium structures, budgets, and EVM metrics.
- * Critical for F010 Proyección Financiera and F014 Seguimiento EVM.
- * 9 consorcios tracked: PAVICONSTRUJC, EDUBAR-KRA50, PTAR, etc.
+ * @file Project and Consortium Types
+ * @description Tipos para proyectos, consorcios, presupuestos y métricas EVM
+ * @module lib/mockup-data/types/project
+ * @exports ProjectStatus, ProjectStatusEnum, EVMMetrics, BudgetLine, Budget, Forecast, Consortium, ConsortiumMember, Project, ProjectMonthlySummary, ProjectFilter, ProjectStatusSchema, BudgetLineSchema, BudgetSchema, EVMMetricsSchema, ForecastSchema, ConsortiumMemberSchema, ConsortiumSchema, ProjectSchema, ProjectMonthlySummarySchema, ProjectFilterSchema
  */
 
 import { z } from 'zod';

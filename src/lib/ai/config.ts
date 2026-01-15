@@ -1,13 +1,26 @@
 /**
- * AI SDK v6 + Vercel AI Gateway Configuration
- *
- * AI Gateway handles provider proxy:
- * - Primary: Gemini (gemini-2.0-flash-exp)
- * - Fallback: DeepSeek (configured in AI Gateway dashboard)
- *
- * NO need for @ai-sdk/google - AI Gateway is default provider
+ * @file AI Model Configuration
+ * @description Configuración de Vercel AI Gateway con Gemini 2.0 Flash como proveedor primario
+ * @module lib/ai/config
+ * @exports aiConfig
  */
 
+/**
+ * AI Gateway and model configuration for Gemini 2.0 Flash
+ * Configure model name, temperature (creativity), and token limits for responses
+ *
+ * @example
+ * ```ts
+ * import { aiConfig } from '@/lib/ai/config';
+ *
+ * const response = await generateText({
+ *   model: aiConfig.defaultModel,
+ *   temperature: aiConfig.temperature,
+ *   maxTokens: aiConfig.maxTokens,
+ *   prompt: 'Analyze this purchase order...'
+ * });
+ * ```
+ */
 export const aiConfig = {
   // Using AI Gateway - model as string (default provider)
   defaultModel: 'gemini-2.0-flash-exp',

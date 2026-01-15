@@ -1,3 +1,10 @@
+/**
+ * @file Navigation Type Definitions
+ * @description Define tipos para estructura de navegación, roles de usuario e información de perfil
+ * @module lib/types/navigation
+ * @exports UserRole, NavItem, NavGroup, UserInfo
+ */
+
 import type { LucideIcon } from 'lucide-react';
 
 export type UserRole = 'gerencia' | 'compras' | 'contabilidad' | 'tecnico' | 'almacen';

@@ -1,15 +1,8 @@
 /**
- * Central Export for All Mockup Data Types
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 12:00
- *
- * This module aggregates and re-exports all type definitions and Zod schemas
- * for the mockup data layer. Provides clean, organized imports for the application.
- *
- * Usage:
- *   import type { Purchase, User, Invoice } from '@/lib/mockup-data/types'
- *   import { PurchaseSchema, UserSchema } from '@/lib/mockup-data/types'
+ * @file Mockup Data Types - Barrel Export
+ * @description Exportación centralizada de todos los tipos y esquemas Zod para la capa de datos
+ * @module lib/mockup-data/types/index
+ * @exports Role, User, UserProfile, UserPreferences, AuthSession, RoleMetadata, PurchaseState, StatusColor, AuditLogEntry, Purchase, PurchaseMaterial, Attachment, PurchaseNote, AlertFlag, StateMetadata, OCRConfidence, InvoiceStatus, ExtractedFields, ExtractedField, ValidationResult, ValidationError, ValidationWarning, PriceVariance, Invoice, InvoiceLineMatch, InvoiceAttachment, InvoiceAuditEntry, MaterialCategory, MaterialStatus, PriceHistoryEntry, Material, MaterialFilter, MaterialComparison, SupplierPricingInfo, CategoryMetadata, ProjectStatus, EVMMetrics, BudgetLine, Budget, Forecast, Consortium, ConsortiumMember, Project, ProjectMonthlySummary, ProjectFilter, MovementType, WarehouseLocation, StockLevel, MaterialMovement, InventoryCount, InventoryCountLine, ConsumptionForecast, Inventory, InventoryAlert, InventorySummary, CertificateType, CertificateStatus, CertificateVerification, Certificate, CertificateRequirement, CertificateAlert, CertificateReport, CertificateBlockerStatus, CertificateBatchUpdate, CertificateTypeMetadata, NotificationType, AlertPriority, AlertType, NotificationChannel, DeliveryStatus, NotificationMetadata, DeliveryAttempt, NotificationRule, NotificationTarget, Notification, NotificationTemplate, NotificationDigest, NotificationStats, RoleEnum, ROLE_METADATA, RoleSchema, UserPreferencesSchema, UserSchema, UserProfileSchema, AuthSessionSchema, PurchaseStateEnum, PURCHASE_STATE_METADATA, STATE_TRANSITIONS, PurchaseStateSchema, StatusColorSchema, AuditLogEntrySchema, PurchaseMaterialSchema, AttachmentSchema, PurchaseNoteSchema, AlertFlagSchema, PurchaseSchema, OCRConfidenceEnum, InvoiceStatusEnum, OCRConfidenceSchema, InvoiceStatusSchema, ExtractedFieldsSchema, ValidationErrorSchema, ValidationWarningSchema, ValidationResultSchema, PriceVarianceSchema, InvoiceLineMatchSchema, InvoiceAttachmentSchema, InvoiceAuditEntrySchema, InvoiceSchema, MaterialCategoryEnum, MaterialStatusEnum, MATERIAL_CATEGORY_METADATA, MaterialCategorySchema, MaterialStatusSchema, PriceHistoryEntrySchema, MaterialSchema, MaterialFilterSchema, SupplierPricingInfoSchema, MaterialComparisonSchema, ProjectStatusEnum, ProjectStatusSchema, BudgetLineSchema, BudgetSchema, EVMMetricsSchema, ForecastSchema, ConsortiumMemberSchema, ConsortiumSchema, ProjectSchema, ProjectMonthlySummarySchema, ProjectFilterSchema, MovementTypeEnum, MovementTypeSchema, WarehouseLocationSchema, StockLevelSchema, MaterialMovementSchema, InventoryCountLineSchema, InventoryCountSchema, ConsumptionForecastSchema, InventoryAlertSchema, InventorySchema, InventorySummarySchema, CertificateTypeEnum, CertificateStatusEnum, CERTIFICATE_TYPE_METADATA, CertificateTypeSchema, CertificateStatusSchema, CertificateVerificationSchema, CertificateSchema, CertificateRequirementSchema, CertificateAlertSchema, CertificateBlockerStatusSchema, CertificateReportSchema, NotificationTypeEnum, AlertPriorityEnum, AlertTypeEnum, NotificationChannelEnum, DeliveryStatusEnum, NotificationTypeSchema, AlertPrioritySchema, AlertTypeSchema, NotificationChannelSchema, DeliveryStatusSchema, NotificationMetadataSchema, DeliveryAttemptSchema, NotificationTargetSchema, NotificationSchema, z
  */
 
 // ============================================================================

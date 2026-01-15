@@ -1,13 +1,8 @@
 /**
- * Certificate and HSE Compliance Types
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 12:00
- *
- * Defines certificate tracking, HSE compliance, and blocking gates.
- * Critical for F008 Gestión Certificados HSE feature.
- * CRITICAL: Certificate missing blocks purchase closure (Stage 6 -> Stage 7)
- * 7-year retention requirement (DIAN compliance)
+ * @file Certificate and HSE Compliance Types
+ * @description Tipos para certificados de calidad, seguridad y cumplimiento HSE
+ * @module lib/mockup-data/types/certificate
+ * @exports CertificateType, CertificateTypeEnum, CertificateTypeMetadata, CertificateStatus, CertificateStatusEnum, CertificateVerification, Certificate, CertificateRequirement, CertificateAlert, CertificateReport, CertificateBlockerStatus, CertificateBatchUpdate, CertificateTypeSchema, CertificateStatusSchema, CertificateVerificationSchema, CertificateSchema, CertificateRequirementSchema, CertificateAlertSchema, CertificateBlockerStatusSchema, CertificateReportSchema
  */
 
 import { z } from 'zod';

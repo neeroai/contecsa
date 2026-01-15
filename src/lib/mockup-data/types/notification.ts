@@ -1,12 +1,8 @@
 /**
- * Notification and Alert Types
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 12:00
- *
- * Defines notifications, alerts, and communication system.
- * Critical for F005 Sistema Notificaciones feature.
- * Integrates with Gmail API (250 req/sec, >99% delivery).
+ * @file Notification and Alert Types
+ * @description Tipos para notificaciones, alertas y sistema de comunicaciones
+ * @module lib/mockup-data/types/notification
+ * @exports NotificationType, NotificationTypeEnum, AlertPriority, AlertPriorityEnum, AlertType, AlertTypeEnum, NotificationChannel, NotificationChannelEnum, DeliveryStatus, DeliveryStatusEnum, NotificationMetadata, DeliveryAttempt, NotificationRule, NotificationTarget, Notification, NotificationTemplate, NotificationDigest, NotificationStats, NotificationTypeSchema, AlertPrioritySchema, AlertTypeSchema, NotificationChannelSchema, DeliveryStatusSchema, NotificationMetadataSchema, DeliveryAttemptSchema, NotificationTargetSchema, NotificationSchema
  */
 
 import { z } from 'zod';

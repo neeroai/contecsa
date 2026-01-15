@@ -1,12 +1,8 @@
 /**
- * Invoices Data Generator
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 13:00
- *
- * Generates 198 invoices (66/month × 3 months).
- * Includes "Caso Cartagena" scenario: 3 invoices with +15-20% price deviation.
- * OCR extracted fields with confidence scores and validation.
+ * @file Invoices Data Generator
+ * @description Genera 198 facturas con extracción OCR y detección de anomalías (Caso Cartagena)
+ * @module lib/mockup-data/generators/invoices
+ * @exports generateInvoices, INVOICES, getCasoCartagenaInvoices, getInvoicesByStatus, getInvoicesWithAnomalies, getInvoicesByPurchase, getInvoiceStats
  */
 
 import type {
@@ -458,7 +454,18 @@ function generateInvoice(index: number, month: number, isCasoCartagena = false):
 }
 
 /**
- * Generate all 198 invoices (66 per month × 3 months)
+ * Generate 198 invoices across 3 months (66/month) with OCR and anomaly detection
+ * Includes 3 "Caso Cartagena" invoices simulating overbilling scenario
+ *
+ * @returns Array of 198 Invoice objects with validation and price variance data
+ *
+ * @example
+ * ```ts
+ * const invoices = generateInvoices();
+ * console.log(invoices.length); // 198
+ * const casoCartagena = invoices.filter(i => i.anomalySeverity === 'CRIT');
+ * console.log(casoCartagena.length); // 3
+ * ```
  */
 export function generateInvoices(): Invoice[] {
   const invoices: Invoice[] = [];
@@ -485,7 +492,18 @@ export function generateInvoices(): Invoice[] {
 export const INVOICES = generateInvoices();
 
 /**
- * Helper: Get Caso Cartagena invoices
+ * Get "Caso Cartagena" invoices (overbilling scenario - 3 total)
+ * Simulates undetected price overbilling similar to Cartagena case
+ *
+ * @returns Array of 3 Invoice objects with CRIT anomaly severity
+ *
+ * @example
+ * ```ts
+ * const cartagena = getCasoCartagenaInvoices();
+ * console.log(cartagena.length); // 3
+ * console.log(cartagena[0].status); // "ANOMALY_DETECTED"
+ * console.log(cartagena[0].reviewNotes); // "CRÍTICO: Sobrecobro detectado..."
+ * ```
  */
 export function getCasoCartagenaInvoices(): Invoice[] {
   return INVOICES.filter(
@@ -494,28 +512,70 @@ export function getCasoCartagenaInvoices(): Invoice[] {
 }
 
 /**
- * Helper: Get invoices by status
+ * Get invoices by processing status
+ * Statuses: PENDING_OCR, OCR_EXTRACTED, PENDING_REVIEW, VALIDATED, ANOMALY_DETECTED, PAID, REJECTED
+ *
+ * @param status - Invoice status, e.g., "ANOMALY_DETECTED"
+ * @returns Array of invoices with status, empty if none found
+ *
+ * @example
+ * ```ts
+ * const anomalies = getInvoicesByStatus('ANOMALY_DETECTED');
+ * console.log(anomalies.length); // Invoices with anomalies
+ * ```
  */
 export function getInvoicesByStatus(status: InvoiceStatus): Invoice[] {
   return INVOICES.filter((inv) => inv.status === status);
 }
 
 /**
- * Helper: Get invoices with anomalies
+ * Get invoices with any price variance anomalies detected
+ * Includes all severity levels (MED, HIGH, CRIT) and all statuses
+ *
+ * @returns Array of invoices with detected price variances
+ *
+ * @example
+ * ```ts
+ * const anomalies = getInvoicesWithAnomalies();
+ * console.log(anomalies.length); // Invoices with any variance
+ * const critical = anomalies.filter(i => i.anomalySeverity === 'CRIT');
+ * ```
  */
 export function getInvoicesWithAnomalies(): Invoice[] {
   return INVOICES.filter((inv) => inv.hasAnomalies);
 }
 
 /**
- * Helper: Get invoices by purchase
+ * Get all invoices for a specific purchase
+ * Purchases can have 1+ invoices (split shipments, etc.)
+ *
+ * @param purchaseId - Purchase ID (UUID format)
+ * @returns Array of invoices for purchase, empty if none found
+ *
+ * @example
+ * ```ts
+ * const invoices = getInvoicesByPurchase(purchaseId);
+ * console.log(invoices.length); // Usually 1, sometimes multiple
+ * ```
  */
 export function getInvoicesByPurchase(purchaseId: string): Invoice[] {
   return INVOICES.filter((inv) => inv.purchaseId === purchaseId);
 }
 
 /**
- * Helper: Get invoice statistics
+ * Get aggregate statistics for all invoices
+ * Includes status distribution, anomaly counts, and monthly breakdown
+ *
+ * @returns Statistics object with total, byStatus, withAnomalies, casoCartagena, byMonth
+ *
+ * @example
+ * ```ts
+ * const stats = getInvoiceStats();
+ * console.log(stats.total); // 198
+ * console.log(stats.byStatus.paid); // ~100+
+ * console.log(stats.withAnomalies); // Invoices with variances
+ * console.log(stats.casoCartagena); // 3
+ * ```
  */
 export function getInvoiceStats() {
   return {

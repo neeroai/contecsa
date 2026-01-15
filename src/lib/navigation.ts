@@ -1,3 +1,10 @@
+/**
+ * @file Navigation by Role Configuration
+ * @description Define estructuras de navegación según roles de usuario (gerencia, compras, contabilidad, tecnico, almacen)
+ * @module lib/navigation
+ * @exports navigationByRole, roleLabels
+ */
+
 import {
   BarChart3,
   Boxes,
@@ -16,6 +23,17 @@ import {
 } from 'lucide-react';
 import type { NavGroup, UserRole } from './types/navigation';
 
+/**
+ * Navigation structure per user role configuration
+ * Maps each role (gerencia, compras, contabilidad, tecnico, almacen) to menu items
+ *
+ * @example
+ * ```ts
+ * const gerenciaNav = navigationByRole['gerencia'];
+ * // Returns navigation groups with Dashboard, Proyectos, Presupuesto, EVM
+ * gerenciaNav.forEach(group => console.log(group.title));
+ * ```
+ */
 export const navigationByRole: Record<UserRole, NavGroup[]> = {
   gerencia: [
     {
@@ -156,6 +174,17 @@ export const navigationByRole: Record<UserRole, NavGroup[]> = {
   ],
 };
 
+/**
+ * Human-readable labels for user roles used in UI
+ * Provides display names for role dropdowns and selection dialogs
+ *
+ * @example
+ * ```ts
+ * roleLabels['gerencia'] // 'Gerencia'
+ * roleLabels['compras'] // 'Compras'
+ * const label = roleLabels[userRole]; // Dynamic lookup
+ * ```
+ */
 export const roleLabels: Record<UserRole, string> = {
   gerencia: 'Gerencia',
   compras: 'Compras',

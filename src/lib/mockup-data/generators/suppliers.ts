@@ -1,11 +1,8 @@
 /**
- * Suppliers Data Generator
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 13:00
- *
- * Generates 20+ construction suppliers with realistic Colombian data.
- * Includes major suppliers: Argos, Cemex, Holcim, etc.
+ * @file Suppliers Data Generator
+ * @description Genera 20+ proveedores de construcción con datos colombianos realistas
+ * @module lib/mockup-data/generators/suppliers
+ * @exports generateSuppliers, SUPPLIERS, generateSupplier, getSupplierByName, getSuppliersByCategory, getRandomSupplier, getRandomSupplierByCategory, Supplier
  */
 
 import {
@@ -35,7 +32,19 @@ export interface Supplier {
 }
 
 /**
- * Generate a single supplier
+ * Generate a single construction materials supplier
+ * Creates supplier with NIT, address, and reliability score (75-98%)
+ *
+ * @param name - Supplier legal name, e.g., "Cementos Argos S.A."
+ * @param categories - Array of material categories, e.g., ["CEMENTO", "HORMIGON"]
+ * @param city - City name, random if not specified
+ * @returns Supplier object with contact and reliability info
+ *
+ * @example
+ * ```ts
+ * const supplier = generateSupplier('Cementos Argos S.A.', ['CEMENTO', 'HORMIGON']);
+ * console.log(supplier.reliability); // 75-98
+ * ```
  */
 export function generateSupplier(
   name: string,
@@ -81,7 +90,18 @@ export function generateSupplier(
 }
 
 /**
- * Generates all suppliers
+ * Generate 20+ Colombian construction materials suppliers
+ * Covers cement, steel, aggregates, wood, bricks, pipes, electrical, etc.
+ *
+ * @returns Array of 20+ Supplier objects across categories
+ *
+ * @example
+ * ```ts
+ * const suppliers = generateSuppliers();
+ * console.log(suppliers.length); // 20+
+ * const cementSuppliers = suppliers.filter(s => s.category.includes('CEMENTO'));
+ * console.log(cementSuppliers.length); // 4
+ * ```
  */
 export function generateSuppliers(): Supplier[] {
   const suppliers: Supplier[] = [];
@@ -165,28 +185,70 @@ export function generateSuppliers(): Supplier[] {
 export const SUPPLIERS = generateSuppliers();
 
 /**
- * Helper: Get supplier by name
+ * Get supplier by legal name
+ * Exact match on supplier name field
+ *
+ * @param name - Supplier legal name, e.g., "Cementos Argos S.A."
+ * @returns Supplier object if found, undefined otherwise
+ *
+ * @example
+ * ```ts
+ * const argos = getSupplierByName('Cementos Argos S.A.');
+ * console.log(argos?.category); // ["CEMENTO", "HORMIGON"]
+ * ```
  */
 export function getSupplierByName(name: string): Supplier | undefined {
   return SUPPLIERS.find((supplier) => supplier.name === name);
 }
 
 /**
- * Helper: Get suppliers by category
+ * Get all suppliers that supply a specific material category
+ * Suppliers can have multiple categories
+ *
+ * @param category - Material category, e.g., "CEMENTO"
+ * @returns Array of suppliers with category, empty if none found
+ *
+ * @example
+ * ```ts
+ * const cementSuppliers = getSuppliersByCategory('CEMENTO');
+ * console.log(cementSuppliers.length); // 4
+ * console.log(cementSuppliers[0].name); // "Cementos Argos S.A."
+ * ```
  */
 export function getSuppliersByCategory(category: string): Supplier[] {
   return SUPPLIERS.filter((supplier) => supplier.category.includes(category));
 }
 
 /**
- * Helper: Get random supplier
+ * Get random supplier from all suppliers using seeded RNG
+ * Deterministic - same supplier for same seed across calls
+ *
+ * @returns Random Supplier object from full catalog
+ *
+ * @example
+ * ```ts
+ * const supplier = getRandomSupplier();
+ * console.log(supplier.name); // e.g., "Acerías Paz del Río"
+ * console.log(supplier.reliability); // 75-98
+ * ```
  */
 export function getRandomSupplier(): Supplier {
   return rng.pick(SUPPLIERS);
 }
 
 /**
- * Helper: Get random supplier by category
+ * Get random supplier for specific category using seeded RNG
+ * Throws if category has no suppliers
+ *
+ * @param category - Material category, e.g., "ACERO"
+ * @returns Random Supplier in category, never undefined
+ * @throws {Error} When category not found or has no suppliers
+ *
+ * @example
+ * ```ts
+ * const steelSupplier = getRandomSupplierByCategory('ACERO');
+ * console.log(steelSupplier.category); // includes "ACERO"
+ * ```
  */
 export function getRandomSupplierByCategory(category: string): Supplier {
   const suppliers = getSuppliersByCategory(category);

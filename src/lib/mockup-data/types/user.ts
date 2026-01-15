@@ -1,11 +1,8 @@
 /**
- * User and Role Types
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 12:00
- *
- * Defines user roles, permissions, and profile information.
- * 5 roles: Gerencia, Compras, Contabilidad, Técnico, Almacén
+ * @file User and Role Types
+ * @description Tipos para usuarios, roles y permisos en la organización
+ * @module lib/mockup-data/types/user
+ * @exports Role, RoleEnum, RoleMetadata, ROLE_METADATA, User, UserProfile, UserPreferences, AuthSession, RoleSchema, UserPreferencesSchema, UserSchema, UserProfileSchema, AuthSessionSchema
  */
 
 import { z } from 'zod';

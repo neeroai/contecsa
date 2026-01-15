@@ -1,11 +1,8 @@
 /**
- * Users Data Generator
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 13:00
- *
- * Generates 10 users across 5 roles.
- * Includes Liced Vega (Compras - super user) as specified in requirements.
+ * @file Users Data Generator
+ * @description Genera 10 usuarios con 5 roles incluyendo Liced Vega como super-usuario
+ * @module lib/mockup-data/generators/users
+ * @exports generateUsers, USERS, getUsersByRole, getUserByName, getLicedVega, getRandomUserByRole
  */
 
 import type { Role, User } from '../types';
@@ -20,7 +17,28 @@ import {
 } from './utils';
 
 /**
- * Generate a single user
+ * Generate a single user with role and department
+ * Creates user with email, phone, and activity tracking
+ *
+ * @param id - User ID (UUID format, usually deterministic)
+ * @param firstName - First name, e.g., "Carlos"
+ * @param lastName - Last name, e.g., "Rodríguez"
+ * @param role - User role: gerencia, compras, contabilidad, tecnico, almacen
+ * @param department - Department name, e.g., "Compras"
+ * @param isActive - Default true, false for inactive users
+ * @returns User object with contact info and role
+ *
+ * @example
+ * ```ts
+ * const user = generateUser(
+ *   "user-123",
+ *   "Liced",
+ *   "Vega",
+ *   "compras",
+ *   "Compras"
+ * );
+ * console.log(user.role); // "compras"
+ * ```
  */
 export function generateUser(
   id: string,
@@ -50,8 +68,18 @@ export function generateUser(
 }
 
 /**
- * Generates all 10 users
+ * Generate 10 users across all roles including Liced Vega as super user
  * Distribution: 2 Gerencia, 3 Compras, 1 Contabilidad, 1 Técnico, 2 Almacén, 1 Inactive
+ *
+ * @returns Array of 10 User objects with all roles represented
+ *
+ * @example
+ * ```ts
+ * const users = generateUsers();
+ * console.log(users.length); // 10
+ * const liced = users.find(u => u.firstName === 'Liced');
+ * console.log(liced?.role); // "compras"
+ * ```
  */
 export function generateUsers(): User[] {
   const users: User[] = [];
@@ -136,14 +164,36 @@ export function generateUsers(): User[] {
 export const USERS = generateUsers();
 
 /**
- * Helper: Get user by role
+ * Get all active users with a specific role
+ * Filters only active users, excludes inactive test users
+ *
+ * @param role - Role filter: gerencia, compras, contabilidad, tecnico, almacen
+ * @returns Array of active users in role, empty if none found
+ *
+ * @example
+ * ```ts
+ * const purchasing = getUsersByRole('compras');
+ * console.log(purchasing.length); // 3
+ * console.log(purchasing[0].firstName); // "Liced"
+ * ```
  */
 export function getUsersByRole(role: Role): User[] {
   return USERS.filter((user) => user.role === role && user.isActive);
 }
 
 /**
- * Helper: Get specific user by name
+ * Get specific active user by first and last name
+ * Returns undefined if user inactive or not found
+ *
+ * @param firstName - First name to search, e.g., "Liced"
+ * @param lastName - Last name to search, e.g., "Vega"
+ * @returns User object if found and active, undefined otherwise
+ *
+ * @example
+ * ```ts
+ * const liced = getUserByName('Liced', 'Vega');
+ * console.log(liced?.role); // "compras"
+ * ```
  */
 export function getUserByName(firstName: string, lastName: string): User | undefined {
   return USERS.find(
@@ -152,7 +202,18 @@ export function getUserByName(firstName: string, lastName: string): User | undef
 }
 
 /**
- * Helper: Get Liced Vega (super user)
+ * Get Liced Vega (super user in purchasing department)
+ * Throws if not found (should never happen with proper generation)
+ *
+ * @returns Liced Vega user object (role: compras)
+ * @throws {Error} When Liced Vega not found in users
+ *
+ * @example
+ * ```ts
+ * const liced = getLicedVega();
+ * console.log(liced.department); // "Compras"
+ * console.log(liced.role); // "compras"
+ * ```
  */
 export function getLicedVega(): User {
   const liced = getUserByName('Liced', 'Vega');
@@ -163,7 +224,17 @@ export function getLicedVega(): User {
 }
 
 /**
- * Helper: Get random user by role
+ * Get random active user with specific role using seeded RNG
+ * Deterministic - same user for same seed across calls
+ *
+ * @param role - Role filter: gerencia, compras, contabilidad, tecnico, almacen
+ * @returns Random User with specified role, never undefined
+ *
+ * @example
+ * ```ts
+ * const randomBuyer = getRandomUserByRole('compras');
+ * console.log(randomBuyer.firstName); // e.g., "Liced"
+ * ```
  */
 export function getRandomUserByRole(role: Role): User {
   const roleUsers = getUsersByRole(role);

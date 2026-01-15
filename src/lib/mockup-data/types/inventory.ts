@@ -1,11 +1,8 @@
 /**
- * Inventory and Stock Management Types
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 12:00
- *
- * Defines inventory tracking, stock levels, and material movements.
- * Critical for F009 Control de Inventario feature.
+ * @file Inventory and Stock Management Types
+ * @description Tipos para control de inventario, niveles de stock y movimientos de materiales
+ * @module lib/mockup-data/types/inventory
+ * @exports MovementType, MovementTypeEnum, WarehouseLocation, StockLevel, MaterialMovement, InventoryCount, InventoryCountLine, ConsumptionForecast, Inventory, InventoryAlert, InventorySummary, MovementTypeSchema, WarehouseLocationSchema, StockLevelSchema, MaterialMovementSchema, InventoryCountLineSchema, InventoryCountSchema, ConsumptionForecastSchema, InventoryAlertSchema, InventorySchema, InventorySummarySchema
  */
 
 import { z } from 'zod';

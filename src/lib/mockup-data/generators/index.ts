@@ -1,11 +1,8 @@
 /**
- * Mockup Data Generators - Main Export
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 13:00
- *
- * Central export point for all mockup data generators.
- * Provides pre-generated data and generator functions.
+ * @file Mockup Data Generators - Main Export
+ * @description Punto central de exportación para todos los generadores de datos de mockup
+ * @module lib/mockup-data/generators
+ * @exports generateUsers, generateSuppliers, generateConsorcios, generateProjects, generateMaterials, generatePurchases, generateInvoices, USERS, SUPPLIERS, CONSORCIOS, PROJECTS, MATERIALS, PURCHASES, INVOICES, getMockupDataSummary, validateMockupData, MOCKUP_DATA, and all generator functions
  */
 
 // ============================================================================

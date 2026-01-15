@@ -1,13 +1,8 @@
 /**
- * Purchases Data Generator
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 13:00
- *
- * Generates 55 purchases matching Excel baseline.
- * Distribution: 7 REQUISICION, 9 APROBACION, 12 ORDEN, 8 CONFIRMACION,
- *               6 RECEPCION, 5 CERTIFICADOS, 8 CERRADO
- * 15 purchases >30d (at-risk), 3 purchases >45d (critical)
+ * @file Purchases Data Generator
+ * @description Genera 55 compras con 7 estados y alerts de atrasos y varianzas
+ * @module lib/mockup-data/generators/purchases
+ * @exports generatePurchases, PURCHASES, getPurchasesByState, getOverduePurchases, getPurchasesByProject, getPurchasesByColor, getPurchasesStats
  */
 
 import type {
@@ -349,7 +344,18 @@ function generatePurchase(index: number, state: PurchaseState, daysInProcess: nu
 }
 
 /**
- * Generate all 55 purchases
+ * Generate 55 purchases distributed across 7 states
+ * 15 overdue purchases (30+ days), 3 critical (45+ days), plus audit logs
+ *
+ * @returns Array of 55 Purchase objects with materials and state history
+ *
+ * @example
+ * ```ts
+ * const purchases = generatePurchases();
+ * console.log(purchases.length); // 55
+ * const overdue = purchases.filter(p => p.isOverdue);
+ * console.log(overdue.length); // 15
+ * ```
  */
 export function generatePurchases(): Purchase[] {
   const purchases: Purchase[] = [];
@@ -389,35 +395,88 @@ export function generatePurchases(): Purchase[] {
 export const PURCHASES = generatePurchases();
 
 /**
- * Helper: Get purchases by state
+ * Get all purchases in a specific state
+ * States: REQUISICION, APROBACION, ORDEN, CONFIRMACION, RECEPCION, CERTIFICADOS, CERRADO
+ *
+ * @param state - Purchase state, e.g., "APROBACION"
+ * @returns Array of purchases in state, empty if none found
+ *
+ * @example
+ * ```ts
+ * const approved = getPurchasesByState('APROBACION');
+ * console.log(approved.length); // 9
+ * ```
  */
 export function getPurchasesByState(state: PurchaseState): Purchase[] {
   return PURCHASES.filter((p) => p.state === state);
 }
 
 /**
- * Helper: Get overdue purchases
+ * Get all overdue purchases (>30 days in process)
+ * Includes 12 at-risk (30-45d) and 3 critical (>45d) purchases
+ *
+ * @returns Array of overdue Purchase objects, length ~15
+ *
+ * @example
+ * ```ts
+ * const overdue = getOverduePurchases();
+ * console.log(overdue.length); // ~15
+ * const critical = overdue.filter(p => p.daysInProcess > 45);
+ * console.log(critical.length); // 3
+ * ```
  */
 export function getOverduePurchases(): Purchase[] {
   return PURCHASES.filter((p) => p.isOverdue);
 }
 
 /**
- * Helper: Get purchases by project
+ * Get all purchases for a specific project
+ * Projects can have multiple purchase orders
+ *
+ * @param projectId - Project ID (UUID format)
+ * @returns Array of purchases for project, empty if none found
+ *
+ * @example
+ * ```ts
+ * const projectPurchases = getPurchasesByProject(projectId);
+ * console.log(projectPurchases.length); // Varies per project
+ * ```
  */
 export function getPurchasesByProject(projectId: string): Purchase[] {
   return PURCHASES.filter((p) => p.projectId === projectId);
 }
 
 /**
- * Helper: Get purchases by status color
+ * Get all purchases by status color (green/yellow/red)
+ * Color based on days in process: green <15d, yellow 15-30d, red >30d
+ *
+ * @param color - Status color, "green" | "yellow" | "red"
+ * @returns Array of purchases matching color, empty if none found
+ *
+ * @example
+ * ```ts
+ * const redPurchases = getPurchasesByColor('red');
+ * console.log(redPurchases.length); // 15+ critical/at-risk
+ * ```
  */
 export function getPurchasesByColor(color: StatusColor): Purchase[] {
   return PURCHASES.filter((p) => p.statusColor === color);
 }
 
 /**
- * Helper: Get purchases statistics
+ * Get aggregate statistics for all purchases
+ * Includes state distribution, overdue counts, and color breakdown
+ *
+ * @returns Statistics object with total, byState, overdue, critical, atRisk, byColor
+ *
+ * @example
+ * ```ts
+ * const stats = getPurchasesStats();
+ * console.log(stats.total); // 55
+ * console.log(stats.byState.CERRADO); // 8
+ * console.log(stats.overdue); // 15
+ * console.log(stats.byColor.red); // 15+
+ * ```
  */
 export function getPurchasesStats() {
   return {

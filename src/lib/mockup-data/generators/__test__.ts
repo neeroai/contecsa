@@ -1,11 +1,8 @@
 /**
- * Simple Test for Mockup Data Generators
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 13:30
- *
- * Quick validation that all generators produce correct data.
- * Run with: bun run src/lib/mockup-data/generators/__test__.ts
+ * @file Mockup Data Test Runner
+ * @description Validación rápida de que todos los generadores producen datos correctos
+ * @module lib/mockup-data/generators/__test__
+ * @exports N/A (test file)
  */
 
 import {

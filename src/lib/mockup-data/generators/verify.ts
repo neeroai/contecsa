@@ -1,5 +1,8 @@
 /**
- * Quick verification that generators can be imported and executed
+ * @file Quick Generators Verification Script
+ * @description Verifica que todos los generadores se importan y ejecutan correctamente
+ * @module lib/mockup-data/generators/verify
+ * @exports N/A (test script)
  */
 
 // Import all generators

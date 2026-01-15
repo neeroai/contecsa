@@ -1,11 +1,8 @@
 /**
- * Material and Category Types
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 12:00
- *
- * Defines materials, 15 material categories, and price history tracking.
- * Critical for inventory and pricing analysis features.
+ * @file Material and Category Types
+ * @description Tipos para materiales, 15 categorías y seguimiento de histórico de precios
+ * @module lib/mockup-data/types/material
+ * @exports MaterialCategory, MaterialCategoryEnum, CategoryMetadata, MATERIAL_CATEGORY_METADATA, MaterialStatus, MaterialStatusEnum, PriceHistoryEntry, Material, MaterialFilter, MaterialComparison, SupplierPricingInfo, MaterialCategorySchema, MaterialStatusSchema, PriceHistoryEntrySchema, MaterialSchema, MaterialFilterSchema, SupplierPricingInfoSchema, MaterialComparisonSchema
  */
 
 import { z } from 'zod';

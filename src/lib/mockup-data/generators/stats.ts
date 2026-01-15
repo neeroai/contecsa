@@ -1,11 +1,8 @@
 /**
- * Mockup Data Summary and Validation
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 15:40
- *
- * Provides summary stats and validation functions for mockup data.
- * Separated to avoid circular imports in generators/index.ts
+ * @file Mockup Data Summary and Validation
+ * @description Proporciona estadísticas y validación de datos de mockup (sin importaciones circulares)
+ * @module lib/mockup-data/generators/stats
+ * @exports getMockupDataSummary, validateMockupData, MOCKUP_DATA
  */
 
 import { CONSORCIOS, PROJECTS } from './consorcios';
@@ -20,7 +17,18 @@ import { USERS } from './users';
 // ============================================================================
 
 /**
- * Get complete mockup data summary
+ * Get summary of all generated mockup data with entity counts
+ * Quick overview of total users, suppliers, consorcios, projects, materials, purchases, invoices
+ *
+ * @returns Object with count properties for all data entities
+ *
+ * @example
+ * ```ts
+ * const summary = getMockupDataSummary();
+ * console.log(summary.users); // 10
+ * console.log(summary.purchases); // 55
+ * console.log(summary.invoices); // 198
+ * ```
  */
 export function getMockupDataSummary() {
   return {
@@ -35,8 +43,18 @@ export function getMockupDataSummary() {
 }
 
 /**
- * Validate all generated data
- * Returns true if all data is consistent
+ * Validate all generated mockup data for consistency and completeness
+ * Checks: user count, Liced Vega exists, suppliers, consorcios, materials, purchases, invoices
+ *
+ * @returns Validation result with isValid flag, errors array, and warnings array
+ *
+ * @example
+ * ```ts
+ * const validation = validateMockupData();
+ * console.log(validation.isValid); // true/false
+ * console.log(validation.errors); // Critical issues
+ * console.log(validation.warnings); // Non-critical issues
+ * ```
  */
 export function validateMockupData(): {
   isValid: boolean;
@@ -106,7 +124,16 @@ export function validateMockupData(): {
 }
 
 /**
- * Export all data as a single object
+ * Complete mockup dataset with all generated entities (as const)
+ * Includes: 10 users, 20+ suppliers, 9 consorcios, 15 projects, 30+ materials, 55 purchases, 198 invoices
+ * Type: readonly object for immutability, supports type inference
+ *
+ * @example
+ * ```ts
+ * const { users, invoices } = MOCKUP_DATA;
+ * console.log(MOCKUP_DATA.users.length); // 10
+ * console.log(MOCKUP_DATA.invoices.length); // 198
+ * ```
  */
 export const MOCKUP_DATA = {
   users: USERS,

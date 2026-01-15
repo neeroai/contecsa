@@ -1,12 +1,8 @@
 /**
- * Consorcios Data Generator
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 13:00
- *
- * Generates 9 fixed consorcios as specified in requirements:
- * PAVICONSTRUJC, EDUBAR-KRA50, PTAR, HIDROCARIBE, VIAL60, etc.
- * With budgets, timelines, and EVM metrics.
+ * @file Consorcios and Projects Data Generator
+ * @description Genera 9 consorcios con presupuestos, cronogramas y métricas EVM
+ * @module lib/mockup-data/generators/consorcios
+ * @exports generateConsorcios, generateProjects, CONSORCIOS, PROJECTS, getConsortiumByCode, getProjectsByConsortium, getRandomProject
  */
 
 import type {
@@ -285,7 +281,17 @@ function generateConsortium(
 }
 
 /**
- * Generates all 9 consorcios
+ * Generate 9 Colombian construction consortiums with members and contracts
+ * Each consortium represents legal entity with 2-3 member companies
+ *
+ * @returns Array of 9 Consortium objects (PAVICONSTRUJC, EDUBAR-KRA50, etc.)
+ *
+ * @example
+ * ```ts
+ * const consorcios = generateConsorcios();
+ * console.log(consorcios.length); // 9
+ * console.log(consorcios[0].name); // "PAVICONSTRUJC"
+ * ```
  */
 export function generateConsorcios(): Consortium[] {
   return [
@@ -413,7 +419,17 @@ export function generateConsorcios(): Consortium[] {
 }
 
 /**
- * Generate projects for all consorcios
+ * Generate 15+ projects distributed across 9 consortiums
+ * Each consortium has 1-2 projects with EVM metrics and schedules
+ *
+ * @returns Array of Project objects with budgets and forecasts
+ *
+ * @example
+ * ```ts
+ * const projects = generateProjects();
+ * console.log(projects.length); // ~15
+ * console.log(projects[0].status); // "PLANNING" | "ACTIVE" | "COMPLETED"
+ * ```
  */
 export function generateProjects(): Project[] {
   const consorcios = CONSORCIOS;
@@ -459,21 +475,51 @@ export const CONSORCIOS = generateConsorcios();
 export const PROJECTS = generateProjects();
 
 /**
- * Helper: Get consortium by code
+ * Get consortium by 5-character code
+ * Codes: PAVIJC, EDUBAR, PTAR, HIDRO, VIAL60, PMAG, TUNOR, METRO, PICALI
+ *
+ * @param code - Consortium code, e.g., "PAVIJC"
+ * @returns Consortium object if found, undefined otherwise
+ *
+ * @example
+ * ```ts
+ * const pavco = getConsortiumByCode('PAVIJC');
+ * console.log(pavco?.name); // "PAVICONSTRUJC"
+ * ```
  */
 export function getConsortiumByCode(code: string): Consortium | undefined {
   return CONSORCIOS.find((c) => c.code === code);
 }
 
 /**
- * Helper: Get projects by consortium
+ * Get all projects for a specific consortium
+ * Each consortium can have 1-2 associated projects
+ *
+ * @param consortiumId - Consortium ID (UUID format)
+ * @returns Array of projects for consortium, empty if none found
+ *
+ * @example
+ * ```ts
+ * const pavcoProjects = getProjectsByConsortium(consortiumId);
+ * console.log(pavcoProjects.length); // 1 or 2
+ * ```
  */
 export function getProjectsByConsortium(consortiumId: string): Project[] {
   return PROJECTS.filter((p) => p.consortiumId === consortiumId);
 }
 
 /**
- * Helper: Get random project
+ * Get random project from all projects using seeded RNG
+ * Deterministic - same project for same seed across calls
+ *
+ * @returns Random Project object, includes consortium and EVM metrics
+ *
+ * @example
+ * ```ts
+ * const project = getRandomProject();
+ * console.log(project.name); // e.g., "PAVICONSTRUJC - Fase 1"
+ * console.log(project.completionPercentage); // 25-100%
+ * ```
  */
 export function getRandomProject(): Project {
   return rng.pick(PROJECTS);

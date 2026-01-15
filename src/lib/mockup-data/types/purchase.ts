@@ -1,11 +1,8 @@
 /**
- * Purchase and State Management Types
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 12:00
- *
- * Defines purchase order states (7 stages), transitions, and audit trails.
- * Critical for F003 Seguimiento de Compras feature.
+ * @file Purchase and State Management Types
+ * @description Tipos para órdenes de compra, máquina de estados (7 etapas) y auditoría
+ * @module lib/mockup-data/types/purchase
+ * @exports PurchaseState, PurchaseStateEnum, StateMetadata, PURCHASE_STATE_METADATA, StatusColor, STATE_TRANSITIONS, AuditLogEntry, Purchase, PurchaseMaterial, Attachment, PurchaseNote, AlertFlag, PurchaseStateSchema, StatusColorSchema, AuditLogEntrySchema, PurchaseMaterialSchema, AttachmentSchema, PurchaseNoteSchema, AlertFlagSchema, PurchaseSchema
  */
 
 import { z } from 'zod';

@@ -1,11 +1,8 @@
 /**
- * Materials Data Generator
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 13:00
- *
- * Generates 30+ construction materials across 15 categories.
- * Includes price history for the last 6 months for anomaly detection.
+ * @file Materials Data Generator
+ * @description Genera 30+ materiales de construcción con historial de precios
+ * @module lib/mockup-data/generators/materials
+ * @exports generateMaterials, MATERIALS, getMaterialByCode, getMaterialsByCategory, getRandomMaterial, getRandomMaterialByCategory
  */
 
 import type { Material, MaterialCategory, PriceHistoryEntry } from '../types';
@@ -571,7 +568,17 @@ function generateMaterial(def: MaterialDef): Material {
 }
 
 /**
- * Generate all materials
+ * Generate all 30+ construction materials with prices and specifications
+ * Creates material catalog entries with price history and supplier mappings
+ *
+ * @returns Array of Material objects, one per definition with pricing data
+ *
+ * @example
+ * ```ts
+ * const materials = generateMaterials();
+ * console.log(materials.length); // 30+
+ * console.log(materials[0].category); // e.g., "CEMENTO"
+ * ```
  */
 export function generateMaterials(): Material[] {
   return MATERIAL_DEFINITIONS.map((def) => generateMaterial(def));
@@ -583,28 +590,69 @@ export function generateMaterials(): Material[] {
 export const MATERIALS = generateMaterials();
 
 /**
- * Helper: Get material by code
+ * Get material from catalog by its 6-character code
+ * Codes follow pattern: CEM-001, ACE-002, MAD-001, etc.
+ *
+ * @param code - Material code, e.g., "CEM-001" for Cemento Portland
+ * @returns Material object if found, undefined otherwise
+ *
+ * @example
+ * ```ts
+ * const cement = getMaterialByCode('CEM-001');
+ * console.log(cement?.name); // "Cemento Portland Tipo I"
+ * ```
  */
 export function getMaterialByCode(code: string): Material | undefined {
   return MATERIALS.find((m) => m.code === code);
 }
 
 /**
- * Helper: Get materials by category
+ * Get all materials in a specific category
+ * Categories: CEMENTO, ACERO, MADERA, HORMIGON, ARENA, GRAVA, etc.
+ *
+ * @param category - Material category to filter, e.g., "CEMENTO"
+ * @returns Array of materials matching category, empty if none found
+ *
+ * @example
+ * ```ts
+ * const cements = getMaterialsByCategory('CEMENTO');
+ * console.log(cements.length); // 2
+ * console.log(cements[0].code); // "CEM-001"
+ * ```
  */
 export function getMaterialsByCategory(category: MaterialCategory): Material[] {
   return MATERIALS.filter((m) => m.category === category);
 }
 
 /**
- * Helper: Get random material
+ * Get random material from catalog using seeded RNG
+ * Deterministic - same material for same seed, different calls
+ *
+ * @returns Random Material object from full catalog
+ *
+ * @example
+ * ```ts
+ * const material = getRandomMaterial();
+ * console.log(material.name); // e.g., "Cemento Portland Tipo I"
+ * ```
  */
 export function getRandomMaterial(): Material {
   return rng.pick(MATERIALS);
 }
 
 /**
- * Helper: Get random material by category
+ * Get random material from specific category using seeded RNG
+ * Throws if category has no materials
+ *
+ * @param category - Material category, e.g., "CEMENTO"
+ * @returns Random Material from category, never undefined
+ * @throws {Error} When category not found or empty
+ *
+ * @example
+ * ```ts
+ * const steel = getRandomMaterialByCategory('ACERO');
+ * console.log(steel.category); // "ACERO"
+ * ```
  */
 export function getRandomMaterialByCategory(category: MaterialCategory): Material {
   const materials = getMaterialsByCategory(category);

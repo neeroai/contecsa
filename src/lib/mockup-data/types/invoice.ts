@@ -1,12 +1,8 @@
 /**
- * Invoice and OCR Types
- * Contecsa Sistema de Inteligencia de Datos
- *
- * Version: 1.0 | Date: 2025-12-24 12:00
- *
- * Defines invoice models, OCR extraction, and validation.
- * Critical for F004 OCR Facturas and F007 Análisis de Precios features.
- * 198 invoices tracked (66/month × 3 months)
+ * @file Invoice and OCR Types
+ * @description Tipos para facturas, extracción OCR y detección de anomalías de precios
+ * @module lib/mockup-data/types/invoice
+ * @exports OCRConfidence, OCRConfidenceEnum, InvoiceStatus, InvoiceStatusEnum, ExtractedFields, ExtractedField, ValidationResult, ValidationError, ValidationWarning, PriceVariance, Invoice, InvoiceLineMatch, InvoiceAttachment, InvoiceAuditEntry, OCRConfidenceSchema, InvoiceStatusSchema, ExtractedFieldSchema, ExtractedFieldsSchema, ValidationErrorSchema, ValidationWarningSchema, ValidationResultSchema, PriceVarianceSchema, InvoiceLineMatchSchema, InvoiceAttachmentSchema, InvoiceAuditEntrySchema, InvoiceSchema
  */
 
 import { z } from 'zod';
