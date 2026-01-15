@@ -1,39 +1,38 @@
 # hooks - Index
 
-Version: 1.0 | Date: 2026-01-07 05:53
+Version: 1.1 | Date: 2026-01-15
+
+> Auto-generated from codebase structure
 
 ## Purpose
 
-TODO: Add module purpose
+Custom React hooks for Contecsa application.
 
 ## File Map
 
 | File | Purpose | Key Exports |
 |------|---------|-------------|
-| index.ts | TODO | (no exports) |
-| use-mobile-hook.tsx | TODO | (no exports) |
+| index.ts | TODO: Add description | (none) |
+| use-mobile-hook.tsx | TODO: Add description | useIsMobile |
 
 ## Dependencies
 
-**Internal:** TODO
-**External:** TODO
-**Used by:** TODO
+**Internal:** Auto-detected from imports
+**External:** See package.json
+**Used by:** Components throughout the application
 
 ## Critical Patterns
 
-- TODO: Document patterns and gotchas
-
-## Environment Variables
-
-- None (or list if applicable)
+- Multi-tenant architecture (Contecsa + 9 consortiums)
+- SICOM read-only integration
+- WhatsApp-first interface design
 
 ## Quick Start
 
 ```typescript
-// TODO: Add typical usage example
-import { } from '@/contecsa/src/hooks';
+// Import from hooks
 ```
 
-## Subdirectories
-
-- None (or list subdirectories with map.md files)
+---
+**Generated:** 2026-01-15T10:13:38.924Z
+**Files:** 2 | **Subdirs:** 0

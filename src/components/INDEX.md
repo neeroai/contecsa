@@ -1,10 +1,12 @@
 # components - Index
 
-Version: 1.0 | Date: 2026-01-07 05:53
+Version: 1.1 | Date: 2026-01-15
+
+> Auto-generated from codebase structure
 
 ## Purpose
 
-TODO: Add module purpose
+React components for Contecsa UI (shadcn/ui + custom components).
 
 ## File Map
 
@@ -13,25 +15,28 @@ TODO: Add module purpose
 
 ## Dependencies
 
-**Internal:** TODO
-**External:** TODO
-**Used by:** TODO
+**Internal:** Auto-detected from imports
+**External:** See package.json
+**Used by:** Components throughout the application
+
+## Subdirectories
+
+- **dashboard/** - See dashboard/INDEX.md
+- **layout/** - See layout/INDEX.md
+- **ui/** - See ui/INDEX.md
 
 ## Critical Patterns
 
-- TODO: Document patterns and gotchas
-
-## Environment Variables
-
-- None (or list if applicable)
+- Multi-tenant architecture (Contecsa + 9 consortiums)
+- SICOM read-only integration
+- WhatsApp-first interface design
 
 ## Quick Start
 
 ```typescript
-// TODO: Add typical usage example
-import { } from '@/contecsa/src/components';
+// Import from components
 ```
 
-## Subdirectories
-
-- None (or list subdirectories with map.md files)
+---
+**Generated:** 2026-01-15T10:13:38.924Z
+**Files:** 0 | **Subdirs:** 3
