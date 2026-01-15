@@ -26,11 +26,11 @@ export default function DashboardLayout({
   };
 
   return (
-    <SidebarProvider>
+    <SidebarProvider className="relative min-h-svh">
       <AppSidebar role={role} />
-      <SidebarInset>
+      <SidebarInset className="bg-transparent">
         <Header user={user} />
-        <main className="flex-1 overflow-y-auto p-4 md:p-6">{children}</main>
+        <main className="flex-1 overflow-y-auto px-4 pb-10 pt-6 md:px-8">{children}</main>
       </SidebarInset>
     </SidebarProvider>
   );

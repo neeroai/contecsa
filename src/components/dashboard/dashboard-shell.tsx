@@ -16,19 +16,26 @@ interface KPICardProps {
 
 export function KPICard({ title, value, description, icon: Icon, trend }: KPICardProps) {
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">{title}</CardTitle>
-        <Icon className="h-4 w-4 text-muted-foreground" />
+    <Card className="kpi-card">
+      <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-3">
+        <div>
+          <CardTitle className="kpi-label">{title}</CardTitle>
+          {description && <p className="mt-2 text-sm text-muted-foreground">{description}</p>}
+        </div>
+        <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-primary/10 text-primary">
+          <Icon className="h-5 w-5" />
+        </div>
       </CardHeader>
-      <CardContent>
-        <div className="text-2xl font-bold">{value}</div>
-        {description && <p className="text-xs text-muted-foreground mt-1">{description}</p>}
+      <CardContent className="space-y-3 pt-0">
+        <div className="kpi-value">{value}</div>
         {trend && (
-          <p className={`text-xs mt-1 ${trend.isPositive ? 'text-green-600' : 'text-red-600'}`}>
-            {trend.isPositive ? '+' : ''}
-            {trend.value}
-          </p>
+          <div
+            className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] ${
+              trend.isPositive ? 'bg-success-light text-success-dark' : 'bg-danger-light text-danger-dark'
+            }`}
+          >
+            {trend.isPositive ? '▲' : '▼'} {trend.value}
+          </div>
         )}
       </CardContent>
     </Card>
@@ -43,10 +50,22 @@ interface DashboardShellProps {
 
 export function DashboardShell({ title, description, children }: DashboardShellProps) {
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold tracking-tight">{title}</h1>
-        <p className="text-muted-foreground">{description}</p>
+    <div className="space-y-8">
+      <div className="space-y-3">
+        <p className="text-xs font-semibold uppercase tracking-[0.4em] text-muted-foreground">
+          Panel operativo
+        </p>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-semibold">{title}</h1>
+            <p className="text-base text-muted-foreground">{description}</p>
+          </div>
+          <div className="flex flex-wrap gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="rounded-full border border-border/70 px-3 py-1">Semana 3</span>
+            <span className="rounded-full border border-border/70 px-3 py-1">Meta 92%</span>
+            <span className="rounded-full border border-border/70 px-3 py-1">IA activa</span>
+          </div>
+        </div>
       </div>
       {children}
     </div>

@@ -34,79 +34,143 @@ export default function AlmacenDashboard() {
         />
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+      <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
+        <Card className="animate-slide-in-from-bottom">
           <CardHeader>
-            <CardTitle>Movimientos del Mes</CardTitle>
+            <CardTitle>Movimientos del mes</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Entradas</span>
-                <span className="font-medium text-green-600">142</span>
+          <CardContent className="space-y-4">
+            {[
+              { label: 'Entradas', value: 142, width: 'w-[70%]', tone: 'success' },
+              { label: 'Salidas', value: 128, width: 'w-[62%]', tone: 'danger' },
+              { label: 'Devoluciones', value: 3, width: 'w-[12%]' },
+              { label: 'Ajustes', value: 7, width: 'w-[18%]' },
+            ].map((item) => (
+              <div key={item.label} className="space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="font-medium">{item.label}</span>
+                  <span
+                    className={`font-semibold ${
+                      item.tone === 'success'
+                        ? 'text-success-dark'
+                        : item.tone === 'danger'
+                        ? 'text-danger-dark'
+                        : 'text-foreground'
+                    }`}
+                  >
+                    {item.value}
+                  </span>
+                </div>
+                <div className="h-2 rounded-full bg-muted/70">
+                  <div
+                    className={`h-2 rounded-full ${item.width} ${
+                      item.tone === 'success'
+                        ? 'bg-success'
+                        : item.tone === 'danger'
+                        ? 'bg-danger'
+                        : 'bg-primary'
+                    }`}
+                  />
+                </div>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Salidas</span>
-                <span className="font-medium text-red-600">128</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Devoluciones</span>
-                <span className="font-medium">3</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm">Ajustes</span>
-                <span className="font-medium">7</span>
-              </div>
-              <div className="border-t pt-2 flex items-center justify-between">
-                <span className="text-sm font-medium">Saldo Neto</span>
-                <span className="font-bold text-green-600">+14</span>
-              </div>
+            ))}
+            <div className="flex items-center justify-between rounded-2xl border border-border/70 bg-background/70 px-4 py-3">
+              <span className="text-sm font-semibold">Saldo neto</span>
+              <span className="text-sm font-semibold text-success-dark">+14</span>
             </div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="animate-slide-in-from-bottom">
           <CardHeader>
-            <CardTitle>Stock por Categoria</CardTitle>
+            <CardTitle>Rotacion por categoria</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="h-[250px] flex items-center justify-center text-muted-foreground">
-              Grafica de stock por categoria (en desarrollo)
-            </div>
+          <CardContent className="space-y-4">
+            {[
+              { label: 'Cementos', value: '38%', tone: 'success' },
+              { label: 'Aceros', value: '24%', tone: 'warning' },
+              { label: 'PVC', value: '19%', tone: 'info' },
+              { label: 'Miscelaneos', value: '11%', tone: 'info' },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center justify-between text-sm">
+                <span className="font-semibold">{item.label}</span>
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] ${
+                    item.tone === 'success'
+                      ? 'bg-success-light text-success-dark'
+                      : item.tone === 'warning'
+                      ? 'bg-warning-light text-warning-dark'
+                      : 'bg-info-light text-info-dark'
+                  }`}
+                >
+                  {item.value}
+                </span>
+              </div>
+            ))}
           </CardContent>
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Alertas de Stock</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between items-center p-2 hover:bg-muted rounded">
-              <div>
-                <span className="font-medium">Cemento Argos 50kg</span>
-                <p className="text-xs text-muted-foreground">Stock: 15 unidades - Min: 50</p>
+      <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+        <Card className="animate-slide-in-from-bottom">
+          <CardHeader>
+            <CardTitle>Alertas de stock</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm">
+            {[
+              {
+                name: 'Cemento Argos 50kg',
+                detail: 'Stock 15 unidades · Min 50',
+                tone: 'danger',
+              },
+              {
+                name: 'Acero corrugado 1/2"',
+                detail: 'Stock 28 unidades · Min 30',
+                tone: 'warning',
+              },
+              {
+                name: 'Tuberia PVC 4"',
+                detail: 'Stock 42 unidades · Min 40',
+                tone: 'warning',
+              },
+            ].map((item) => (
+              <div
+                key={item.name}
+                className="flex items-center justify-between rounded-2xl border border-border/70 bg-background/70 p-3"
+              >
+                <div>
+                  <span className="font-semibold">{item.name}</span>
+                  <p className="text-xs text-muted-foreground">{item.detail}</p>
+                </div>
+                <Badge
+                  variant={item.tone === 'danger' ? 'destructive' : 'outline'}
+                  className="normal-case tracking-normal"
+                >
+                  {item.tone === 'danger' ? 'Critico' : 'Bajo'}
+                </Badge>
               </div>
-              <Badge variant="destructive">Critico</Badge>
-            </div>
-            <div className="flex justify-between items-center p-2 hover:bg-muted rounded">
-              <div>
-                <span className="font-medium">Acero corrugado 1/2"</span>
-                <p className="text-xs text-muted-foreground">Stock: 28 unidades - Min: 30</p>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="animate-slide-in-from-bottom">
+          <CardHeader>
+            <CardTitle>Recepciones en ventana</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {[
+              { label: 'PTAR · 6 camiones', time: '08:00 - 11:00' },
+              { label: 'EDUBAR · 2 entregas', time: '12:00 - 15:00' },
+              { label: 'PAVI · 4 pallets', time: '16:00 - 18:00' },
+            ].map((item) => (
+              <div key={item.label} className="rounded-2xl border border-border/70 bg-card/80 p-4">
+                <p className="text-sm font-semibold">{item.label}</p>
+                <p className="text-xs text-muted-foreground">{item.time}</p>
               </div>
-              <Badge>Bajo</Badge>
-            </div>
-            <div className="flex justify-between items-center p-2 hover:bg-muted rounded">
-              <div>
-                <span className="font-medium">Tuberia PVC 4"</span>
-                <p className="text-xs text-muted-foreground">Stock: 42 unidades - Min: 40</p>
-              </div>
-              <Badge>Bajo</Badge>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
     </DashboardShell>
   );
 }

@@ -19,6 +19,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -29,7 +30,7 @@ import {
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { roleLabels } from '@/lib/navigation';
 import type { UserInfo, UserRole } from '@/lib/types/navigation';
-import { Bell, ChevronDown, LogOut, User } from 'lucide-react';
+import { Bell, ChevronDown, LogOut, Search, User } from 'lucide-react';
 import { usePathname, useRouter } from 'next/navigation';
 
 interface HeaderProps {
@@ -57,10 +58,10 @@ export function Header({ user }: HeaderProps) {
   });
 
   return (
-    <header className="sticky top-0 z-10 flex h-14 items-center gap-4 border-b bg-background px-4">
+    <header className="sticky top-0 z-10 flex flex-wrap items-center gap-4 border-b border-border/60 bg-background/70 px-4 py-3 backdrop-blur-xl">
       <SidebarTrigger />
 
-      <div className="flex-1">
+      <div className="flex flex-1 flex-col gap-2">
         <Breadcrumb>
           <BreadcrumbList>
             {breadcrumbs.map((crumb, index) => (
@@ -77,12 +78,23 @@ export function Header({ user }: HeaderProps) {
             ))}
           </BreadcrumbList>
         </Breadcrumb>
+        <div className="hidden text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground md:block">
+          Actualizado hace 3 min · Señal operativa estable
+        </div>
       </div>
 
-      <div className="flex items-center gap-2">
-        {/* Role switcher (demo) */}
+      <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:items-center">
+        <div className="relative md:w-64">
+          <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input className="pl-11" placeholder="Buscar proyectos, OC, facturas" />
+        </div>
+
+        <Button variant="outline" className="md:px-5">
+          Nuevo reporte
+        </Button>
+
         <Select value={user.role} onValueChange={handleRoleChange}>
-          <SelectTrigger className="w-[140px] h-9 text-sm">
+          <SelectTrigger className="w-full md:w-[160px]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent>
@@ -94,35 +106,39 @@ export function Header({ user }: HeaderProps) {
           </SelectContent>
         </Select>
 
-        {/* Notifications */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" size="icon" className="relative h-9 w-9">
+            <Button variant="ghost" size="icon" className="relative h-10 w-10">
               <Bell className="h-4 w-4" />
               <Badge
                 variant="destructive"
-                className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                className="absolute -top-2 -right-2 flex h-6 w-6 items-center justify-center rounded-full p-0 text-[0.55rem] normal-case tracking-normal"
               >
                 3
               </Badge>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-80">
+          <DropdownMenuContent align="end" className="w-80 rounded-2xl">
             <DropdownMenuLabel>Notificaciones</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <div className="p-2 text-sm text-muted-foreground">
-              <p className="py-2">Compra #1234 pendiente de aprobacion</p>
-              <p className="py-2">Nueva factura recibida - OCR procesado</p>
-              <p className="py-2">Alerta: Precio cemento +15% vs promedio</p>
+            <div className="space-y-3 p-3 text-sm text-muted-foreground">
+              <div className="rounded-xl border border-border/60 bg-card/80 p-3">
+                Compra #1234 pendiente de aprobacion
+              </div>
+              <div className="rounded-xl border border-border/60 bg-card/80 p-3">
+                Nueva factura recibida · OCR procesado
+              </div>
+              <div className="rounded-xl border border-border/60 bg-card/80 p-3">
+                Alerta: Precio cemento +15% vs promedio
+              </div>
             </div>
           </DropdownMenuContent>
         </DropdownMenu>
 
-        {/* User menu */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2 h-9">
-              <Avatar className="h-7 w-7">
+            <Button variant="ghost" className="flex items-center gap-2 normal-case tracking-normal">
+              <Avatar className="h-8 w-8">
                 <AvatarFallback className="text-xs">
                   {user.name
                     .split(' ')
@@ -131,11 +147,11 @@ export function Header({ user }: HeaderProps) {
                     .toUpperCase()}
                 </AvatarFallback>
               </Avatar>
-              <span className="hidden md:inline text-sm">{user.name}</span>
+              <span className="hidden md:inline text-sm font-semibold">{user.name}</span>
               <ChevronDown className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
+          <DropdownMenuContent align="end" className="w-56 rounded-2xl">
             <DropdownMenuLabel>
               <div className="flex flex-col">
                 <span>{user.name}</span>

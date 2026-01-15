@@ -86,8 +86,8 @@ temp/
 _archive/
 
 # Documentation
-docs-global/
-docs-global
+#docs-global/
+#docs-global
 #docs/
 propuesta-comercial/
 

@@ -39,51 +39,120 @@ export default function GerenciaDashboard() {
         />
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+      <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <Card className="animate-slide-in-from-bottom">
           <CardHeader>
-            <CardTitle>Proyeccion Financiera</CardTitle>
+            <CardTitle>Proyeccion financiera</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="h-[300px] flex items-center justify-center text-muted-foreground">
-              Grafica de proyeccion financiera (en desarrollo)
+          <CardContent className="space-y-4">
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="rounded-2xl border border-border/70 bg-background/70 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  Ingresos proyectados
+                </p>
+                <p className="mt-2 text-3xl font-semibold">$3.1B</p>
+                <p className="text-sm text-muted-foreground">Cierre Q4</p>
+              </div>
+              <div className="rounded-2xl border border-border/70 bg-background/70 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+                  Margen esperado
+                </p>
+                <p className="mt-2 text-3xl font-semibold">18.6%</p>
+                <p className="text-sm text-muted-foreground">+2.1% vs plan</p>
+              </div>
+            </div>
+            <div className="rounded-2xl border border-border/70 bg-card/80 p-4">
+              <p className="text-sm font-semibold">Riesgos de presupuesto</p>
+              <div className="mt-3 space-y-2 text-xs text-muted-foreground">
+                <div className="flex items-center justify-between">
+                  <span>PTAR · Variacion insumos</span>
+                  <span className="text-warning-dark">+4.5%</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>EDUBAR · Fletes</span>
+                  <span className="text-warning-dark">+3.2%</span>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="animate-slide-in-from-bottom">
           <CardHeader>
-            <CardTitle>Consumo por Proyecto</CardTitle>
+            <CardTitle>Consumo por proyecto</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="h-[300px] flex items-center justify-center text-muted-foreground">
-              Grafica de consumo por proyecto (en desarrollo)
-            </div>
+          <CardContent className="space-y-4">
+            {[
+              { label: 'PTAR', value: '$940M', progress: 'w-[72%]' },
+              { label: 'EDUBAR-KRA50', value: '$620M', progress: 'w-[54%]' },
+              { label: 'PAVICONSTRUJC', value: '$480M', progress: 'w-[38%]' },
+              { label: 'San Pedro', value: '$260M', progress: 'w-[22%]' },
+            ].map((item) => (
+              <div key={item.label} className="space-y-2">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="font-semibold">{item.label}</span>
+                  <span className="text-sm font-semibold">{item.value}</span>
+                </div>
+                <div className="h-2 rounded-full bg-muted/70">
+                  <div className={`h-2 rounded-full bg-primary ${item.progress}`} />
+                </div>
+              </div>
+            ))}
           </CardContent>
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Proyectos - Estado General</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between p-2 hover:bg-muted rounded">
-              <span className="font-medium">PAVICONSTRUJC</span>
-              <span className="text-green-600">En tiempo y presupuesto</span>
-            </div>
-            <div className="flex justify-between p-2 hover:bg-muted rounded">
-              <span className="font-medium">EDUBAR-KRA50</span>
-              <span className="text-green-600">Avance normal</span>
-            </div>
-            <div className="flex justify-between p-2 hover:bg-muted rounded">
-              <span className="font-medium">PTAR</span>
-              <span className="text-yellow-600">Alerta: sobrecosto 5%</span>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+        <Card className="animate-slide-in-from-bottom">
+          <CardHeader>
+            <CardTitle>Proyectos · Estado general</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm">
+            {[
+              { name: 'PAVICONSTRUJC', status: 'En tiempo y presupuesto', tone: 'success' },
+              { name: 'EDUBAR-KRA50', status: 'Avance normal', tone: 'success' },
+              { name: 'PTAR', status: 'Sobrecosto 5%', tone: 'warning' },
+              { name: 'Conexiones Norte', status: 'Riesgo cronograma', tone: 'danger' },
+            ].map((item) => (
+              <div
+                key={item.name}
+                className="flex items-center justify-between rounded-2xl border border-border/70 bg-background/70 p-3"
+              >
+                <span className="font-semibold">{item.name}</span>
+                <span
+                  className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] ${
+                    item.tone === 'success'
+                      ? 'bg-success-light text-success-dark'
+                      : item.tone === 'warning'
+                      ? 'bg-warning-light text-warning-dark'
+                      : 'bg-danger-light text-danger-dark'
+                  }`}
+                >
+                  {item.status}
+                </span>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="animate-slide-in-from-bottom">
+          <CardHeader>
+            <CardTitle>Alertas ejecutivas</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {[
+              { label: 'Contrato PTAR', detail: 'Ajuste de costos · 48h' },
+              { label: 'Proyecto Norte', detail: 'Requiere aprobacion de cambio' },
+              { label: 'EDUBAR-KRA50', detail: 'Liberar presupuesto de compra' },
+            ].map((item) => (
+              <div key={item.label} className="rounded-2xl border border-border/70 bg-card/80 p-4">
+                <p className="text-sm font-semibold">{item.label}</p>
+                <p className="text-xs text-muted-foreground">{item.detail}</p>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
     </DashboardShell>
   );
 }

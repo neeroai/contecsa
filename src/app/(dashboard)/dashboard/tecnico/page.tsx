@@ -40,86 +40,108 @@ export default function TecnicoDashboard() {
         />
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <Card>
+      <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
+        <Card className="animate-slide-in-from-bottom">
           <CardHeader>
-            <CardTitle>Consumo por Proyecto</CardTitle>
+            <CardTitle>Consumo por proyecto</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              <div className="space-y-1">
+          <CardContent className="space-y-4">
+            {[
+              { label: 'PTAR', value: '$78M', progress: 'w-[65%]' },
+              { label: 'EDUBAR-KRA50', value: '$52M', progress: 'w-[43%]' },
+              { label: 'PAVICONSTRUJC', value: '$54M', progress: 'w-[45%]' },
+              { label: 'San Pedro', value: '$21M', progress: 'w-[22%]' },
+            ].map((item) => (
+              <div key={item.label} className="space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span>PTAR</span>
-                  <span className="font-medium">$78M</span>
+                  <span className="font-semibold">{item.label}</span>
+                  <span className="font-semibold">{item.value}</span>
                 </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-primary w-[65%]" />
+                <div className="h-2 rounded-full bg-muted/70">
+                  <div className={`h-2 rounded-full bg-primary ${item.progress}`} />
                 </div>
               </div>
-              <div className="space-y-1">
-                <div className="flex justify-between text-sm">
-                  <span>EDUBAR-KRA50</span>
-                  <span className="font-medium">$52M</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-primary w-[43%]" />
-                </div>
-              </div>
-              <div className="space-y-1">
-                <div className="flex justify-between text-sm">
-                  <span>PAVICONSTRUJC</span>
-                  <span className="font-medium">$54M</span>
-                </div>
-                <div className="h-2 bg-muted rounded-full overflow-hidden">
-                  <div className="h-full bg-primary w-[45%]" />
-                </div>
-              </div>
-            </div>
+            ))}
           </CardContent>
         </Card>
 
-        <Card>
+        <Card className="animate-slide-in-from-bottom">
           <CardHeader>
-            <CardTitle>Materiales mas Consumidos</CardTitle>
+            <CardTitle>Mantenimiento activo</CardTitle>
           </CardHeader>
-          <CardContent>
-            <div className="h-[250px] flex items-center justify-center text-muted-foreground">
-              Grafica de materiales mas consumidos (en desarrollo)
-            </div>
+          <CardContent className="space-y-4">
+            {[
+              { label: 'Flota de volquetas', detail: '3 equipos · 2 dias' },
+              { label: 'Planta mezclas', detail: 'Inspeccion semanal' },
+              { label: 'Compresores', detail: 'Cambio de filtros' },
+            ].map((item) => (
+              <div key={item.label} className="rounded-2xl border border-border/70 bg-card/80 p-4">
+                <p className="text-sm font-semibold">{item.label}</p>
+                <p className="text-xs text-muted-foreground">{item.detail}</p>
+              </div>
+            ))}
           </CardContent>
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Requisiciones Recientes</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between items-center p-2 hover:bg-muted rounded">
-              <div>
-                <span className="font-medium">REQ-2024-089</span>
-                <p className="text-xs text-muted-foreground">Cemento x 200 bultos - PTAR</p>
+      <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+        <Card className="animate-slide-in-from-bottom">
+          <CardHeader>
+            <CardTitle>Requisiciones recientes</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3 text-sm">
+            {[
+              {
+                name: 'REQ-2024-089',
+                detail: 'Cemento x 200 bultos · PTAR',
+                status: 'En compra',
+              },
+              {
+                name: 'REQ-2024-088',
+                detail: 'Acero corrugado · EDUBAR',
+                status: 'Aprobada',
+              },
+              {
+                name: 'REQ-2024-087',
+                detail: 'Tuberia PVC · PAVI',
+                status: 'Cotizacion',
+              },
+            ].map((item) => (
+              <div
+                key={item.name}
+                className="flex items-center justify-between rounded-2xl border border-border/70 bg-background/70 p-3"
+              >
+                <div>
+                  <span className="font-semibold">{item.name}</span>
+                  <p className="text-xs text-muted-foreground">{item.detail}</p>
+                </div>
+                <Badge className="normal-case tracking-normal">{item.status}</Badge>
               </div>
-              <Badge>En compra</Badge>
-            </div>
-            <div className="flex justify-between items-center p-2 hover:bg-muted rounded">
-              <div>
-                <span className="font-medium">REQ-2024-088</span>
-                <p className="text-xs text-muted-foreground">Acero corrugado - EDUBAR</p>
+            ))}
+          </CardContent>
+        </Card>
+
+        <Card className="animate-slide-in-from-bottom">
+          <CardHeader>
+            <CardTitle>Materiales mas consumidos</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {[
+              { label: 'Cemento', value: '38%' },
+              { label: 'Acero', value: '22%' },
+              { label: 'Aditivos', value: '18%' },
+              { label: 'PVC', value: '14%' },
+            ].map((item) => (
+              <div key={item.label} className="flex items-center justify-between text-sm">
+                <span className="font-semibold">{item.label}</span>
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
+                  {item.value}
+                </span>
               </div>
-              <Badge variant="secondary">Aprobada</Badge>
-            </div>
-            <div className="flex justify-between items-center p-2 hover:bg-muted rounded">
-              <div>
-                <span className="font-medium">REQ-2024-087</span>
-                <p className="text-xs text-muted-foreground">Tuberia PVC - PAVI</p>
-              </div>
-              <Badge>Cotizacion</Badge>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+            ))}
+          </CardContent>
+        </Card>
+      </div>
     </DashboardShell>
   );
 }
