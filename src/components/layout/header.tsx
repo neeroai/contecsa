@@ -86,7 +86,7 @@ export function Header({ user }: HeaderProps) {
       <div className="flex w-full flex-col gap-2 md:w-auto md:flex-row md:items-center">
         <div className="relative md:w-64">
           <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-          <Input className="pl-11" placeholder="Buscar proyectos, OC, facturas" />
+          <Input className="!pl-11" placeholder="Buscar proyectos, OC, facturas" />
         </div>
 
         <Button variant="outline" className="md:px-5">

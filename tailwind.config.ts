@@ -23,9 +23,9 @@ const config: Config = {
       xl: '1440px', // Wide
     },
     fontFamily: {
-      sans: ['var(--font-body)', 'system-ui', 'sans-serif'],
-      display: ['var(--font-display)', 'var(--font-body)', 'sans-serif'],
-      mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
+      sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+      display: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+      mono: ['var(--font-inter)', 'Inter', 'ui-monospace', 'monospace'],
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.01em' }], // 12px
@@ -54,15 +54,13 @@ const config: Config = {
       24: 'calc(var(--spacing-md) * 6)', // 96px
       32: 'calc(var(--spacing-md) * 8)', // 128px
     },
-    borderRadius: {
-      none: '0',
-      xs: 'var(--radius-xs)', // 4px
-      sm: 'var(--radius-sm)', // 6px
-      md: 'var(--radius-md)', // 8px
-      lg: 'var(--radius-lg)', // 12px
-      full: '9999px',
-    },
     extend: {
+      borderRadius: {
+        xs: 'var(--radius-xs)', // 4px
+        sm: 'var(--radius-sm)', // 6px
+        md: 'var(--radius-md)', // 8px
+        lg: 'var(--radius-lg)', // 12px
+      },
       colors: {
         // Base colors - semantic CSS variables
         border: 'hsl(var(--border))',
